@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basics.cpp                                         :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 17:42:54 by viferrei          #+#    #+#             */
-/*   Updated: 2023/03/13 17:50:15 by viferrei         ###   ########.fr       */
+/*   Created: 2023/03/13 17:17:56 by viferrei          #+#    #+#             */
+/*   Updated: 2023/03/13 18:06:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* Returns the input in uppercase */
+
 #include <iostream>
-using namespace	std;
 
-int main()
+int main(int argc, char **argv)
 {
-	int		num;
-	string	str;
-
-	cout << "Hello world !" << endl;
-	cout << "Enter an integer and a string, respectively:" << endl;
-	cin >> num >> str;
-	cout << "You entered " << num << " and " << str << endl;
+	for (int i = 1; i < argc; i++)
+	{
+		// turn into uppercase
+		std::cout << argv[i];
+	}
+	std::cout << std::endl;
 }
