@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:17:56 by viferrei          #+#    #+#             */
-/*   Updated: 2023/03/27 20:39:14 by viferrei         ###   ########.fr       */
+/*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
+/*   Updated: 2023/03/27 19:44:50 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Returns the input in uppercase and no spaces between them */
+#ifndef	PHONEBOOK_CLASS_HPP
+# define PHONEBOOK_CLASS_HPP
 
-#include <iostream>	// cout
-#include <cctype>	// toupper
+#include <string>
 
-int main(int argc, char **argv)
-{
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	for (int i = 1; i < argc; i++) {
-		for (size_t j = 0; argv[i][j] != '\0'; j++)
-			std::cout << (char) std::toupper(argv[i][j]);
-	}
-	std::cout << std::endl;
-}
+class	PhoneBook {
+
+public:
+	PhoneBook(void);
+	~PhoneBook(void);
+
+
+};
+
+class	Contact {
+
+public:
+	std::string	firstname;
+	std::string	lastname;
+	std::string	nickname;
+	size_t		phone_number;
+	std::string	darkest_secret;
+};
+
+#endif
