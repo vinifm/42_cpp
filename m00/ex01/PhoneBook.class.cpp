@@ -6,10 +6,12 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/03/27 19:34:55 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:03:39 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.class.hpp"
 
+void	PhoneBook::add_contact() {
 
+}

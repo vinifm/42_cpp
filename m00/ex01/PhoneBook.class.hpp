@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/03/27 19:44:50 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:04:42 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@
 
 class	PhoneBook {
 
+// Accessible from inside and outside the class
 public:
-	PhoneBook(void);
-	~PhoneBook(void);
+	// PhoneBook(void);	// constructor
+	// ~PhoneBook(void);	// destructor
 
+	void	add_contact();
+	void	search();
 
+// Only accessible from inside the class
+private:
+	Contact *contacts[8];
 };
 
 class	Contact {
