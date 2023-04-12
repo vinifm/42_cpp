@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/11 22:10:20 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:49:04 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <string>
 #include <iostream>
-#include <ctype.h>	// isalpha
+#include <cstdlib> // exit
+#include <typeinfo>
 // #include <iomanip>
 
 class	Contact {
@@ -42,7 +43,6 @@ public:
 // Only accessible from inside the class
 private:
 	Contact	contacts[8];
-	void	validate_contact_info(Contact *new_contact);
 };
 
 #endif
