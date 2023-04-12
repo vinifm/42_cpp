@@ -1,4 +1,7 @@
 *.o
+.nfs*
 
 # executables
 megaphone
+test
+phonebook

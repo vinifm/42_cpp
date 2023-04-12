@@ -1,4 +1,4 @@
-NAME	= megaphone
+NAME	= phonebook
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
@@ -11,13 +11,14 @@ LFLAGS	= --leak-check=full \
 			--track-fds=yes
 
 SRC		= phonebook.cpp
+INCLUDE	= PhoneBook.class.hpp PhoneBook.class.cpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
 
-$(OBJ): $(SRC)
+$(OBJ): $(SRC) $(INCLUDE)
 	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
