@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/17 20:45:35 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:50:08 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <string>
 #include <iostream>
-#include <ctype.h>	// isalpha
+#include <ctype.h>	// isalpha, isdigit
 #include <cstdlib>	// exit
 // #include <iomanip>
 
@@ -45,7 +45,6 @@ private:
 
 	std::string	validate_name(std::string);
 	std::string	validate_phone();
-	void		get_contact_info(Contact *new_contact);
 };
 
 #endif

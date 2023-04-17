@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/17 20:45:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:50:01 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,11 @@ std::string	PhoneBook::validate_phone() {
 	return phone_number;
 }
 
-/* Check if all input info is valid */
-void	PhoneBook::get_contact_info(Contact *new_contact) {
-	new_contact->firstname = validate_name("First name:");
-	new_contact->lastname = validate_name("Last name:");
-	new_contact->nickname = validate_name("Nickname:");
-	new_contact->phone_number = validate_phone();
-	std::cout << "Darkest secret:" << std::endl;
-	std::cin >> new_contact->darkest_secret;
-	std::cout << "CONTACT ADDED SUCCESSFULLY\n" << std::endl;
-}
-
 void	PhoneBook::add_contact() {
 	static int	index = 0;
 
 	if (index == 8)
 		index = 0;
-	// get_contact_info(&this->contacts[index]);
 	this->contacts[index].firstname = validate_name("First name:");
 	this->contacts[index].lastname = validate_name("Last name:");
 	this->contacts[index].nickname = validate_name("Nickname:");
