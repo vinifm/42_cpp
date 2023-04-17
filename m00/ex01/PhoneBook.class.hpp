@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/17 20:33:46 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:45:35 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	std::string	firstname;
 	std::string	lastname;
 	std::string	nickname;
-	size_t		phone_number;
+	std::string	phone_number;
 	std::string	darkest_secret;
 };
 
@@ -44,7 +44,7 @@ private:
 	Contact		contacts[8];
 
 	std::string	validate_name(std::string);
-	int			validate_phone();
+	std::string	validate_phone();
 	void		get_contact_info(Contact *new_contact);
 };
 

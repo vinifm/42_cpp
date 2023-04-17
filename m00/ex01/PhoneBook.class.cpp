@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/17 20:33:45 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:45:14 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,28 @@ std::string	PhoneBook::validate_name(std::string info) {
 }
 
 /* Check if phone is numeric */
-int	PhoneBook::validate_phone() {
-	bool		not_valid;
-	int		phone_number;
+std::string	PhoneBook::validate_phone() {
+	bool			not_valid;
+	std::string		phone_number;
 
 	do {
 		not_valid = false;
 		std::cout << "Phone number:" << std::endl;
 		std::cin >> phone_number;
-		if (std::cin.fail() || phone_number < 0) {
-			std::cout << "ERROR: Invalid phone number" << std::endl;
-			not_valid = true;
-			std::cin.clear();
-			std::cin.ignore(100, '\n');
+
+		for (std::string::iterator it = phone_number.begin();
+				it != phone_number.end(); it++) {
+			if(!isdigit(*it))
+				not_valid = true;
 		}
+		if (not_valid)
+			std::cout << "ERROR:  Invalid phone number" << std::endl;
 	} while (not_valid);
 	return phone_number;
 }
 
 /* Check if all input info is valid */
 void	PhoneBook::get_contact_info(Contact *new_contact) {
-	std::string	firstname, lastname, nickname, darkest_secret;
-
 	new_contact->firstname = validate_name("First name:");
 	new_contact->lastname = validate_name("Last name:");
 	new_contact->nickname = validate_name("Nickname:");
@@ -70,7 +70,14 @@ void	PhoneBook::add_contact() {
 
 	if (index == 8)
 		index = 0;
-	get_contact_info(this->contacts);
+	// get_contact_info(&this->contacts[index]);
+	this->contacts[index].firstname = validate_name("First name:");
+	this->contacts[index].lastname = validate_name("Last name:");
+	this->contacts[index].nickname = validate_name("Nickname:");
+	this->contacts[index].phone_number = validate_phone();
+	std::cout << "Darkest secret:" << std::endl;
+	std::cin >> this->contacts[index].darkest_secret;
+	std::cout << "CONTACT ADDED SUCCESSFULLY\n" << std::endl;
 }
 
 void	PhoneBook::search_contact() {
