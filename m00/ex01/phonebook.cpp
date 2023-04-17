@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:04 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/11 21:21:49 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:31:45 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,19 @@ int	main(void) {
 	std::string	cmd;
 	PhoneBook	phonebook;
 
-	std::cout << "enter either ADD, SEARCH, or EXIT:" << std::endl;
-	std::cin >> cmd;
-	invalid_cmd(cmd);
-	if (cmd.compare("ADD") == 0)
-		phonebook.add_contact();
-	else if (cmd.compare("SEARCH") == 0)
-		phonebook.search_contact();
-	else if (cmd.compare("EXIT") == 0)
-		phonebook.delete_and_exit();
-	return (0);
+	while (1) {
+		std::cout << "enter either ADD, SEARCH, or EXIT:" << std::endl;
+		std::cin >> cmd;
+		invalid_cmd(cmd);
+		if (cmd.compare("ADD") == 0)
+			phonebook.add_contact();
+		else if (cmd.compare("SEARCH") == 0)
+			phonebook.search_contact();
+		else if (cmd.compare("EXIT") == 0)
+			exit(0);
+			// phonebook.delete_and_exit();
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+	}
 }
 

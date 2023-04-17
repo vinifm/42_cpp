@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/11 22:10:20 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:27:18 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <ctype.h>	// isalpha
+#include <cstdlib>	// exit
 // #include <iomanip>
 
 class	Contact {
@@ -29,7 +30,6 @@ public:
 };
 
 class	PhoneBook {
-
 // Accessible from inside and outside the class
 public:
 	// PhoneBook(void);	// constructor
@@ -41,8 +41,11 @@ public:
 
 // Only accessible from inside the class
 private:
-	Contact	contacts[8];
-	void	validate_contact_info(Contact *new_contact);
+	Contact		contacts[8];
+
+	std::string	validate_name(std::string);
+	int			validate_phone();
+	void		get_contact_info(Contact *new_contact);
 };
 
 #endif
