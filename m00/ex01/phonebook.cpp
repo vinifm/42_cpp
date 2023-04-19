@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:04 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/19 18:40:22 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:00:25 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,4 @@ int	main(void) {
 			exit(0);
 			// phonebook.delete_and_exit();
 	}
-}
-
-void	clear_cin_buffer() {
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
 }

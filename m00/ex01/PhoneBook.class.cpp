@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/19 18:43:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:47:53 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ void	PhoneBook::add_contact() {
 }
 
 void	PhoneBook::search_contact() {
-
-}
-
-void	PhoneBook::delete_and_exit() {
 
 }
 

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/19 18:38:41 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:47:58 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ public:
 
 	void	add_contact();
 	void	search_contact();
-	void	delete_and_exit();
 
 private:
 	Contact		contacts[8];
