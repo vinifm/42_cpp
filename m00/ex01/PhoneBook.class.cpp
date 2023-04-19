@@ -6,14 +6,14 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/18 15:59:17 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:43:57 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.class.hpp"
 
 void	PhoneBook::add_contact() {
-	std::string	firstname;
+	std::string	name;
 	static int	index = 0;
 
 	if (index == 8)
@@ -24,7 +24,9 @@ void	PhoneBook::add_contact() {
 	this->contacts[index].phone_number = validate_phone();
 	std::cout << "Darkest secret:" << std::endl;
 	std::cin >> this->contacts[index].darkest_secret;
-	std::cout << "CONTACT ADDED SUCCESSFULLY\n" << std::endl;
+	std::cin.clear();
+	std::cin.ignore(1000, '\n');
+	std::cout << "CONTACT ADDED SUCCESSFULLY" << std::endl;
 }
 
 void	PhoneBook::search_contact() {
@@ -52,9 +54,9 @@ std::string	PhoneBook::validate_name(std::string info) {
 		if (not_valid)
 			std::cout << "ERROR: Name must have only alphabetical characters" \
 				<< std::endl;
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 	} while (not_valid);
-	std::cin.clear();
-	std::cin.ignore(1000, '\n');
 	return (str);
 }
 
@@ -75,9 +77,9 @@ std::string	PhoneBook::validate_phone() {
 		}
 		if (not_valid)
 			std::cout << "ERROR:  Invalid phone number" << std::endl;
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 	} while (not_valid);
-	std::cin.clear();
-	std::cin.ignore(1000, '\n');
 	return phone_number;
 }
 
