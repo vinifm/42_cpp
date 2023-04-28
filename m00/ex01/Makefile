@@ -8,7 +8,7 @@ LFLAGS	= --leak-check=full \
 			--show-leak-kinds=all \
 			--trace-children=yes \
 			--track-origins=yes \
-			--track-fds=yes
+			./$(NAME)
 
 SRC		= phonebook.cpp
 INCLUDE	= PhoneBook.class.hpp PhoneBook.class.cpp

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/19 18:47:58 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:14:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 #include <iostream>
 #include <ctype.h>	// isalpha, isdigit
 #include <cstdlib>	// exit
-// #include <iomanip>
+#include <iomanip>
 
 class	Contact {
-
 public:
+	Contact() : added(false) {}
+
+	bool		added;
 	std::string	firstname;
 	std::string	lastname;
 	std::string	nickname;
@@ -35,9 +37,6 @@ public:
 */
 class	PhoneBook {
 public:
-	// PhoneBook(void);	// constructor
-	// ~PhoneBook(void);	// destructor
-
 	void	add_contact();
 	void	search_contact();
 

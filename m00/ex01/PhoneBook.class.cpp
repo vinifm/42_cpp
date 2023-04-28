@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/19 18:47:53 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:36:09 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	PhoneBook::add_contact() {
 
 	if (index == 8)
 		index = 0;
+	this->contacts[index].added = true;
 	this->contacts[index].firstname = validate_name("First name:");
 	this->contacts[index].lastname = validate_name("Last name:");
 	this->contacts[index].nickname = validate_name("Nickname:");
@@ -30,8 +31,17 @@ void	PhoneBook::add_contact() {
 }
 
 void	PhoneBook::search_contact() {
-
+	std::cout << std::setiosflags(std::ios::right);
+	std::cout << std::setw(10) << "index";
+	std::cout << "|";
+	std::cout << std::setw(10) << "first name";
+	std::cout << "|";
+	std::cout << std::setw(10) << "last name";
+	std::cout << "|";
+	std::cout << std::setw(10) << "nickname" << std::endl;
+	// for (int i = 0; this->contacts[i].added == true; i++)
 }
+
 
 /* Check if all input characters are alphabetical */
 std::string	PhoneBook::validate_name(std::string info) {
