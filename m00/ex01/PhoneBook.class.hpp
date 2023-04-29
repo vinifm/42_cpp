@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/28 16:14:55 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:25:26 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ private:
 
 	std::string	validate_name(std::string);
 	std::string	validate_phone();
+	std::string	truncate_str(std::string str);
 };
 
 #endif

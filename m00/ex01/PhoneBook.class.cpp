@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/28 16:36:09 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:28:39 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,17 @@ void	PhoneBook::search_contact() {
 	std::cout << std::setw(10) << "last name";
 	std::cout << "|";
 	std::cout << std::setw(10) << "nickname" << std::endl;
-	// for (int i = 0; this->contacts[i].added == true; i++)
+	for (int i = 0; this->contacts[i].added == true; i++) {
+		std::cout << std::setw(10) << i;
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].firstname);
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].lastname);
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].nickname)\
+			 << std::endl;
+	}
 }
-
 
 /* Check if all input characters are alphabetical */
 std::string	PhoneBook::validate_name(std::string info) {
@@ -89,3 +97,12 @@ std::string	PhoneBook::validate_phone() {
 	return phone_number;
 }
 
+/*
+//	If str is longer than 11 characters, truncate str and replace the 10th
+//	character with a dot
+*/
+std::string	PhoneBook::truncate_str(std::string str) {
+	if (str.size() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str.substr(0, 10));
+}
