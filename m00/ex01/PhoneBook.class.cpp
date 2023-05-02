@@ -31,7 +31,7 @@ void	PhoneBook::add_contact() {
 }
 
 void	PhoneBook::search_contact() {
-	std::string	index;
+	unsigned int	index;
 
 	std::cout << std::setiosflags(std::ios::right);
 	std::cout << std::setw(10) << "index";
@@ -52,6 +52,9 @@ void	PhoneBook::search_contact() {
 			 << std::endl;
 	}
 	index = validate_number("Enter an index:");
+	if (this->contacts[index].added == true) {
+
+	}
 }
 
 /* Check if all input characters are alphabetical */
@@ -78,7 +81,7 @@ std::string	PhoneBook::validate_name(std::string info) {
 }
 
 /* Check if input is numeric */
-std::string	PhoneBook::validate_number(std::string input_msg) {
+unsigned int PhoneBook::validate_number(std::string input_msg) {
 	bool			not_valid;
 	std::string		phone_number;
 
@@ -97,7 +100,7 @@ std::string	PhoneBook::validate_number(std::string input_msg) {
 		std::cin.clear();
 		std::cin.ignore(1000, '\n');
 	} while (not_valid);
-	return phone_number;
+	return (std::stoi(phone_number));
 }
 
 /*

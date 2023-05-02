@@ -24,11 +24,11 @@ public:
 	Contact() : added(false) {}
 
 	bool		added;
-	std::string	firstname;
-	std::string	lastname;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	darkest_secret;
+	std::string		firstname;
+	std::string		lastname;
+	std::string		nickname;
+	unsigned int	phone_number;
+	std::string		darkest_secret;
 };
 
 /*
@@ -43,9 +43,9 @@ public:
 private:
 	Contact		contacts[8];
 
-	std::string	validate_name(std::string);
-	std::string	validate_number(std::string input_msg);
-	std::string	truncate_str(std::string str);
+	std::string		validate_name(std::string);
+	unsigned int	validate_number(std::string input_msg);
+	std::string		truncate_str(std::string str);
 };
 
 #endif
