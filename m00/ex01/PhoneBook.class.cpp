@@ -31,10 +31,7 @@ void	PhoneBook::add_contact() {
 	index++;
 }
 
-void	PhoneBook::search_contact() {
-	unsigned int	index;
-	Contact			*contact;
-
+void	PhoneBook::display_all_contacts() {
 	std::cout << std::setiosflags(std::ios::right);
 	std::cout << std::setw(10) << "index";
 	std::cout << "|";
@@ -53,6 +50,13 @@ void	PhoneBook::search_contact() {
 		std::cout << std::setw(10) << truncate_str(this->contacts[i].nickname)\
 			 << std::endl;
 	}
+}
+
+void	PhoneBook::search_contact() {
+	unsigned int	index;
+	Contact			*contact;
+
+	display_all_contacts();
 	index = validate_number("Enter an index:");
 	contact = &this->contacts[index];
 	if (contact->added == true) {

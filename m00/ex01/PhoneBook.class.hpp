@@ -46,6 +46,7 @@ private:
 
 	std::string		validate_name(std::string);
 	unsigned int	validate_number(std::string input_msg);
+	void			display_all_contacts();
 	std::string		truncate_str(std::string str);
 };
 
