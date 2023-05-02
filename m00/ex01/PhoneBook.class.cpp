@@ -22,7 +22,7 @@ void	PhoneBook::add_contact() {
 	this->contacts[index].firstname = validate_name("First name:");
 	this->contacts[index].lastname = validate_name("Last name:");
 	this->contacts[index].nickname = validate_name("Nickname:");
-	this->contacts[index].phone_number = validate_phone();
+	this->contacts[index].phone_number = validate_number("Phone number:");
 	std::cout << "Darkest secret:" << std::endl;
 	std::cin >> this->contacts[index].darkest_secret;
 	std::cin.clear();
@@ -31,6 +31,8 @@ void	PhoneBook::add_contact() {
 }
 
 void	PhoneBook::search_contact() {
+	std::string	index;
+
 	std::cout << std::setiosflags(std::ios::right);
 	std::cout << std::setw(10) << "index";
 	std::cout << "|";
@@ -49,6 +51,7 @@ void	PhoneBook::search_contact() {
 		std::cout << std::setw(10) << truncate_str(this->contacts[i].nickname)\
 			 << std::endl;
 	}
+	index = validate_number("Enter an index:");
 }
 
 /* Check if all input characters are alphabetical */
@@ -74,14 +77,14 @@ std::string	PhoneBook::validate_name(std::string info) {
 	return (str);
 }
 
-/* Check if phone is numeric */
-std::string	PhoneBook::validate_phone() {
+/* Check if input is numeric */
+std::string	PhoneBook::validate_number(std::string input_msg) {
 	bool			not_valid;
 	std::string		phone_number;
 
 	do {
 		not_valid = false;
-		std::cout << "Phone number:" << std::endl;
+		std::cout << input_msg << std::endl;
 		std::cin >> phone_number;
 
 		for (std::string::iterator it = phone_number.begin();
@@ -90,7 +93,7 @@ std::string	PhoneBook::validate_phone() {
 				not_valid = true;
 		}
 		if (not_valid)
-			std::cout << "ERROR:  Invalid phone number" << std::endl;
+			std::cout << "ERROR: Invalid number" << std::endl;
 		std::cin.clear();
 		std::cin.ignore(1000, '\n');
 	} while (not_valid);

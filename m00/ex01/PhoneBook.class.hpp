@@ -44,7 +44,7 @@ private:
 	Contact		contacts[8];
 
 	std::string	validate_name(std::string);
-	std::string	validate_phone();
+	std::string	validate_number(std::string input_msg);
 	std::string	truncate_str(std::string str);
 };
 
