@@ -17,13 +17,14 @@
 #include <iostream>
 #include <ctype.h>	// isalpha, isdigit
 #include <cstdlib>	// exit
+#include <string>	// atoi
 #include <iomanip>
 
 class	Contact {
 public:
 	Contact() : added(false) {}
 
-	bool		added;
+	bool			added;
 	std::string		firstname;
 	std::string		lastname;
 	std::string		nickname;

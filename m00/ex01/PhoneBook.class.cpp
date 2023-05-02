@@ -28,10 +28,12 @@ void	PhoneBook::add_contact() {
 	std::cin.clear();
 	std::cin.ignore(1000, '\n');
 	std::cout << "CONTACT ADDED SUCCESSFULLY" << std::endl;
+	index++;
 }
 
 void	PhoneBook::search_contact() {
 	unsigned int	index;
+	Contact			*contact;
 
 	std::cout << std::setiosflags(std::ios::right);
 	std::cout << std::setw(10) << "index";
@@ -52,9 +54,16 @@ void	PhoneBook::search_contact() {
 			 << std::endl;
 	}
 	index = validate_number("Enter an index:");
-	if (this->contacts[index].added == true) {
-
+	contact = &this->contacts[index];
+	if (contact->added == true) {
+		std::cout << "First name: " << contact->firstname << std::endl;
+		std::cout << "Last name: " << contact->lastname << std::endl;
+		std::cout << "Nickname: " << contact->nickname << std::endl;
+		std::cout << "Phone number: " << contact->phone_number << std::endl;
+		std::cout << "Darkest secret: " << contact->darkest_secret << std::endl;
 	}
+	else
+		std::cout << "ERROR: index out of reach" << std::endl;
 }
 
 /* Check if all input characters are alphabetical */
@@ -100,7 +109,7 @@ unsigned int PhoneBook::validate_number(std::string input_msg) {
 		std::cin.clear();
 		std::cin.ignore(1000, '\n');
 	} while (not_valid);
-	return (std::stoi(phone_number));
+	return (std::atoi(phone_number.c_str()));
 }
 
 /*
