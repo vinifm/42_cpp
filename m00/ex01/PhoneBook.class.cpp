@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/29 18:28:39 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:57:33 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	PhoneBook::add_contact() {
 	this->contacts[index].nickname = validate_name("Nickname:");
 	this->contacts[index].phone_number = validate_number("Phone number:");
 	std::cout << "Darkest secret:" << std::endl;
-	std::cin >> this->contacts[index].darkest_secret;
-	std::cin.clear();
-	std::cin.ignore(1000, '\n');
+	std::getline(std::cin, this->contacts[index].darkest_secret);
 	std::cout << "CONTACT ADDED SUCCESSFULLY" << std::endl;
 	index++;
 }
@@ -102,7 +100,6 @@ unsigned int PhoneBook::validate_number(std::string input_msg) {
 		not_valid = false;
 		std::cout << input_msg << std::endl;
 		std::cin >> phone_number;
-
 		for (std::string::iterator it = phone_number.begin();
 				it != phone_number.end(); it++) {
 			if(!isdigit(*it))
