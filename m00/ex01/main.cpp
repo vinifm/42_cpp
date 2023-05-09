@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:04 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/28 16:02:28 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:00:38 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 //		- EXIT: delete contacts and quit.
 */
 
-#include "PhoneBook.class.hpp"
-#include "PhoneBook.class.cpp"
+#include "PhoneBook.hpp"
+#include "PhoneBook.cpp"
 
 /* Check for invalid input */
 void	invalid_cmd(std::string cmd) {
+	if (std::cin.eof())
+		return;
 	try {
 		if (cmd.compare("ADD") != 0
 			&& cmd.compare("SEARCH") != 0
@@ -40,7 +42,9 @@ int	main(void) {
 	std::string	cmd;
 	PhoneBook	phonebook;
 
-	while (1) {
+	while (cmd != "EXIT") {
+		if (std::cin.eof())
+			return (1);
 		std::cout << "enter either ADD, SEARCH, or EXIT:" << std::endl;
 		std::cin >> cmd;
 		std::cin.clear();
@@ -52,6 +56,5 @@ int	main(void) {
 			phonebook.search_contact();
 		else if (cmd.compare("EXIT") == 0)
 			return(0);
-			// phonebook.delete_and_exit();
 	}
 }

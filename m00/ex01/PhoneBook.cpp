@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/08 18:57:33 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:39:32 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
+#include "PhoneBook.hpp"
 
 void	PhoneBook::add_contact() {
 	std::string	name;
@@ -18,13 +18,15 @@ void	PhoneBook::add_contact() {
 
 	if (index == 8)
 		index = 0;
-	this->contacts[index].added = true;
 	this->contacts[index].firstname = validate_name("First name:");
 	this->contacts[index].lastname = validate_name("Last name:");
 	this->contacts[index].nickname = validate_name("Nickname:");
-	this->contacts[index].phone_number = validate_number("Phone number:");
+	this->contacts[index].phone_number = validate_phone("Phone number:");
 	std::cout << "Darkest secret:" << std::endl;
 	std::getline(std::cin, this->contacts[index].darkest_secret);
+	if (std::cin.eof())
+		return;
+	this->contacts[index].added = true;
 	std::cout << "CONTACT ADDED SUCCESSFULLY" << std::endl;
 	index++;
 }
@@ -51,11 +53,17 @@ void	PhoneBook::display_all_contacts() {
 }
 
 void	PhoneBook::search_contact() {
-	unsigned int	index;
+	int				index;
 	Contact			*contact;
 
 	display_all_contacts();
-	index = validate_number("Enter an index:");
+	index = validate_index();
+	if (std::cin.eof())
+		return;
+	if (index == -1) {
+		std::cout << "ERROR: index out of reach" << std::endl;
+		return ;
+	}
 	contact = &this->contacts[index];
 	if (contact->added == true) {
 		std::cout << "First name: " << contact->firstname << std::endl;
@@ -91,8 +99,8 @@ std::string	PhoneBook::validate_name(std::string info) {
 	return (str);
 }
 
-/* Check if input is numeric */
-unsigned int PhoneBook::validate_number(std::string input_msg) {
+/* Check if input string is numeric */
+std::string PhoneBook::validate_phone(std::string input_msg) {
 	bool			not_valid;
 	std::string		phone_number;
 
@@ -110,7 +118,33 @@ unsigned int PhoneBook::validate_number(std::string input_msg) {
 		std::cin.clear();
 		std::cin.ignore(1000, '\n');
 	} while (not_valid);
-	return (std::atoi(phone_number.c_str()));
+	return (phone_number);
+}
+
+/* Check if input is numeric and returns an integer*/
+int PhoneBook::validate_index() {
+	bool			not_valid;
+	std::string		number;
+	int				number_int;
+
+	do {
+		not_valid = false;
+		std::cout << "Enter an index:" << std::endl;
+		std::cin >> number;
+		for (std::string::iterator it = number.begin();
+				it != number.end(); it++) {
+			if(!isdigit(*it))
+				not_valid = true;
+		}
+		if (not_valid)
+			std::cout << "ERROR: Invalid number" << std::endl;
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+	} while (not_valid);
+	number_int = std::atoi(number.c_str());
+	if (number_int >= 0 && number_int < 8)
+		return (number_int);
+	return (-1);
 }
 
 /*

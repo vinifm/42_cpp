@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/29 18:25:26 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:30:01 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef	PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 #include <string>
 #include <iostream>
@@ -28,7 +28,7 @@ public:
 	std::string		firstname;
 	std::string		lastname;
 	std::string		nickname;
-	unsigned int	phone_number;
+	std::string		phone_number;
 	std::string		darkest_secret;
 };
 
@@ -45,7 +45,8 @@ private:
 	Contact		contacts[8];
 
 	std::string		validate_name(std::string);
-	unsigned int	validate_number(std::string input_msg);
+	int				validate_index();
+	std::string		validate_phone(std::string input_msg);
 	void			display_all_contacts();
 	std::string		truncate_str(std::string str);
 };

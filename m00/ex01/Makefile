@@ -10,8 +10,8 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-SRC		= phonebook.cpp
-INCLUDE	= PhoneBook.class.hpp PhoneBook.class.cpp
+SRC		= main.cpp
+INCLUDE	= PhoneBook.hpp PhoneBook.cpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
