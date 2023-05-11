@@ -11,7 +11,7 @@ Getters are usually declared as const member functions, which guarantees they wi
 
 Further reading: [Encapsulation in OOP: Definition and Examples](https://scoutapm.com/blog/what-is-encapsulation#h_93840447845461638888736229)
 
-### [Parametric manipulators](https://cplusplus.com/reference/iomanip/)
+## [Parametric manipulators](https://cplusplus.com/reference/iomanip/)
 
 Stream manipulators that take parameters to modify the behaviour of the input/output streams.
 - `/*undefined*/ setw (int n)`: Sets the field width to be used on output operations.

@@ -6,27 +6,31 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/09 19:39:32 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:09:58 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 void	PhoneBook::add_contact() {
-	std::string	name;
 	static int	index = 0;
+	Contact		*contact;
+	std::string	secret;
 
 	if (index == 8)
 		index = 0;
-	this->contacts[index].firstname = validate_name("First name:");
-	this->contacts[index].lastname = validate_name("Last name:");
-	this->contacts[index].nickname = validate_name("Nickname:");
-	this->contacts[index].phone_number = validate_phone("Phone number:");
-	std::cout << "Darkest secret:" << std::endl;
-	std::getline(std::cin, this->contacts[index].darkest_secret);
-	if (std::cin.eof())
-		return;
-	this->contacts[index].added = true;
+	contact = &this->contacts[index];
+	contact->setFirstname(validate_name("First name:"));
+	contact->setLastname(validate_name("Last name:"));
+	contact->setNickname(validate_name("Nickname:"));
+	contact->setPhone_number(validate_name("Phone number:"));
+	while(std::getline(std::cin, secret) && !secret.empty()) {
+		std::cout << "Darkest secret:" << std::endl;
+		contact->setDarkest_secret(secret);
+		if (std::cin.eof())
+			return;
+	}
+	contact->setAdded(true);
 	std::cout << "CONTACT ADDED SUCCESSFULLY" << std::endl;
 	index++;
 }

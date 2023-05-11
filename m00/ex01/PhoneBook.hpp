@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/09 19:30:01 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:50:09 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@ class	Contact {
 public:
 	Contact() : added(false) {}
 
+	bool			getAdded() const;
+	std::string		getFirstname() const;
+	std::string		getLastname() const;
+	std::string		getNickname() const;
+	std::string		getPhone_number() const;
+	std::string		getDarkest_secret() const;
+
+	void			setAdded(bool added);
+	void			setFirstname(std::string firstname);
+	void			setLastname(std::string lastname);
+	void			setNickname(std::string nickname);
+	void			setPhone_number(std::string phone_number);
+	void			setDarkest_secret(std::string darkest_secret);
+
+private:
 	bool			added;
 	std::string		firstname;
 	std::string		lastname;

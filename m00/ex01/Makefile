@@ -10,7 +10,7 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-SRC		= main.cpp
+SRC		= main.cpp PhoneBook_getset.cpp
 INCLUDE	= PhoneBook.hpp PhoneBook.cpp
 
 OBJDIR	= ./objs/
