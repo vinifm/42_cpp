@@ -6,50 +6,37 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/09 19:39:32 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:08:20 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 void	PhoneBook::add_contact() {
-	std::string	name;
 	static int	index = 0;
+	Contact		*contact;
+	std::string	secret;
 
 	if (index == 8)
 		index = 0;
-	this->contacts[index].firstname = validate_name("First name:");
-	this->contacts[index].lastname = validate_name("Last name:");
-	this->contacts[index].nickname = validate_name("Nickname:");
-	this->contacts[index].phone_number = validate_phone("Phone number:");
+	contact = &this->contacts[index];
+	contact->setFirstname(validate_name("First name:"));
+	contact->setLastname(validate_name("Last name:"));
+	contact->setNickname(validate_name("Nickname:"));
+	contact->setPhone_number(validate_phone("Phone number:"));
 	std::cout << "Darkest secret:" << std::endl;
-	std::getline(std::cin, this->contacts[index].darkest_secret);
-	if (std::cin.eof())
-		return;
-	this->contacts[index].added = true;
+	while (true) {
+		if (std::cin.eof())
+			return;
+		std::getline(std::cin, secret);
+		if (secret == "")
+			continue;
+		contact->setDarkest_secret(secret);
+		break;
+	}
+	contact->setAdded(true);
 	std::cout << "CONTACT ADDED SUCCESSFULLY" << std::endl;
 	index++;
-}
-
-void	PhoneBook::display_all_contacts() {
-	std::cout << std::setiosflags(std::ios::right);
-	std::cout << std::setw(10) << "index";
-	std::cout << "|";
-	std::cout << std::setw(10) << "first name";
-	std::cout << "|";
-	std::cout << std::setw(10) << "last name";
-	std::cout << "|";
-	std::cout << std::setw(10) << "nickname" << std::endl;
-	for (int i = 0; this->contacts[i].added == true; i++) {
-		std::cout << std::setw(10) << i;
-		std::cout << "|";
-		std::cout << std::setw(10) << truncate_str(this->contacts[i].firstname);
-		std::cout << "|";
-		std::cout << std::setw(10) << truncate_str(this->contacts[i].lastname);
-		std::cout << "|";
-		std::cout << std::setw(10) << truncate_str(this->contacts[i].nickname)\
-			 << std::endl;
-	}
 }
 
 void	PhoneBook::search_contact() {
@@ -64,87 +51,40 @@ void	PhoneBook::search_contact() {
 		std::cout << "ERROR: index out of reach" << std::endl;
 		return ;
 	}
+	else if (index == -2)
+		return ;
 	contact = &this->contacts[index];
-	if (contact->added == true) {
-		std::cout << "First name: " << contact->firstname << std::endl;
-		std::cout << "Last name: " << contact->lastname << std::endl;
-		std::cout << "Nickname: " << contact->nickname << std::endl;
-		std::cout << "Phone number: " << contact->phone_number << std::endl;
-		std::cout << "Darkest secret: " << contact->darkest_secret << std::endl;
+	if (contact->getAdded() == true) {
+		std::cout << "First name: " << contact->getFirstname() << std::endl;
+		std::cout << "Last name: " << contact->getLastname() << std::endl;
+		std::cout << "Nickname: " << contact->getNickname() << std::endl;
+		std::cout << "Phone number: " << contact->getPhone_number() << std::endl;
+		std::cout << "Darkest secret: " << contact->getDarkest_secret() \
+			<< std::endl;
 	}
 	else
 		std::cout << "ERROR: index out of reach" << std::endl;
 }
 
-/* Check if all input characters are alphabetical */
-std::string	PhoneBook::validate_name(std::string info) {
-	bool		not_valid;
-	std::string	str;
-
-	do {
-		not_valid = false;
-		std::cout << info << std::endl;
-		std::cin >> str;
-		for (std::string::iterator it = str.begin();
-				it != str.end(); it++) {
-			if(!isalpha(*it))
-				not_valid = true;
-		}
-		if (not_valid)
-			std::cout << "ERROR: Name must have only alphabetical characters" \
-				<< std::endl;
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-	} while (not_valid);
-	return (str);
-}
-
-/* Check if input string is numeric */
-std::string PhoneBook::validate_phone(std::string input_msg) {
-	bool			not_valid;
-	std::string		phone_number;
-
-	do {
-		not_valid = false;
-		std::cout << input_msg << std::endl;
-		std::cin >> phone_number;
-		for (std::string::iterator it = phone_number.begin();
-				it != phone_number.end(); it++) {
-			if(!isdigit(*it))
-				not_valid = true;
-		}
-		if (not_valid)
-			std::cout << "ERROR: Invalid number" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-	} while (not_valid);
-	return (phone_number);
-}
-
-/* Check if input is numeric and returns an integer*/
-int PhoneBook::validate_index() {
-	bool			not_valid;
-	std::string		number;
-	int				number_int;
-
-	do {
-		not_valid = false;
-		std::cout << "Enter an index:" << std::endl;
-		std::cin >> number;
-		for (std::string::iterator it = number.begin();
-				it != number.end(); it++) {
-			if(!isdigit(*it))
-				not_valid = true;
-		}
-		if (not_valid)
-			std::cout << "ERROR: Invalid number" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-	} while (not_valid);
-	number_int = std::atoi(number.c_str());
-	if (number_int >= 0 && number_int < 8)
-		return (number_int);
-	return (-1);
+void	PhoneBook::display_all_contacts() {
+	std::cout << std::setiosflags(std::ios::right);
+	std::cout << std::setw(10) << "index";
+	std::cout << "|";
+	std::cout << std::setw(10) << "first name";
+	std::cout << "|";
+	std::cout << std::setw(10) << "last name";
+	std::cout << "|";
+	std::cout << std::setw(10) << "nickname" << std::endl;
+	for (int i = 0; this->contacts[i].getAdded() == true; i++) {
+		std::cout << std::setw(10) << i;
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].getFirstname());
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].getLastname());
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].getNickname())\
+			 << std::endl;
+	}
 }
 
 /*

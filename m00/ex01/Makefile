@@ -10,20 +10,22 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-SRC		= main.cpp
-INCLUDE	= PhoneBook.hpp PhoneBook.cpp
+SRC		= main.cpp PhoneBook.cpp PhoneBook_getset.cpp PhoneBook_validate.cpp
+INCLUDE	= PhoneBook.hpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
 
-$(OBJ): $(SRC) $(INCLUDE)
+$(OBJDIR):
 	mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(OBJDIR) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) $(OBJDIR)
