@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/12 16:51:04 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:08:20 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	PhoneBook::search_contact() {
 		std::cout << "ERROR: index out of reach" << std::endl;
 		return ;
 	}
+	else if (index == -2)
+		return ;
 	contact = &this->contacts[index];
 	if (contact->getAdded() == true) {
 		std::cout << "First name: " << contact->getFirstname() << std::endl;

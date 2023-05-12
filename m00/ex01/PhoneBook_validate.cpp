@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:28:35 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/12 16:53:54 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:08:49 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int PhoneBook::validate_index() {
 		not_valid = false;
 		std::cout << "Enter an index:" << std::endl;
 		std::cin >> number;
+		if (std::cin.eof())
+			return (-2);
 		for (std::string::iterator it = number.begin();
 				it != number.end(); it++) {
 			if(!isdigit(*it))
