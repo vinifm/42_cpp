@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:04 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/09 19:00:38 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:41:42 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 */
 
 #include "PhoneBook.hpp"
-#include "PhoneBook.cpp"
 
 /* Check for invalid input */
 void	invalid_cmd(std::string cmd) {
