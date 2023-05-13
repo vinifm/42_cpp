@@ -38,9 +38,4 @@ re: fclean all
 leaks:
 	valgrind $(LFLAGS)
 
-git:
-	git add ../
-	git commit -m"make git"
-	git push
-
 .PHONY: all clean fclean re leaks run

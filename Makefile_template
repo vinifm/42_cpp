@@ -1,4 +1,4 @@
-NAME	= megaphone
+NAME	= # NAME
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
@@ -8,21 +8,24 @@ LFLAGS	= --leak-check=full \
 			--show-leak-kinds=all \
 			--trace-children=yes \
 			--track-origins=yes \
-			--track-fds=yes
+			./$(NAME)
 
-SRC		= megaphone.cpp
+SRC		= # SOURCE FILES
+INCLUDE	= # HEADER FILES
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
 
-$(OBJ): $(SRC)
+$(OBJDIR):
 	mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(OBJDIR) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) $(OBJDIR)

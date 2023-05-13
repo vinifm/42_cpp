@@ -16,4 +16,12 @@ Further reading: [Encapsulation in OOP: Definition and Examples](https://scoutap
 Stream manipulators that take parameters to modify the behaviour of the input/output streams.
 - `/*undefined*/ setw (int n)`: Sets the field width to be used on output operations.
 
+# Module 01
+Memory allocation, pointers to members, references, switch statement.
 
+## Orthodox Canonical Class Form
+The Orthodox Canonical Form consists of:
+- Default constructor:
+- Copy constructor:
+- Assignment operator:
+- Destructor
