@@ -6,11 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:28:35 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/12 17:08:49 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:19:59 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../include/PhoneBook.hpp"
 
 /* Check if all input characters are alphabetical */
 std::string	PhoneBook::validate_name(std::string info) {

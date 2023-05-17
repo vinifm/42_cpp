@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook_getset.cpp                               :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 18:27:20 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/12 16:50:28 by viferrei         ###   ########.fr       */
+/*   Created: 2023/05/15 19:23:25 by viferrei          #+#    #+#             */
+/*   Updated: 2023/05/17 17:19:18 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../include/Contact.hpp"
 
 /* Accessors */
 bool	Contact::getAdded() const {
