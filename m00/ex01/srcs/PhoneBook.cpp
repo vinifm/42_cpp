@@ -6,11 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:34:28 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/12 17:08:20 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:19:32 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../include/PhoneBook.hpp"
 
 void	PhoneBook::add_contact() {
 	static int	index = 0;

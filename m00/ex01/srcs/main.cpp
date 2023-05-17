@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:02:04 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/12 16:41:42 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:19:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //		- EXIT: delete contacts and quit.
 */
 
-#include "PhoneBook.hpp"
+#include "../include/PhoneBook.hpp"
 
 /* Check for invalid input */
 void	invalid_cmd(std::string cmd) {
