@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:19:16 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/17 16:47:09 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:11:39 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include <iostream>
 #include <ctype.h>	// isalpha, isdigit
 #include <cstdlib>	// exit
-#include <string>	// atoi
 #include <iomanip>
 
 /*
