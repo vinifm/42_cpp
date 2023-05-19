@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:10:56 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/17 18:59:07 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:54:28 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 # define ZOMBIE_HPP
 
 #include <string>
+#include <iostream>
 
 class Zombie {
 public:
-	Zombie(void);
-	~Zombie(void);
-	Zombie(const Zombie &copy);
-	Zombie& operator=(const Zombie &copy);
+	Zombie();
+	Zombie(const Zombie& copy);
+	Zombie& operator=(const Zombie& assign);
+	~Zombie();
 
-	void	announce(void);
+	void	announce();
 	Zombie*	newZombie(std::string name);
 	void	randomChump(std::string name);
 
 private:
 	std::string	name;
-}
+};
 
 #endif
