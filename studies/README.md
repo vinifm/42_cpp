@@ -23,5 +23,5 @@ Memory allocation, pointers to members, references, switch statement.
 The Orthodox Canonical Form consists of:
 - Default constructor.
 - Copy constructor: a constructor which creates a new object by initializing it with an object of the same class, which has been created previously. If a copy constructor is not defined in a class, the compiler itself defines one. If the class has pointer variables and has some dynamic memory allocations, then it is a must to have a copy constructor. Its parameter is a reference to an object of the same class declared as const to ensure it will not modify the object being copied. [Source: tutorialspoint](https://www.tutorialspoint.com/cplusplus/cpp_copy_constructor.htm)
-- Assignment operator: assigns the values of an object to a pre-existing one, overloading its values. ([Copy Constructor vs Assignment Operator in C++](https://www.geeksforgeeks.org/copy-constructor-vs-assignment-operator-in-c/))
+- Copy assignment operator: assigns the values of an object to a pre-existing one, overloading its values. ([Copy Constructor vs Assignment Operator in C++](https://www.geeksforgeeks.org/copy-constructor-vs-assignment-operator-in-c/))
 - Destructor.

@@ -6,28 +6,31 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:42:54 by viferrei          #+#    #+#             */
-/*   Updated: 2023/04/11 19:21:22 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:34:40 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-using namespace	std;
+#include "Sample.class.hpp"
 
 void	input_output_stream() {
 	int		num;
-	string	str;
+	std::string	str;
 
-	cout << "Hello world !" << endl;
-	cout << "Enter an integer and a string, respectively:" << endl;
-	cin >> num >> str;
-	cout << "You entered " << num << " and " << str << endl;
+	std::cout << "Hello world !" << std::endl;
+	std::cout << "Enter an integer and a string, respectively:" << std::endl;
+	std::cin >> num >> str;
+	std::cout << "You entered " << num << " and " << str << std::endl;
 }
 
-void	parametric_manipulators() {
-
+void	constructors_destructor() {
+	Sample sample;					// calls default constructor
+	Sample sample_copy = sample;	// calls copy constructor
+	sample_copy = sample;			// calls assignment operator
+	std::cout << sample.getValue() << std::endl;
 }
 
 int main() {
 	// input_output_stream();
-	parametric_manipulators();
+	constructors_destructor();
 }

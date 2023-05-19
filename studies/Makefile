@@ -10,18 +10,23 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			--track-fds=yes
 
-SRC		= basics.cpp
-
+# Directories
 OBJDIR	= ./objs/
+INCLUDE	= -I ./include/
+
+# Files
+SRC		= basics.cpp Sample.class.cpp
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
 
-$(OBJ): $(SRC)
-	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
 
-$(NAME): $(OBJ)
+$(OBJDIR)%.o: %.cpp
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(NAME): $(OBJDIR) $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 clean:
@@ -35,9 +40,8 @@ re: fclean all
 leaks:
 	valgrind $(LFLAGS)
 
-git:
-	git add ../
-	git commit -m"make git"
-	git push
+run:
+	make re
+	./$(NAME)
 
 .PHONY: all clean fclean re leaks run
