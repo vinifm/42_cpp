@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:10:52 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/19 17:59:13 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:51:54 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,9 @@ void Zombie::announce() {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-/*	Create a zombie, name it, and return it so you can use it outside of the
-	function scope */
-Zombie*	newZombie(std::string name) {
-
-}
-
 /* Constructors and destructor */
-Zombie::Zombie() : name("Unknown") {}
-
-Zombie::Zombie(const Zombie& copy) {
-	name = copy.name;
-}
+Zombie::Zombie(std::string name) : name(name) {}
+Zombie::Zombie(const Zombie& copy) : name(copy.name) {}
 
 Zombie& Zombie::operator=(const Zombie& assign) {
 	if (this != &assign)
@@ -35,4 +26,6 @@ Zombie& Zombie::operator=(const Zombie& assign) {
 	return *this;
 }
 
-Zombie::~Zombie() {}
+Zombie::~Zombie() {
+	std::cout << name << " has died (again)" << std::endl;
+}

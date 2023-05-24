@@ -1,4 +1,4 @@
-NAME	= # NAME
+NAME	= zombie
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
@@ -10,8 +10,8 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-SRC		= # SOURCE FILES
-INCLUDE	= # HEADER FILES
+SRC		= main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+INCLUDE	= Zombie.hpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
