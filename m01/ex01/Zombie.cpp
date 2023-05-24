@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:10:52 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/24 17:23:24 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:27:05 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ Zombie::~Zombie() {
 	std::cout << name << " has died (again)" << std::endl;
 }
 
-void Zombie::announce() {
+/* Setter */
+void	Zombie::setName(std::string name) {
+	this->name = name;
+}
+
+/* Member function */
+void	Zombie::announce() {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
+
