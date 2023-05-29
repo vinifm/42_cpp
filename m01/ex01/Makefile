@@ -11,7 +11,6 @@ LFLAGS	= --leak-check=full \
 			./$(NAME)
 
 SRC		= main.cpp Zombie.cpp zombieHorde.cpp
-INCLUDE	= Zombie.hpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))

@@ -1,4 +1,4 @@
-NAME	= zombie
+NAME	= a.out
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
@@ -10,7 +10,7 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-SRC		= main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+SRC		= main.cpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
@@ -36,5 +36,9 @@ re: fclean all
 
 leaks:
 	valgrind $(LFLAGS)
+
+run:
+	@make --silent
+	@./$(NAME)
 
 .PHONY: all clean fclean re leaks run

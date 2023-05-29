@@ -2,6 +2,7 @@
 .nfs*
 
 # executables
+a.out
 megaphone
 test
 phonebook
@@ -11,4 +12,4 @@ zombie
 subject*
 
 # wiki
-# wiki
+wiki
