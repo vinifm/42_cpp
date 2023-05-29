@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:36:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/26 17:37:49 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:13:33 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void) {
 	size = 5;
 	horde = zombieHorde(size, "Johnny");
 	for (int i = 0; i < size; i++) {
-		std::cout << "Zombie number " << i << ": ";
+		std::cout << "Zombie number " << i + 1 << ": ";
 		horde[i].announce();
 	}
 	delete[] horde;
