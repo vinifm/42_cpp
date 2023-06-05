@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 18:14:23 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/05 18:56:18 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:57:15 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void HumanB::setWeapon(Weapon* weapon) {
 }
 
 void HumanB::attack() {
-	if (_weapon != NULL)
+	if (_weapon)
 		std::cout << _name << " attacks with " << _weapon->getType() << std::endl;
 	else
 		std::cout << _name << " attacks with their bare hands!" << std::endl;
