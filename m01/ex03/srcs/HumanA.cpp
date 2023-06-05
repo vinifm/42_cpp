@@ -6,13 +6,13 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:00:03 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/30 18:19:38 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:37:09 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon weapon) : _name(name), _weapon(weapon) {}
+HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon) {}
 HumanA::HumanA(const HumanA& copy) : _name(copy._name), _weapon(copy._weapon) {}
 HumanA& HumanA::operator=(const HumanA& assign) {
 	if (this != &assign) {
@@ -23,4 +23,8 @@ HumanA& HumanA::operator=(const HumanA& assign) {
 }
 HumanA::~HumanA() {
 	std::cout << "HumanA " << _name << " was destroyed" << std::endl;
+}
+
+void HumanA::attack() {
+	std::cout << _name << " attacks with " << _weapon.getType() << std::endl;
 }

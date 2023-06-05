@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:44:09 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/30 18:09:30 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:09:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class Weapon {
 public:
-	Weapon(std::string type = "bare hands");
+	Weapon(std::string type);
 	Weapon(const Weapon& copy);
 	Weapon& operator=(const Weapon& assign);
 	~Weapon();

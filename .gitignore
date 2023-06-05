@@ -1,5 +1,6 @@
 *.o
 .nfs*
+.vscode
 
 # executables
 a.out
