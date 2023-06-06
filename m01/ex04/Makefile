@@ -11,6 +11,7 @@ LFLAGS	= --leak-check=full \
 			./$(NAME)
 
 SRC		= main.cpp
+TXT_FILES = infile.txt
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
@@ -31,6 +32,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(TXT_FILES)
 
 re: fclean all
 
