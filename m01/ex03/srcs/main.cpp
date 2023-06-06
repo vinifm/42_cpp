@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 18:15:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/05 18:44:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:54:29 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "../include/Weapon.hpp"
 
 int main() {
+
+	// HumanA
 	{
 		Weapon club = Weapon("crude spiked club");
 
@@ -23,16 +25,22 @@ int main() {
 		club.setType("some other type of club");
 		bob.attack();
 	}
+
+	// HumanB
 	{
+		std::cout << std::endl;
 		Weapon club = Weapon("crude spiked club");
 
 		HumanB jim("Jim");
-		jim.setWeapon(&club);
+		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
 	}
+
+	// HumanB with no weapon
 	{
+		std::cout << std::endl;
 		HumanB beyonce("Queen B");
 		beyonce.attack();
 	}

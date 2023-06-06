@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 18:14:23 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/05 18:57:15 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:46:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ HumanB::~HumanB() {
 	std::cout << "HumanB " << _name << " was destroyed" << std::endl;
 }
 
-void HumanB::setWeapon(Weapon* weapon) {
-	_weapon = weapon;
+void HumanB::setWeapon(Weapon& weapon) {
+	_weapon = &weapon;
 }
 
 void HumanB::attack() {
