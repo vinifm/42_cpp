@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:39:58 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/06 17:55:11 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:08:31 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>	// stringstream
 
 #define YELLOW	"\033[1;33m"
 #define GREEN	"\033[1;32m"

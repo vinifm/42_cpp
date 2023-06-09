@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:56:36 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/06 18:06:26 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:25:58 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,38 @@ int	error_management(int argc, char **argv){
 	return (0);
 }
 
+void	iterate_line(std::string line_str, char **argv) {
+	std::string			outfile_name = std::string(argv[1]) + ".replace";
+	std::ofstream		outfile(outfile_name.c_str());
+	std::stringstream	line(line_str);
+	std::string			word, s1, s2;
+
+	s1 = argv[2];
+	s2 = argv[3];
+	while (line >> word) {
+		if (!word.compare(s1))
+			std::cout << s2;
+		else
+			std::cout << word;
+		if (line.eof())
+			std::cout << "\n";
+		else
+			std::cout << " ";
+	}
+	outfile.close();
+}
+
 int	main(int argc, char **argv) {
-	error_management(argc, argv);
-	(void) argc;
-	(void) argv;
+	std::ifstream	infile(argv[1]);
+	std::string		line_str;
+
+	if (error_management(argc, argv))
+		return (1);
+	if (infile.is_open()) {
+		while (getline(infile, line_str)) {
+			iterate_line(line_str, argv);
+		}
+	}
+	infile.close();
 	return (0);
 }

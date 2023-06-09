@@ -2,6 +2,7 @@
 .nfs*
 .vscode
 *.txt
+*.replace
 
 # executables
 a.out
@@ -9,6 +10,7 @@ megaphone
 test
 phonebook
 zombie
+replacer
 
 # subjects
 subject*
