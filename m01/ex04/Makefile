@@ -11,7 +11,7 @@ LFLAGS	= --leak-check=full \
 			./$(NAME)
 
 SRC		= main.cpp
-TXT_FILES = infile.txt
+TXT_FILES = infile.txt infile.txt.replace
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
