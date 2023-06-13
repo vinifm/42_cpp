@@ -37,4 +37,8 @@ re: fclean all
 leaks:
 	valgrind $(LFLAGS)
 
+run:
+	@make --silent
+	@./$(NAME)
+
 .PHONY: all clean fclean re leaks run

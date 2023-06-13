@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:54:27 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/13 17:13:21 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:37:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ public:
 	Harl();
 	~Harl();
 
-	void	complain(std::string level);
+	void complain(std::string level);
+
 private:
 	void debug(void);
 	void info(void);
