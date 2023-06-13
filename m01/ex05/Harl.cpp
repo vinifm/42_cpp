@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:54:29 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/12 20:14:28 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:13:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,29 @@ void Harl::error(void) {
 	std::cout << "This is unacceptable! I want to speak to the manager now"	\
 	<< std::endl;
 }
+
+/*
+	Declare an array of function pointers and a string array with their
+	respective levels. Iterate through the latter until level is found.
+*/
 void Harl::complain(std::string level) {
-	std::map<std::string, void (Harl::*)(void)> func_map;
-	func_map["debug"] = &Harl::debug;
-	func_map["info"] = &Harl::info;
-	func_map["warning"] = &Harl::warning;
-	func_map["error"] = &Harl::error;
-	if (func_map.find(level) != func_map.end())
-		(this->*(func_map[level]))();
+	int		i = -1;
+
+	void	(Harl::*func_array[4])(void) = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
+	};
+	std::string	levels[] = {"debug", "info", "warning", "error"};
+	while (levels[++i] != level && i < 4)
+		continue;
+	if (i == 4)
+		return ;
+	(this->*func_array[i])();
 }
 
 Harl::Harl() {}
-// Harl::Harl(const Harl& copy) {}
-// Harl& Harl::operator=(const Harl& assign) {
-// 	return *this;
-// }
 Harl::~Harl() {
 	std::cout << "Harl was destroyed" << std::endl;
 }
