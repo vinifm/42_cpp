@@ -5,3 +5,5 @@ Namespaces, classes, member functions, stdio streams, initialization lists, stat
 ### [Module 01](m01) ([wiki](wiki/m01.md))
 Memory allocation, pointers to members, references, switch statement.
 
+### [Module 02](m02) ([wiki](wiki/m02.md))
+Ad-hoc polymorphism, operator overloading, Orthodox Canonical class form.
