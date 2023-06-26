@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 18:25:14 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/26 17:39:42 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:45:26 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	main(void) {
 	std::cout << YELLOW << "a:\t" << RESET << a << std::endl;
 
 	std::cout << GREEN << "max and min:" << RESET << std::endl;
-	std::cout << "min(a, d): " << Fixed::min(a, d) << std::endl;
-	std::cout << "max(a, d): " << Fixed::max(a, d) << std::endl;
-	std::cout << "min(b, f): " << Fixed::min(b, f) << std::endl;
-	std::cout << "max(b, f): " << Fixed::max(b, f) << std::endl;
-	std::cout << "max(c, b): " << Fixed::max(c, b) << std::endl;
+	std::cout << YELLOW << "min(a, d): " << RESET << Fixed::min(a, d) << std::endl;
+	std::cout << YELLOW << "max(a, d): " << RESET << Fixed::max(a, d) << std::endl;
+	std::cout << YELLOW << "min(b, f): " << RESET << Fixed::min(b, f) << std::endl;
+	std::cout << YELLOW << "max(b, f): " << RESET << Fixed::max(b, f) << std::endl;
+	std::cout << YELLOW << "max(c, b): " << RESET << Fixed::max(c, b) << std::endl;
 
 	return 0;
 }
