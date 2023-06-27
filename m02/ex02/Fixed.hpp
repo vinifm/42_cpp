@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:47:57 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/26 17:26:12 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:59:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ public:
 	bool	operator==(const Fixed& rhs);
 	bool	operator!=(const Fixed& rhs);
 
-	// // Arithmetic operators
+	// Arithmetic operators
 	Fixed	operator+(const Fixed& rhs) const;
 	Fixed	operator-(const Fixed& rhs) const;
 	Fixed	operator*(const Fixed& rhs) const;
 	Fixed	operator/(const Fixed& rhs) const;
 
-	// // Increment/decrement operators
+	// Increment/decrement operators
 	Fixed&	operator++();		// prefix increment
 	Fixed	operator++(int);	// postfix increment
 	Fixed&	operator--();		// prefix decrement
