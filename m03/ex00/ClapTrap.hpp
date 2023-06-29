@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:48:27 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/28 17:41:04 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:57:09 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 #include <iostream>
 
-// #define YELLOW	"\033[1;33m"
+#define YELLOW	"\033[1;33m"
 // #define CYAN	"\033[1;36m"
-// #define GREEN	"\033[1;32m"
-// #define	RESET	"\033[0m"
+#define GREEN	"\033[1;32m"
+#define	RESET	"\033[0m"
 
 class ClapTrap {
 public:
@@ -32,6 +32,8 @@ public:
 	void	beRepaired(unsigned int amount);
 	bool	is_dead(void);
 	bool	is_tired(void);
+	void	display_status(void);
+	void	display_name(void);
 
 	std::string		getName() const;
 	unsigned int	getHitPoints() const;

@@ -1,4 +1,4 @@
-NAME	= # NAME
+NAME	= a.out
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
@@ -10,7 +10,7 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-SRC		= # SOURCE FILES
+SRC		= main.cpp ClapTrap.cpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
