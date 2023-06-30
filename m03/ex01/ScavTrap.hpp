@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:23:09 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/29 21:53:39 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:59:28 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ public:
 	~ScavTrap();
 
 	void	attack(const std::string& target);
+	void	guardGate();
 
 private:
-	std::string		_name;
-	unsigned int	_hitPoints;
-	unsigned int	_energyPoints;
-	unsigned int	_attackDamage;
-	std::string		_className;
+	std::string	display_name();
+
 };
 
 #endif

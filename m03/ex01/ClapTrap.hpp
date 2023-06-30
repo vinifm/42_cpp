@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:48:27 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/29 21:50:53 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:13:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 
 #define	YELLOW		"\033[1;33m"
+#define	MAGENTA		"\033[1;35m"
 #define	RESET		"\033[0m"
 
 class ClapTrap {
@@ -29,24 +30,29 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
-	bool	is_dead();
-	bool	is_tired();
-	void	display_status();
-	std::string	display_name();
+	bool		is_dead();
+	bool		is_tired();
 
+	// GETTERS
 	std::string		getName() const;
 	unsigned int	getHitPoints() const;
 	unsigned int	getEnergyPoints() const;
 	unsigned int	getAttackDamage() const;
-	std::string		getClassName() const;
+
+	// SETTERS
+	void	setName(std::string);
+	void	setHitPoints(unsigned int);
+	void	setEnergyPoints(unsigned int);
+	void	setAttackDamage(unsigned int);
 
 private:
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
-	std::string		_className;
 	std::string		_nameColor;
+
+	std::string	display_name();
 };
 
 #endif
