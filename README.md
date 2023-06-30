@@ -7,3 +7,6 @@ Memory allocation, pointers to members, references, switch statement.
 
 ### [Module 02](m02) ([wiki](wiki/m02.md))
 Ad-hoc polymorphism, operator overloading, Orthodox Canonical class form.
+
+### [Module 03](m03) ([wiki](wiki/m03.md))
+Inheritance.
