@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:23:09 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/30 17:59:28 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:47:35 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+
+#define	CYAN	"\033[1;36m"
 
 class ScavTrap: public ClapTrap {
 public:
@@ -24,10 +26,6 @@ public:
 
 	void	attack(const std::string& target);
 	void	guardGate();
-
-private:
-	std::string	display_name();
-
 };
 
 #endif

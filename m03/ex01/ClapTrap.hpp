@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:48:27 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/30 18:13:11 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:35:31 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,29 @@ public:
 
 	bool		is_dead();
 	bool		is_tired();
+	std::string	display_name();
 
 	// GETTERS
 	std::string		getName() const;
 	unsigned int	getHitPoints() const;
 	unsigned int	getEnergyPoints() const;
 	unsigned int	getAttackDamage() const;
+	std::string		getClassName() const;
 
 	// SETTERS
 	void	setName(std::string);
 	void	setHitPoints(unsigned int);
 	void	setEnergyPoints(unsigned int);
 	void	setAttackDamage(unsigned int);
+	void	setClassName(std::string);
 
 private:
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
-	std::string		_nameColor;
 
-	std::string	display_name();
+	std::string		_className;
 };
 
 #endif

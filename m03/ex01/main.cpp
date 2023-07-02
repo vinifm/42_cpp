@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:40:34 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/30 18:05:41 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/02 19:00:22 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(void) {
 
 	shirley.attack("Clyde");
 	shirley.beRepaired(1);
-	shirley.takeDamage(10);
+	shirley.takeDamage(112);
+	shirley.guardGate();
 
 	std::cout << std::endl << MAGENTA
 	<< "/*--- DESTRUCTORS -------------------------------------*/" << std::endl;

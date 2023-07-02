@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:50:54 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/30 18:18:30 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:36:02y viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,26 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
+	setClassName("\033[1;36mScavTrap \033[0m");
 	std::cout << "A wild " << display_name() << "has appeared!" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy) {
 	*this = copy;
-	std::cout << display_name() << "Copy constructor called" << std::endl;
+	std::cout << CYAN << "ScavTrap " << RESET << getName()
+		<< " Copy constructor called" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& rhs) {
-	std::cout << display_name()
-		<< "Copy assignment operator called" << std::endl;
 	if (this != &rhs) {
 		setName(rhs.getName());
 		setHitPoints(rhs.getHitPoints());
 		setEnergyPoints(rhs.getEnergyPoints());
 		setAttackDamage(rhs.getAttackDamage());
+		setClassName("\033[1;36mScavTrap \033[0m");
 	}
+	std::cout << CYAN << "ScavTrap " << RESET << getName()
+		<< " Copy assignment called" << std::endl;
 	return *this;
 }
 
@@ -56,16 +59,14 @@ void	ScavTrap::attack(const std::string& target) {
 		<< getAttackDamage()
 		<< " points of damage. Wow, that's actual damage! It now has "
 		<< getEnergyPoints()
-		<< " energy points"
+		<< " energy points."
 		<< std::endl;
 }
 
 void	ScavTrap::guardGate() {
+	if (is_dead() || is_tired())
+		return ;
 	std::cout << display_name() << "starts to listen to 'Gatekeeper' by "
 		"Canadian indie pop singer-songwriter and guitarist Feist. Gate kept!"
 		<< std::endl;
-}
-
-std::string	ScavTrap::display_name() {
-	return ("\033[1;36mScavTrap \033[0m" + getName() + " ");
 }

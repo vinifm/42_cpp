@@ -18,13 +18,15 @@ ClapTrap::ClapTrap(std::string name)
 	: _name(name),
 		_hitPoints(10),
 		_energyPoints(10),
-		_attackDamage(0) {
+		_attackDamage(0),
+		_className("\033[1;33mClapTrap \033[0m") {
 	std::cout << display_name() << "Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy) {
 	*this = copy;
-	std::cout << display_name() << "Copy constructor called" << std::endl;
+	std::cout << YELLOW << "ClapTrap " << RESET << getName()
+		<< " Copy constructor called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
@@ -33,14 +35,16 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
 		_hitPoints		= rhs.getHitPoints();
 		_energyPoints	= rhs.getEnergyPoints();
 		_attackDamage	= rhs.getAttackDamage();
+		_className		= rhs.getClassName();
 	}
-	std::cout << display_name()
-		<< "Copy assignment operator called" << std::endl;
+	std::cout << YELLOW << "ClapTrap " << RESET << getName()
+		<< " Copy assignment operator called" << std::endl;
 	return *this;
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << display_name() << "Destructor called" << std::endl;
+	std::cout << YELLOW << "ClapTrap " << RESET << getName()
+		<< " Destructor called" << std::endl;
 }
 
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
@@ -54,9 +58,9 @@ void	ClapTrap::attack(const std::string& target) {
 		<< target
 		<< " causing "
 		<< _attackDamage
-		<< " points of damage. Unimpressive... It now has"
+		<< " points of damage. Unimpressive... It now has "
 		<< getEnergyPoints()
-		<< " energy points"
+		<< " energy points."
 		<< std::endl;
 }
 
@@ -65,12 +69,12 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		setHitPoints(0);
 	else
 		setHitPoints(getHitPoints() - amount);
-	std::cout << getName()
-		<< " takes "
+	std::cout << display_name()
+		<< "takes "
 		<< amount
 		<< " points of damage! Ouch! It now has "
 		<< getHitPoints()
-		<< " HP"
+		<< " HP."
 		<< std::endl;
 }
 
@@ -79,7 +83,13 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		return ;
 	setHitPoints(getHitPoints() + amount);
 	setEnergyPoints(getEnergyPoints() - 1);
-	std::cout << getName() << " repairs itself." << std::endl;
+	std::cout << display_name()
+		<< "heals "
+		<< amount
+		<< " HP. It now has "
+		<< getHitPoints() << " HP and "
+		<< getEnergyPoints() << " energy points."
+		<< std::endl;
 }
 
 /* Return true if there is no more HP */
@@ -101,7 +111,7 @@ bool	ClapTrap::is_tired() {
 }
 
 std::string	ClapTrap::display_name() {
-	return ("\033[1;33mClapTrap \033[0m" + _name + " ");
+	return (getClassName() + getName() + " ");
 }
 
 /*--- GETTERS ----------------------------------------------------------------*/
@@ -110,6 +120,7 @@ std::string		ClapTrap::getName() const { return _name; }
 unsigned int	ClapTrap::getHitPoints() const { return _hitPoints; }
 unsigned int	ClapTrap::getEnergyPoints() const { return _energyPoints; }
 unsigned int	ClapTrap::getAttackDamage() const { return _attackDamage; }
+std::string		ClapTrap::getClassName() const { return _className; }
 
 /*--- SETTERS ----------------------------------------------------------------*/
 
@@ -117,3 +128,4 @@ void	ClapTrap::setName(std::string str) { _name = str; }
 void	ClapTrap::setHitPoints(unsigned int value) { _hitPoints = value; }
 void	ClapTrap::setEnergyPoints(unsigned int value) { _energyPoints = value; }
 void	ClapTrap::setAttackDamage(unsigned int value) { _attackDamage = value; }
+void	ClapTrap::setClassName(std::string str) { _className = str; }
