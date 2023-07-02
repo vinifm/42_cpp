@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:48:27 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/02 18:35:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/02 19:16:14 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #define	YELLOW		"\033[1;33m"
 #define	MAGENTA		"\033[1;35m"
+#define	GREEN		"\033[1;32m"
 #define	RESET		"\033[0m"
 
 class ClapTrap {

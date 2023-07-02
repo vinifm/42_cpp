@@ -58,7 +58,7 @@ void	ClapTrap::attack(const std::string& target) {
 		<< target
 		<< " causing "
 		<< _attackDamage
-		<< " points of damage. Unimpressive... It now has "
+		<< " points of damage. It now has "
 		<< getEnergyPoints()
 		<< " energy points."
 		<< std::endl;

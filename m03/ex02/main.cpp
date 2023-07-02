@@ -6,11 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:40:34 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/02 20:03:56 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/02 20:16:35 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void) {
 	{
@@ -48,7 +48,6 @@ int	main(void) {
 	}
 
 	{
-
 		std::cout << std::endl << GREEN
 		<< "/*--- EX01 TESTS ------------------------------------------------*/"
 		<< std::endl;
@@ -67,6 +66,29 @@ int	main(void) {
 		shirley.beRepaired(1);
 		shirley.takeDamage(112);
 		shirley.guardGate();
+
+		std::cout << std::endl << MAGENTA
+		<< "/*--- DESTRUCTORS ---------------------------------*/" << std::endl;
+	}
+	{
+		std::cout << std::endl << GREEN
+		<< "/*--- EX02 TESTS ------------------------------------------------*/"
+		<< std::endl;
+
+		std::cout << std::endl <<  MAGENTA
+		<< "/*--- CONSTRUCTORS --------------------------------*/" << std::endl;
+
+		ClapTrap	chowder("Chowder");
+		FragTrap	freddy("Freddy");
+		FragTrap	copy(freddy);
+
+		std::cout << std::endl << MAGENTA
+		<< "/*--- MEMBER FUNCTIONS ----------------------------*/" << std::endl;
+
+		freddy.attack("Chowder");
+		freddy.takeDamage(99);
+		freddy.beRepaired(1);
+		freddy.highFiveGuys();
 
 		std::cout << std::endl << MAGENTA
 		<< "/*--- DESTRUCTORS ---------------------------------*/" << std::endl;

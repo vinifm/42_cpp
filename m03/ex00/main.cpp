@@ -6,14 +6,18 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:40:34 by viferrei          #+#    #+#             */
-/*   Updated: 2023/06/30 18:22:19 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/02 20:04:15 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 int	main(void) {
-	std::cout << MAGENTA
+	std::cout << GREEN
+	<< "/*--- EX00 TESTS ----------------------------------------------------*/"
+	<< std::endl;
+
+	std::cout << std:: endl << MAGENTA
 	<< "/*--- CONSTRUCTORS ------------------------------------*/" << std::endl;
 
 	ClapTrap	clyde("Clyde");
@@ -27,14 +31,9 @@ int	main(void) {
 	clyde.beRepaired(1);
 
 	std::cout << std::endl << MAGENTA
-	<< "/*--- OUT OF ENERGY -----------------------------------*/" << RESET
-	<< std::endl;
+	<< "/*--- OUT OF ENERGY -----------------------------------*/" << std::endl;
 
-	while (true) {
-		if (clyde.getEnergyPoints() == 0)
-			break ;
-		clyde.beRepaired(1);
-	}
+	clyde.setEnergyPoints(0);
 	clyde.beRepaired(1);
 
 	std::cout << std::endl << MAGENTA
