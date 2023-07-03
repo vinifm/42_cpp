@@ -14,7 +14,8 @@
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+{
 	setName(name);
 	setHitPoints(100);
 	setEnergyPoints(50);
@@ -23,13 +24,15 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	std::cout << "A wild " << display_name() << "has appeared!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy) {
+ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
+{
 	*this = copy;
 	std::cout << CYAN << "ScavTrap " << RESET << getName()
 		<< " Copy constructor called" << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& rhs) {
+ScavTrap& ScavTrap::operator=(const ScavTrap& rhs)
+{
 	if (this != &rhs) {
 		setName(rhs.getName());
 		setHitPoints(rhs.getHitPoints());
@@ -48,7 +51,8 @@ ScavTrap::~ScavTrap() {
 
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
 
-void	ScavTrap::attack(const std::string& target) {
+void	ScavTrap::attack(const std::string& target)
+{
 	if (is_dead() || is_tired())
 		return ;
 	setEnergyPoints(getEnergyPoints() - 1);
@@ -63,7 +67,8 @@ void	ScavTrap::attack(const std::string& target) {
 		<< std::endl;
 }
 
-void	ScavTrap::guardGate() {
+void	ScavTrap::guardGate()
+{
 	if (is_dead() || is_tired())
 		return ;
 	std::cout << display_name() << "starts to listen to 'Gatekeeper' by "

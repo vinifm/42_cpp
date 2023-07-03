@@ -16,7 +16,7 @@ SRCDIR	= ./srcs/
 INCLUDE	= -I ./include/
 
 # Files
-SRC		= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRC		= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)

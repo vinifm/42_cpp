@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sample.class.cpp                                   :+:      :+:    :+:   */
+/*   Sample.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 16:31:02 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/19 17:55:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:14:01 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Sample.class.hpp"
+#include "Sample.hpp"
 
 // Constructor
-Sample::Sample() : value(0) {
+Sample::Sample() : value(0), str("Hello!") {
 	std::cout << "Default constructor called" << std::endl;
 }
 

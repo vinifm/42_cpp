@@ -6,12 +6,12 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:42:54 by viferrei          #+#    #+#             */
-/*   Updated: 2023/05/19 17:34:40 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:15:30 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Sample.class.hpp"
+#include "Sample.hpp"
 
 void	input_output_stream() {
 	int		num;

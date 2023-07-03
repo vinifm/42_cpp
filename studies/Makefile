@@ -15,7 +15,7 @@ OBJDIR	= ./objs/
 INCLUDE	= -I ./include/
 
 # Files
-SRC		= basics.cpp Sample.class.cpp
+SRC		= basics.cpp Sample.cpp
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
