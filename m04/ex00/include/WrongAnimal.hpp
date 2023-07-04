@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:20 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/03 19:47:54 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:00:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #include <iostream>
 
 class WrongAnimal {
-	public:
-		WrongAnimal();
-		WrongAnimal(const WrongAnimal& copy);
-		WrongAnimal& operator=(const WrongAnimal& rhs);
-		~WrongAnimal();
+public:
+	WrongAnimal();
+	WrongAnimal(const WrongAnimal& copy);
+	WrongAnimal& operator=(const WrongAnimal& rhs);
+	~WrongAnimal();
 
-		void makeSound();
+	void makeSound();
 
-	protected:
-		std::string	type;
+protected:
+	std::string	type;
 };
 
 #endif

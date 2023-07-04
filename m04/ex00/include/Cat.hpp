@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:44:47 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/03 19:44:49 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:00:01 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 #include "../include/Animal.hpp"
 
 class Cat : public Animal {
-	public:
-		Cat();
-		Cat(const Cat& copy);
-		Cat& operator=(const Cat& rhs);
-		~Cat();
+public:
+	Cat();
+	Cat(const Cat& copy);
+	Cat& operator=(const Cat& rhs);
+	~Cat();
 
-		void makeSound();
+	void makeSound() const;
 
-	protected:
-		std::string	type;
+protected:
+	std::string	type;
 };
 
 #endif

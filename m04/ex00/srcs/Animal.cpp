@@ -15,7 +15,8 @@
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
 Animal::Animal() : type("Animal") {
-	std::cout << YELLOW "Animal" RESET " Default constructor called"
+	std::cout << "An indistinguishable" YELLOW " Animal " RESET
+		<< "hides in the shadows"
 		<< std::endl;
 }
 
@@ -27,9 +28,9 @@ Animal::Animal(const Animal& copy) {
 Animal&	Animal::operator=(const Animal& rhs) {
 	if (this != &rhs)
 		type = rhs.getType();
-	return *this;
 	std::cout << YELLOW "Animal" RESET " Copy assignment operator called"
 		<< std::endl;
+	return *this;
 }
 
 Animal::~Animal() {
@@ -39,10 +40,10 @@ Animal::~Animal() {
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
 
 void	Animal::makeSound() const {
-	std::cout << "* UNRECOGNIZABLE ANIMAL NOIZE *" << std::endl;
-
+	std::cout << YELLOW "* UNRECOGNIZABLE ANIMAL NOIZE *" RESET << std::endl;
 }
 
-/*--- GETTERS ----------------------------------------------------------------*/
+/*--- GETTER AND SETTER ------------------------------------------------------*/
 
-std::string Animal::getType() const { return type; }
+std::string	Animal::getType() const { return type; }
+void		Animal::setType(std::string new_type) { type = new_type; }

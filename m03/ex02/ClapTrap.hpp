@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:48:27 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/02 19:16:14 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:30:58 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ public:
 	void	setAttackDamage(unsigned int);
 	void	setClassName(std::string);
 
-private:
+protected:
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
