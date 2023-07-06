@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:40:44 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/06 18:48:46 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 19:38:37 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,7 @@ Cat::~Cat() {
 void	Cat::makeSound() const {
 	std::cout << PINK "* meows diabolically *" RESET << std::endl;
 }
+
+/*--- GETTER -----------------------------------------------------------------*/
+
+Brain*	Cat::getBrain() const { return _brain; }

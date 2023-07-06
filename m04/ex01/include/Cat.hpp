@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:44:47 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/06 18:47:42 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 19:37:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ public:
 	~Cat();
 
 	virtual void makeSound() const;
+	Brain*	getBrain() const;
 
 private:
 	Brain*	_brain;

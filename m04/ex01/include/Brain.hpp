@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:40:01 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/06 16:54:41 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:08:46 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <unistd.h>
 #include "Animal.hpp"
 
 class Brain {

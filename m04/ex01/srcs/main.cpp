@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:27:55 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/06 19:21:01 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:41:07 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "../include/Brain.hpp"
 
 void	title(std::string msg, std::string color);
-void	test_brain();
+int		compare_ideas(const Brain& brain, const Brain& copy);
+void	iterate_ideas(const Brain& brain);
 
 void	animal_array() {
 	int	array_size = 4;
@@ -42,34 +43,46 @@ void	animal_array() {
 }
 
 void	test_copy() {
-	title("ANIMAL COPIES", MAGENTA);
-	Dog*	dog = new Dog();
+	title("ANIMAL COPIES", BLUE);
+	Dog*	dog = new Dog(); std::cout << std::endl;
 	Cat		cat; std::cout << std::endl;
+	Dog		puppy(*dog); std::cout << std::endl;
+	Cat		kitty(cat); std::cout << std::endl;
 
-	Dog		copyDog(*dog); std::cout << std::endl;
-	Cat		copyCat(cat); std::cout << std::endl;
+	std::cout << WHITE "Deep copies:" RESET << std::endl;
+	if (dog->getBrain() != puppy.getBrain())
+		std::cout << "These dogs do not share the same brain!" << std::endl;
+	if (cat.getBrain() != kitty.getBrain())
+		std::cout << "Neither do these cats!" << std::endl;
 
-	std::cout << "Address of dog: " << dog << std::endl;
-	std::cout << "Address of copyDog: " << &copyDog << std::endl;
-	std::cout << "Address of dog's brain: " << dog->_brain << std::endl;
-	std::cout << "Address of copyDog: " << &copyDog << std::endl;
+	title("BRAINSTORMING", BLUE);
+	std::cout << "The animals come closer and share these "
+		<< "precious pieces of wisdom: " << std::endl
+		<< dog->getBrain()->ideas[0] << std::endl
+		<< puppy.getBrain()->ideas[1] << std::endl
+		<< cat.getBrain()->ideas[0] << std::endl
+		<< kitty.getBrain()->ideas[1] << std::endl;
 
-	title("DESTRUCTORS", MAGENTA);
+	title("COPIES DESTRUCTORS", BLUE);
 	delete dog;
 }
 
+/* srand() ensures brains' ideas are randomized */
 int	main(void)
 {
+	std::srand((unsigned int) time(NULL));
 	animal_array();
 	test_copy();
 	return 0;
 }
 
-void	iterate_ideas(const Brain& brain){
+
+/* Print all ideas in a brain */
+void	iterate_ideas(const Brain& brain) {
 	for (int i = 0;
 		i < (int)(sizeof(brain.ideas) / sizeof(brain.ideas[0]));
 		i++) {
-		std::cout << "idea no. " << i + 1 << ": " << brain.ideas[i] << std::endl;
+		std::cout << "idea n. " << i + 1 << ": " << brain.ideas[i] << std::endl;
 	}
 }
 
@@ -82,21 +95,13 @@ int	compare_ideas(const Brain& brain, const Brain& copy) {
 			error = -1;
 	}
 	if (error)
-		std::cout << RED "Brains are not the same." RESET << std::endl;
+		std::cout << RED "Ideas are not the same." RESET << std::endl;
 	else
-		std::cout << GREEN "Brains are the same." RESET << std::endl;
+		std::cout << GREEN "Ideas are the same." RESET << std::endl;
 	return error;
 }
 
-void	test_brain() {
-	Brain	brain;
-	Brain	copy(brain);
-
-	compare_ideas(brain, copy);
-	// iterate_ideas(brain);
-}
-
-// Print formatted title
+/* Print formatted title */
 void	title(std::string msg, std::string color) {
 	size_t	chars_left = 50 - msg.size();
 

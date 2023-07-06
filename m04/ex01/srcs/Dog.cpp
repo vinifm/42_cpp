@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:43:43 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/06 18:48:11 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 19:38:49 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,7 @@ Dog::~Dog() {
 void	Dog::makeSound() const {
 	std::cout << CYAN "* barks annoyingly *" RESET << std::endl;
 }
+
+/*--- GETTER -----------------------------------------------------------------*/
+
+Brain*	Dog::getBrain() const { return _brain; }
