@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:44:47 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/05 16:45:32 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 17:36:26 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ public:
 	~Cat();
 
 	virtual void makeSound() const;
-
-protected:
-	std::string	type;
 };
 
 #endif

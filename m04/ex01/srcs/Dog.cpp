@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:43:43 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/05 16:26:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:48:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 Dog::Dog() : Animal() {
 	setType("Dog");
+	_brain = new Brain();
 	std::cout << "...And a huge" CYAN " Dog " RESET "comes out of a bush!"
 		<< std::endl;
 }
@@ -26,14 +27,17 @@ Dog::Dog(const Dog& copy) : Animal(copy) {
 }
 
 Dog&	Dog::operator=(const Dog& rhs) {
-	if (this != &rhs)
+	if (this != &rhs) {
 		type = rhs.getType();
+		_brain = new Brain(*(rhs._brain));
+	}
 	std::cout << CYAN "Dog" RESET " Copy assignment operator called"
 		<< std::endl;
 	return *this;
 }
 
 Dog::~Dog() {
+	delete _brain;
 	std::cout << CYAN "Dog" RESET " Destructor called" << std::endl;
 }
 

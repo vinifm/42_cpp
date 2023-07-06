@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:43:00 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/05 21:01:52 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 17:26:23 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
+/*
+	srand() ensures different random number will be called rith rand() at each
+	execution
+*/
 Brain::Brain() {
-	std::cout << "A" PURPLE " Brain " RESET "is in the making! Beautiful!"
+	std::srand((unsigned int) time(NULL));
+	for (int i = 0; i < (int)(sizeof(ideas) / sizeof(ideas[0])); i++)
+		ideas[i] = _ideaPool[(rand() % 100)];
+	std::cout << "A" PURPLE " Brain " RESET "is manufacturing ideas! Beautiful!"
 		<< std::endl;
 }
 Brain::Brain(const Brain& copy) {
@@ -23,13 +30,16 @@ Brain::Brain(const Brain& copy) {
 	std::cout << PURPLE "Brain " RESET "Copy constructor called" << std::endl;
 }
 Brain& Brain::operator=(const Brain& rhs) {
-	if (this != &rhs)
-		ideas = rhs.getIdeas();
-	std::cout << PURPLE "Brain " RESET "Copy cassignment operator called"
+	if (this != &rhs) {
+		for (int i = 0; i < (int)(sizeof(ideas) / sizeof(ideas[0])); i++)
+			ideas[i] = rhs.ideas[i];
+	}
+	std::cout << PURPLE "Brain " RESET "Copy assignment operator called"
 		<< std::endl;
 	return *this;
 }
 Brain::~Brain() {
+	std::cout << PURPLE "Brain " RESET "Destructor called" << std::endl;
 }
 
 std::string	Brain::_ideaPool[100] = {

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:40:01 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/05 18:59:34 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:54:41 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BRAIN_HPP
 
 #include <iostream>
+#include <cstdlib>
 #include "Animal.hpp"
 
 class Brain {
