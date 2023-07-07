@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:40:01 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/06 20:08:46 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:14:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <unistd.h>
-#include "Animal.hpp"
+
+#define	PURPLE	"\033[1;38;5;105m"
+#define	RESET	"\033[0m"
 
 class Brain {
 public:

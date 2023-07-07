@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:20 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/05 16:52:28 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:09:59 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define WRONGANIMAL_HPP
 
 #include <iostream>
-#include "Animal.hpp"
+
+#define	PINK	"\033[1;38;5;218m"
+#define	YELLOW	"\033[1;33m"
+#define	RESET	"\033[0m"
 
 class WrongAnimal {
 public:

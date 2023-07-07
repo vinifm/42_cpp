@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:27:55 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/06 20:41:07 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:14:09 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(void)
 	std::srand((unsigned int) time(NULL));
 	animal_array();
 	test_copy();
+
 	return 0;
 }
 
