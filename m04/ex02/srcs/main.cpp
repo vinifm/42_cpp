@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:27:55 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/07 16:48:59 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:36:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ int	main(void)
 {
 	// Animal	animal;
 	// const Animal*	meta = new Animal();
-	const Animal*	dog = new Dog();
-	const Animal*	cat = new Cat();
+	const Animal*	dog = new Dog(); std::cout << std::endl;
+	const Animal*	cat = new Cat(); std::cout << std::endl;
 
 	dog->makeSound();
 	cat->makeSound();
 
+	std::cout << std::endl;
 	delete dog;
 	delete cat;
 	return 0;
