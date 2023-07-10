@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:42:54 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/03 20:15:30 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:23:04 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	constructors_destructor() {
 	Sample sample;					// calls default constructor
 	Sample sample_copy = sample;	// calls copy constructor
 	sample_copy = sample;			// calls assignment operator
-	std::cout << sample.getValue() << std::endl;
 }
 
 int main() {

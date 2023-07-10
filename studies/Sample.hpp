@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:37:59 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/03 20:15:43 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:23:39 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 
 class Sample {
 public:
-	Sample();								// constructor
-	Sample(const Sample& copy);				// copy constructor
-	Sample& operator=(const Sample& assign);// copy assignment operator
-	~Sample();								// destructor
-
-	int	getValue() const;
+	Sample();
+	Sample(const Sample& copy);
+	Sample& operator=(const Sample& rhs);
+	~Sample();
 
 private:
-	int			value;
+	int	_value;
 };
 
 #endif

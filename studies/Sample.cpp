@@ -6,37 +6,30 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 16:31:02 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/03 20:14:01 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:22:45 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Sample.hpp"
 
-// Constructor
-Sample::Sample() : value(0), str("Hello!") {
-	std::cout << "Default constructor called" << std::endl;
+/*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
+
+Sample::Sample() {
+	std::cout << "Sample Default constructor called" << std::endl;
 }
 
-// Copy constructor
 Sample::Sample(const Sample &copy) {
-	std::cout << "Copy constructor called" << std::endl;
-	value = copy.value;
+	*this = copy;
+	std::cout << "Sample Copy constructor called" << std::endl;
 }
 
-// Copy assignment operator
-Sample&	Sample::operator=(const Sample &assign) {
-	std::cout << "Assignment operator called" << std::endl;
-	if (this != &assign)	// self-assignment check
-		value = assign.value;
+Sample&	Sample::operator=(const Sample &rhs) {
+	std::cout << "Sample Copy assignment operator called" << std::endl;
+	if (this != &rhs)
+		// value = rhs.value;
 	return *this;
 }
 
-// Destructor
 Sample::~Sample() {
-	std::cout << "Destructor called" << std::endl;
-}
-
-// Accessor
-int	Sample::getValue() const {
-	return this->value;
+	std::cout << "Sample Destructor called" << std::endl;
 }
