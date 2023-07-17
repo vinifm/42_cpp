@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:27:55 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/10 15:36:11 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:20:43 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(void)
 	delete cat;
 	return 0;
 }
-
 
 /* Print formatted title */
 void	title(std::string msg, std::string color) {

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 12:18:56 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/16 12:37:42 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/17 18:07:48y viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,28 @@
 # define FORM_HPP
 
 #include "colors.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
+
+class Bureaucrat;
 
 class Form {
 public:
 	Form();
-	Form(const std::string name);
+	Form(const std::string name,
+		const unsigned int signGrade,
+		const unsigned int execGrade);
 	Form(const Form& copy);
 	Form& operator=(const Form& rhs);
 	~Form();
 
-	const std::string	getName();
-	bool				getSigned();
-	const unsigned int	getSignGrade();
-	const unsigned int	getExecGrade();
+	void	beSigned(const Bureaucrat& bureaucrat);
+	void	checkGrade(const unsigned int grade);
+
+	const std::string	getName() const;
+	bool				getSigned() const;
+	unsigned int		getSignGrade() const;
+	unsigned int		getExecGrade() const;
 
 private:
 	const std::string	_name;
@@ -46,6 +54,6 @@ private:
 	};
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& rhs);
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif

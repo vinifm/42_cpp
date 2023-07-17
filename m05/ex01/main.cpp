@@ -10,45 +10,83 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-void	title(std::string msg, std::string color);
+void	title(std::string msg, std::string color, size_t size);
+
+void	testFormExceptions() {
+	title("FORM EXCEPTIONS", MAGENTA, 50);
+
+	std::cout << WHITE "Sign grade too high: " RESET;
+	try { Form grade_too_high("Form", 0, 50); }
+	catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	std::cout << WHITE "Execute grade too high: " RESET;
+	try { Form grade_too_high("Form", 3, 0); }
+	catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	std::cout << WHITE "Sign grade too low: " RESET;
+	try { Form grade_too_high("Form", 151, 50); }
+	catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	std::cout << WHITE "Execute grade too low: " RESET;
+	try { Form grade_too_high("Form", 3, 151); }
+	catch (std::exception& e) { std::cout << e.what() << std::endl; }
+}
+
+void	testSignMethods() {
+	title("SIGNING METHODS", MAGENTA, 50);
+	Bureaucrat	boss("Boss", 1);
+	Bureaucrat	john("John", 150);
+
+	title("Form beSigned() method", BLUE, 30);
+	Form	hard_to_sign("Day Off", 5, 1);
+
+	std::cout << std::endl << WHITE "John tries to sign: " RESET;
+	try { hard_to_sign.beSigned(john); }
+	catch (std::exception& e) { std::cout << e.what() <<std::endl; }
+
+	std::cout << WHITE "Boss signs: " RESET;
+	try { hard_to_sign.beSigned(boss); }
+	catch (std::exception& e) { std::cout << e.what() <<std::endl; }
+	std::cout << hard_to_sign << std::endl;
+
+	title("Bureaucrat signForm() method", BLUE, 30);
+	Form	easy_to_sign("Extra Hours", 140, 130);
+	std::cout << std::endl;
+
+	john.signForm(easy_to_sign);
+	boss.signForm(easy_to_sign);
+
+	title("Destructors", BLUE, 30);
+}
+
+void	testCopies() {
+	title("COPIES", MAGENTA, 50);
+	Form	nameless;
+	Form	copy_nameless(nameless);
+	std::cout << copy_nameless << "\n" << std::endl;
+
+	Form	coffee("Coffee", 32, 52);
+	Form	copy_coffee = coffee;
+	std::cout << copy_coffee << std::endl;
+
+	title("Destructors", BLUE, 30);
+}
+
 
 int	main() {
-	std::srand((unsigned int) time(NULL));
-	title("CONSTRUCTORS", MAGENTA);
-	Bureaucrat	john;
-	Bureaucrat	jim("Jim", 150);
-	Bureaucrat	copyJim(jim);
-
-	title("INSERTION OPERATOR", MAGENTA);
-	std::cout << john << std::endl;
-	std::cout << jim << std::endl;
-	std::cout << copyJim << std::endl;
-
-	title("EXCEPTIONS", MAGENTA);
-	try { Bureaucrat james("James", 0); }
-	catch (const std::exception& e) { std::cout << e.what() << std::endl; }
-	try { Bureaucrat Joel("Joel", 151); }
-	catch (const std::exception& e) { std::cout << e.what() << std::endl; }
-
-	title("INCREMENT AND DECREMENT METHODS", MAGENTA);
-	jim.incrementGrade(50);
-	jim.decrementGrade(5);
-
-	std::cout << std::endl << WHITE "Method exceptions:" RESET << std::endl;
-	try { jim.decrementGrade(46); }
-	catch (const std::exception& e) { std::cout << e.what() << std::endl; }
-	try { jim.incrementGrade(105); }
-	catch (const std::exception& e) { std::cout << e.what() << std::endl; }
-
-	title("DESTRUCTORS", MAGENTA);
+	testFormExceptions();
+	testSignMethods();
+	testCopies();
 	return 0;
 }
 
 /* Print formatted title */
-void	title(std::string msg, std::string color) {
-	size_t	chars_left = 50 - msg.size();
+void	title(std::string msg, std::string color, size_t size) {
+	if (size < msg.size())
+		size = msg.size();
+	size_t	chars_left = size - msg.size();
 
 	std::cout << std::endl << color << "/*--- " << msg << " ";
 	for (size_t i = 0; i < chars_left; i++)

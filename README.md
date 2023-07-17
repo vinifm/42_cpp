@@ -14,3 +14,6 @@ Inheritance.
 
 ### [Module 04](m04) ([wiki](wiki/m04.md))
 Subtype polymorphism, abstract classes.
+
+### [Module 05](m05) ([wiki](wiki/m05.md))
+Repetition and exceptions.

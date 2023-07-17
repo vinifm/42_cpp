@@ -10,7 +10,9 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-SRC		= main.cpp Bureaucrat.cpp
+SRC		= main.cpp \
+			Bureaucrat.cpp \
+			Form.cpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))

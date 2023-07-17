@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:56:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/16 12:20:52 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/17 19:06:57 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 		<< std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName()) {
+Bureaucrat::Bureaucrat(const Bureaucrat& copy) : _name(copy.getName()) {
 	*this = copy;
 	std::cout << PURPLE "Bureaucrat " RESET "Copy constructor called"
 		<< std::endl;
 }
 
-Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &rhs) {
+Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& rhs) {
 	std::cout << PURPLE "Bureaucrat " RESET "Copy assignment operator called"
 		<< std::endl;
 	if (this != &rhs)
@@ -76,19 +76,35 @@ void	Bureaucrat::decrementGrade(unsigned int amount) {
 	}
 }
 
-/*--- GETTERS ----------------------------------------------------------------*/
+void	Bureaucrat::signForm(Form& form) {
+	try {
+		form.beSigned(*this);
+		std::cout << PURPLE << "Bureaucrat " RESET
+			<< getName() << " signed " YELLOW "form " RESET
+			<< form.getName()
+			<< std::endl;
+	} catch (std::exception& e) {
+		std::cout << PURPLE "Bureaucrat " RESET
+			<< getName() << " could not sign " YELLOW "form " RESET
+			<< form.getName() << " because "
+			<< e.what()
+			<< std::endl;
+	}
+}
+
+/*--- ACCESSORS --------------------------------------------------------------*/
 
 const std::string	Bureaucrat::getName() const { return _name; }
-int					Bureaucrat::getGrade() const { return _grade; }
+unsigned int		Bureaucrat::getGrade() const { return _grade; }
 
 /*--- EXCEPTIONS -------------------------------------------------------------*/
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade is too high!";
+	return "Bureaucrat's grade is too high!";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade is too low!";
+	return "Bureaucrat's grade is too low!";
 }
 
 /*--- INSERTION OPERATOR OVERLOAD --------------------------------------------*/
