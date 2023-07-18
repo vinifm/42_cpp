@@ -15,5 +15,7 @@ Inheritance.
 ### [Module 04](m04) ([wiki](wiki/m04.md))
 Subtype polymorphism, abstract classes.
 
-### [Module 05](m05) ([wiki](wiki/m05.md))
+### [Module 05](m05) ([wiki](wiki/m05.md))[^1]
 Repetition and exceptions.
+
+[^1]: Ascii Tree Art from ex02 from [ascii.co.uk](https://ascii.co.uk/art/tree)
