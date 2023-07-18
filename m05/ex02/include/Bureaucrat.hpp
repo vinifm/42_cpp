@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:23:49 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/17 17:54:30 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:48:08 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define BUREAUCRAT_HPP
 
 #include "colors.hpp"
-#include "Form.hpp"
+#include "../include/AForm.hpp"
 #include <iostream>
 #include <cstdlib>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 public:
@@ -30,7 +30,7 @@ public:
 
 	void	incrementGrade(unsigned int amount);
 	void	decrementGrade(unsigned int amount);
-	void	signForm(Form& form);
+	void	signForm(AForm& form);
 
 	const std::string	getName() const;
 	unsigned int		getGrade() const;

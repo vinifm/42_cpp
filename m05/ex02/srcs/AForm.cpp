@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 12:27:55 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/18 15:21:03 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:33:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,14 @@ void	AForm::_checkGrade(const unsigned int grade) {
 		throw GradeTooLowException();
 }
 
+/* Check if form is signed and if bureaucrat grade is high enough */
+void	AForm::_checkExecutionPermission(const Bureaucrat& executor) const {
+	if (!getSigned())
+		throw FormNotSignedException();
+	if (executor.getGrade() > getExecGrade())
+		throw GradeTooLowException();
+}
+
 /*--- ACCESSORS --------------------------------------------------------------*/
 
 const std::string	AForm::getName() const { return _name; }
@@ -92,6 +100,10 @@ const char* AForm::GradeTooLowException::what() const throw() {
 	return "Grade is too low!";
 }
 
+const char* AForm::FormNotSignedException::what() const throw() {
+	return "Execution denied: Form is not signed!";
+}
+
 /*--- INSERTION OPERATOR OVERLOAD --------------------------------------------*/
 
 std::ostream& operator<<(std::ostream& os, const AForm& form) {
@@ -99,7 +111,7 @@ std::ostream& operator<<(std::ostream& os, const AForm& form) {
 
 	if (form.getSigned())
 		signed_status = "signed";
-	os << signed_status << YELLOW " AForm " RESET << "\""
+	os << signed_status << " form \""
 		<< form.getName() << "\" has sign grade "
 		<< form.getSignGrade() << " and execute grade "
 		<< form.getExecGrade();

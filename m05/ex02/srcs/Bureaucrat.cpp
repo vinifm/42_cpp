@@ -6,11 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:56:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/17 19:06:57 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:49:42 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../include/Bureaucrat.hpp"
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
@@ -76,11 +76,11 @@ void	Bureaucrat::decrementGrade(unsigned int amount) {
 	}
 }
 
-void	Bureaucrat::signForm(Form& form) {
+void	Bureaucrat::signForm(AForm& form) {
 	try {
 		form.beSigned(*this);
 		std::cout << PURPLE << "Bureaucrat " RESET
-			<< getName() << " signed " YELLOW "form " RESET
+			<< getName() << " signed form "
 			<< form.getName()
 			<< std::endl;
 	} catch (std::exception& e) {

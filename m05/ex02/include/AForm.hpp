@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include "../include/colors.hpp"
 #include "../include/Bureaucrat.hpp"
@@ -29,12 +29,17 @@ public:
 	AForm& operator=(const AForm& rhs);
 	virtual ~AForm();
 
-	void	beSigned(const Bureaucrat& bureaucrat);
+	void			beSigned(const Bureaucrat& bureaucrat);
+	virtual void	execute(const Bureaucrat& executor) const = 0;
 
 	const std::string	getName() const;
 	bool				getSigned() const;
 	unsigned int		getSignGrade() const;
 	unsigned int		getExecGrade() const;
+
+protected:
+	std::string	_target;
+	void		_checkExecutionPermission(const Bureaucrat& executor) const;
 
 private:
 	const std::string	_name;
@@ -45,16 +50,15 @@ private:
 	void	_checkGrade(const unsigned int grade);
 
 	class	GradeTooHighException: public std::exception {
-	public:
-		virtual const char* what() const throw();
-	};
+		public: virtual const char* what() const throw(); };
 
 	class	GradeTooLowException: public std::exception {
-	public:
-		virtual const char* what() const throw();
-	};
+		public: virtual const char* what() const throw(); };
+
+	class	FormNotSignedException: public std::exception {
+		public: virtual const char* what() const throw(); };
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& form);
 
 #endif

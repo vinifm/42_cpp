@@ -10,6 +10,12 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
+# Directories
+OBJDIR	= ./objs/
+SRCDIR	= ./srcs/
+INCLUDE	= ./include/
+
+# Files
 SRC		= main.cpp \
 			AForm.cpp \
 			Bureaucrat.cpp \
@@ -17,7 +23,6 @@ SRC		= main.cpp \
 			RobotomyRequestForm.cpp \
 			ShrubberyCreationForm.cpp
 
-OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
@@ -25,10 +30,10 @@ all: $(NAME)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)%.o: $(SRCDIR)%.cpp
+	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
-$(NAME): $(OBJDIR) $(OBJ)
+$(NAME): $(OBJDIR) $(OBJ) $(INCLUDE)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
