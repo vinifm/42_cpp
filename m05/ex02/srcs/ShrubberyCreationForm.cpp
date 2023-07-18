@@ -14,6 +14,12 @@
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
+ShrubberyCreationForm::ShrubberyCreationForm() :
+	AForm ((GREEN "Shrubbery Creation Form" RESET), 145, 137) {
+		_target = "targetless";
+		std::cout << "...It's got no target!" << std::endl;
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) :
 	AForm ((GREEN "Shrubbery Creation Form" RESET), 145, 137) {
 		_target = target;
@@ -63,4 +69,3 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	outfile.close();
 	std::cout << "Shrubs created at " << filename << "!" << std::endl;
 }
-
