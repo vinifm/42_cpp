@@ -13,21 +13,21 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include "colors.hpp"
-#include "Bureaucrat.hpp"
+#include "../include/colors.hpp"
+#include "../include/Bureaucrat.hpp"
 #include <iostream>
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 public:
-	Form();
-	Form(const std::string name,
+	AForm();
+	AForm(const std::string name,
 		const unsigned int signGrade,
 		const unsigned int execGrade);
-	Form(const Form& copy);
-	Form& operator=(const Form& rhs);
-	~Form();
+	AForm(const AForm& copy);
+	AForm& operator=(const AForm& rhs);
+	virtual ~AForm();
 
 	void	beSigned(const Bureaucrat& bureaucrat);
 

@@ -74,7 +74,6 @@ void	testCopies() {
 	title("Destructors", BLUE, 30);
 }
 
-
 int	main() {
 	testFormExceptions();
 	testSignMethods();
