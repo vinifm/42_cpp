@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:15:40 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 18:24:00 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:30:29 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
 PresidentialPardonForm::PresidentialPardonForm() :
-	AForm ((ORANGE "Presidential Pardon Form" RESET), 25, 5) {
+	AForm ((ORANGE "Presidential Pardon" RESET), 25, 5) {
 		_target = "targetless";
 		std::cout << "...It's got no target!" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target) :
-	AForm ((ORANGE "Presidential Pardon Form" RESET), 25, 5) {
+	AForm ((ORANGE "Presidential Pardon" RESET), 25, 5) {
 		_target = target;
 		std::cout << "...It's got the target \"" << _target << "\"."
 			<< std::endl;

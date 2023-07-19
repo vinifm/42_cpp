@@ -15,13 +15,13 @@
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
 ShrubberyCreationForm::ShrubberyCreationForm() :
-	AForm ((GREEN "Shrubbery Creation Form" RESET), 145, 137) {
+	AForm ((GREEN "Shrubbery Creation" RESET), 145, 137) {
 		_target = "targetless";
 		std::cout << "...It's got no target!" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) :
-	AForm ((GREEN "Shrubbery Creation Form" RESET), 145, 137) {
+	AForm ((GREEN "Shrubbery Creation" RESET), 145, 137) {
 		_target = target;
 		std::cout << "...It's got the target \"" << _target << "\"."
 			<< std::endl;
