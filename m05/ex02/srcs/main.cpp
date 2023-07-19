@@ -6,12 +6,13 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:07:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 18:09:59 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:26:29 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ShrubberyCreationForm.hpp"
 #include "../include/RobotomyRequestForm.hpp"
+#include "../include/PresidentialPardonForm.hpp"
 
 void	title(std::string msg, std::string color, size_t size);
 
@@ -61,6 +62,7 @@ int	main(void) {
 	Bureaucrat				boss("Boss", 4);
 	ShrubberyCreationForm	shrub("shrubby");
 	RobotomyRequestForm		robotomy("John");
+	PresidentialPardonForm	pardon("John");
 
 	testFormExecute(new_guy, boss, shrub);
 	testBureaucratExecute(new_guy, boss, robotomy);

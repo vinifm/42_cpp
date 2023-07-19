@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 12:30:29 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 17:52:45 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:23:48 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #define	CYAN	"\033[1;36m"
 #define	BLUE	"\033[1;34m"
 #define	WHITE	"\033[1;37m"
+#define	ORANGE	"\033[1;38;5;202m"
 #define	PURPLE	"\033[1;38;5;105m"
 
 #endif
