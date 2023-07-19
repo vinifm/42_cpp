@@ -6,11 +6,12 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:07:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 17:45:19 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:09:59 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ShrubberyCreationForm.hpp"
+#include "../include/RobotomyRequestForm.hpp"
 
 void	title(std::string msg, std::string color, size_t size);
 
@@ -53,15 +54,16 @@ void	testBureaucratExecute(Bureaucrat& new_guy,
 
 int	main(void) {
 	// AForm	Form;	// Should not work since AForm is abstract
+	std::srand((unsigned int) time(NULL));
 
 	title("CONSTRUCTORS", MAGENTA, 50);
 	Bureaucrat				new_guy("John", 150);
 	Bureaucrat				boss("Boss", 4);
 	ShrubberyCreationForm	shrub("shrubby");
-	ShrubberyCreationForm	tree("tree");
+	RobotomyRequestForm		robotomy("John");
 
 	testFormExecute(new_guy, boss, shrub);
-	testBureaucratExecute(new_guy, boss, tree);
+	testBureaucratExecute(new_guy, boss, robotomy);
 
 	title("DESTRUCTORS", MAGENTA, 50);
 }
