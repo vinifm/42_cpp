@@ -49,7 +49,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-	_checkExecutionPermission(executor);
+	_checkExecutePermission(executor);
 	std::string		filename = _target + "_shrubbery";
 	std::ofstream	outfile(filename.c_str());
 

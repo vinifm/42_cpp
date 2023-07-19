@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:56:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/18 17:49:42 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:41:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,31 @@ void	Bureaucrat::decrementGrade(unsigned int amount) {
 
 void	Bureaucrat::signForm(AForm& form) {
 	try {
-		form.beSigned(*this);
+		if (form.beSigned(*this)) {
+			std::cout << PURPLE << "Bureaucrat " RESET
+				<< getName() << " signed form "
+				<< form.getName()
+				<< std::endl;
+		}
+	} catch (std::exception& e) {
+		std::cout << PURPLE "Bureaucrat " RESET
+			<< getName() << " could not sign form "
+			<< form.getName() << " because "
+			<< e.what()
+			<< std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(const AForm& form) {
+	try {
+		form.execute(*this);
 		std::cout << PURPLE << "Bureaucrat " RESET
-			<< getName() << " signed form "
+			<< getName() << " executed form "
 			<< form.getName()
 			<< std::endl;
 	} catch (std::exception& e) {
 		std::cout << PURPLE "Bureaucrat " RESET
-			<< getName() << " could not sign " YELLOW "form " RESET
+			<< getName() << " could not execute form "
 			<< form.getName() << " because "
 			<< e.what()
 			<< std::endl;

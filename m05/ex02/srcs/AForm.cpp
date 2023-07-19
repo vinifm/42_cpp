@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 12:27:55 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/18 17:33:03 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:39:31 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,24 @@ AForm::~AForm() {
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
 
 /* Change form status to signed if Bureaucrat grade is high enough */
-void	AForm::beSigned(const Bureaucrat& bureaucrat) {
+bool	AForm::beSigned(const Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() > getSignGrade())
 		throw GradeTooLowException();
-	_signed = true;
+	if (!checkSigned()) {
+		_signed = true;
+		return true;
+	}
+	return false;
+}
+
+bool	AForm::checkSigned() const {
+	if (getSigned()) {
+		std::cout << "Save your ink! "
+			<< getName() << " is already signed."
+			<< std::endl;
+		return true;
+	}
+	return false;
 }
 
 void	AForm::_checkGrade(const unsigned int grade) {
@@ -76,12 +90,14 @@ void	AForm::_checkGrade(const unsigned int grade) {
 }
 
 /* Check if form is signed and if bureaucrat grade is high enough */
-void	AForm::_checkExecutionPermission(const Bureaucrat& executor) const {
+void	AForm::_checkExecutePermission(const Bureaucrat& executor) const {
 	if (!getSigned())
 		throw FormNotSignedException();
 	if (executor.getGrade() > getExecGrade())
 		throw GradeTooLowException();
 }
+
+
 
 /*--- ACCESSORS --------------------------------------------------------------*/
 

@@ -29,8 +29,9 @@ public:
 	AForm& operator=(const AForm& rhs);
 	virtual ~AForm();
 
-	void			beSigned(const Bureaucrat& bureaucrat);
+	bool			beSigned(const Bureaucrat& bureaucrat);
 	virtual void	execute(const Bureaucrat& executor) const = 0;
+	bool			checkSigned() const;
 
 	const std::string	getName() const;
 	bool				getSigned() const;
@@ -39,7 +40,7 @@ public:
 
 protected:
 	std::string	_target;
-	void		_checkExecutionPermission(const Bureaucrat& executor) const;
+	void		_checkExecutePermission(const Bureaucrat& executor) const;
 
 private:
 	const std::string	_name;

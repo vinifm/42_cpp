@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:23:49 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/18 17:48:08 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:09:56 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ public:
 	void	incrementGrade(unsigned int amount);
 	void	decrementGrade(unsigned int amount);
 	void	signForm(AForm& form);
+	void	executeForm(const AForm& form);
 
 	const std::string	getName() const;
 	unsigned int		getGrade() const;

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:07:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/18 17:52:17 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:45:19 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,41 @@
 
 void	title(std::string msg, std::string color, size_t size);
 
-void	testShrubberyCreationForm() {
+void	testFormExecute(Bureaucrat& new_guy, Bureaucrat& boss, AForm& form) {
+	title("FORM EXECUTE METHOD", MAGENTA, 50);
+	try {
+		std::cout << WHITE "Unsigned form: " RESET;
+		form.execute(new_guy);
+	} catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	boss.signForm(form);
+
+	try {
+		std::cout << WHITE "Low grade: " RESET;
+		form.execute(new_guy);
+	} catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	form.execute(boss);
+}
+
+void	testBureaucratExecute(Bureaucrat& new_guy,
+	Bureaucrat& boss,
+	AForm& form)
+{
+	title("BUREAUCRAT EXECUTE METHOD", MAGENTA, 50);
+	try {
+		std::cout << WHITE "Unsigned form: " RESET;
+		boss.executeForm(form);
+	} catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	boss.signForm(form);
+
+	try {
+		std::cout << WHITE "Low grade: " RESET;
+		new_guy.executeForm(form);
+	} catch (std::exception& e) { std::cout << e.what() << std::endl; }
+
+	boss.executeForm(form);
 }
 
 int	main(void) {
@@ -24,26 +58,10 @@ int	main(void) {
 	Bureaucrat				new_guy("John", 150);
 	Bureaucrat				boss("Boss", 4);
 	ShrubberyCreationForm	shrub("shrubby");
+	ShrubberyCreationForm	tree("tree");
 
-	title("EXECUTE METHOD", MAGENTA, 50);
-	try {
-		std::cout << WHITE "Unsigned form: " RESET;
-		shrub.execute(new_guy);
-	} catch (std::exception& e) { std::cout << e.what() << std::endl; }
-
-	boss.signForm(shrub);
-
-	try {
-		std::cout << WHITE "Low grade: " RESET;
-		shrub.execute(new_guy);
-	} catch (std::exception& e) { std::cout << e.what() << std::endl; }
-
-	shrub.execute(boss);
-
-	// try {
-	// 	std::cout << WHITE "Unsigned form: " RESET;
-	// 	shrub.execute(new_guy);
-	// } catch (std::exception& e) { std::cout << e.what(); }
+	testFormExecute(new_guy, boss, shrub);
+	testBureaucratExecute(new_guy, boss, tree);
 
 	title("DESTRUCTORS", MAGENTA, 50);
 }
