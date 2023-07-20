@@ -18,4 +18,7 @@ Subtype polymorphism, abstract classes.
 ### [Module 05](m05) ([wiki](wiki/m05.md))[^1]
 Repetition and exceptions.
 
+### [Module 06](m06) ([wiki](wiki/m06.md))
+C++ casts.
+
 [^1]: Ascii Tree Art from ex02 from [ascii.co.uk](https://ascii.co.uk/art/tree)
