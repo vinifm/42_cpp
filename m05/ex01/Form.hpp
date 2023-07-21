@@ -36,6 +36,11 @@ public:
 	unsigned int		getSignGrade() const;
 	unsigned int		getExecGrade() const;
 
+protected:
+	void	setName(const std::string);
+	void	setSignGrade(unsigned int);
+	void	setExecGrade(unsigned int);
+
 private:
 	const std::string	_name;
 	bool				_signed;

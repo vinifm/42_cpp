@@ -63,14 +63,16 @@ void	testSignMethods() {
 
 void	testCopies() {
 	title("COPIES", MAGENTA, 50);
-	Form	nameless;
-	Form	copy_nameless(nameless);
-	std::cout << copy_nameless << "\n" << std::endl;
+	Form	coffee("Coffee", 1, 1);
+	Form	tea("Tea", 2, 2);
 
-	Form	coffee("Coffee", 32, 52);
-	Form	copy_coffee = coffee;
-	std::cout << copy_coffee << std::endl;
+	std::cout << coffee << std::endl;
+	std::cout << tea << std::endl;
 
+	tea = coffee;
+
+	std::cout << coffee << std::endl;
+	std::cout << tea << std::endl;
 	title("Destructors", BLUE, 30);
 }
 
