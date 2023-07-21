@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:15:40 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 18:30:29 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:02:02 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 PresidentialPardonForm::PresidentialPardonForm() :
 	AForm ((ORANGE "Presidential Pardon" RESET), 25, 5) {
-		_target = "targetless";
 		std::cout << "...It's got no target!" << std::endl;
 }
 
@@ -29,15 +28,14 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string target) :
 
 PresidentialPardonForm::PresidentialPardonForm(
 	const PresidentialPardonForm& copy) : AForm(copy) {
-		*this = copy;
 		std::cout << getName() << " Copy operator called" << std::endl;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(
 	const PresidentialPardonForm& rhs) {
 		if (this != &rhs)
-			_target = rhs._target;
-		std::cout << getName() << "Copy assignment operator called"
+			_copyAssignmentMutator(rhs);
+		std::cout << getName() << " Copy assignment operator called"
 			<< std::endl;
 		return *this;
 }

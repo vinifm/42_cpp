@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 12:27:55 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 17:39:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:12:54 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
 AForm::AForm() :
-	_name("Blank"), _signed(false), _signGrade(150), _execGrade(150) {
-		std::cout << "You've found a blank" YELLOW " AForm. " RESET
-			<< "It's pretty useless."
-			<< std::endl;
+	_target("NO_TARGET"),
+	_name("Blank"),
+	_signed(false),
+	_signGrade(150),
+	_execGrade(150)
+{
+	std::cout << "You've found a blank" YELLOW " AForm. " RESET
+		<< "It's pretty useless."
+		<< std::endl;
 }
 
 AForm::AForm(
@@ -26,21 +31,28 @@ AForm::AForm(
 	const unsigned int signGrade,
 	const unsigned int execGrade
 	) :
-	_name(name), _signGrade(signGrade), _execGrade(execGrade) {
-		_checkGrade(signGrade);
-		_checkGrade(execGrade);
-		std::cout << YELLOW "AForm " RESET << "\""
-			<< getName() << "\" with sign grade "
-			<< getSignGrade() << " and execute grade "
-			<< getExecGrade() << " is delivered to your desk."
-			<< std::endl;
+	_target("NO_TARGET"),
+	_name(name),
+	_signed(false),
+	_signGrade(signGrade),
+	_execGrade(execGrade)
+{
+	_checkGrade(signGrade);
+	_checkGrade(execGrade);
+	std::cout << YELLOW "AForm " RESET << "\""
+		<< getName() << "\" with sign grade "
+		<< getSignGrade() << " and execute grade "
+		<< getExecGrade() << " is delivered to your desk."
+		<< std::endl;
 }
 
 AForm::AForm(const AForm& copy) :
+	_target(copy.getTarget()),
 	_name(copy.getName()),
+	_signed(copy.getSigned()),
 	_signGrade(copy.getSignGrade()),
-	_execGrade(copy.getExecGrade()) {
-		*this = copy;
+	_execGrade(copy.getExecGrade())
+{
 		std::cout << YELLOW "AForm " RESET "Copy constructor called"
 			<< std::endl;
 }
@@ -49,7 +61,7 @@ AForm&	AForm::operator=(const AForm &rhs) {
 	std::cout << YELLOW "AForm " RESET "Copy assignment operator called"
 		<< std::endl;
 	if (this != &rhs)
-		_signed = rhs.getSigned();
+		_copyAssignmentMutator(rhs);
 	return *this;
 }
 
@@ -65,14 +77,14 @@ AForm::~AForm() {
 bool	AForm::beSigned(const Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() > getSignGrade())
 		throw GradeTooLowException();
-	if (!checkSigned()) {
+	if (!_checkSigned()) {
 		_signed = true;
 		return true;
 	}
 	return false;
 }
 
-bool	AForm::checkSigned() const {
+bool	AForm::_checkSigned() const {
 	if (getSigned()) {
 		std::cout << "Save your ink! "
 			<< getName() << " is already signed."
@@ -105,6 +117,17 @@ const std::string	AForm::getName() const { return _name; }
 bool				AForm::getSigned() const { return _signed; }
 unsigned int		AForm::getSignGrade() const { return _signGrade; }
 unsigned int		AForm::getExecGrade() const { return _execGrade; }
+std::string			AForm::getTarget() const { return _target; }
+
+/*--- MUTATORS ---------------------------------------------------------------*/
+
+void	AForm::_copyAssignmentMutator(const AForm& rhs) {
+	_target = rhs.getTarget();
+	_signed = rhs.getSigned();
+	const_cast<std::string&>(_name) = rhs.getName();
+	const_cast<unsigned int&>(_signGrade) = rhs.getSignGrade();
+	const_cast<unsigned int&>(_execGrade) = rhs.getExecGrade();
+}
 
 /*--- EXCEPTIONS -------------------------------------------------------------*/
 

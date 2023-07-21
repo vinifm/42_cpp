@@ -16,6 +16,8 @@
 #include "../include/colors.hpp"
 #include "../include/Bureaucrat.hpp"
 #include <iostream>
+#include <stdlib.h>	// srand, rand
+#include <time.h>
 
 class Bureaucrat;
 
@@ -31,16 +33,18 @@ public:
 
 	bool			beSigned(const Bureaucrat& bureaucrat);
 	virtual void	execute(const Bureaucrat& executor) const = 0;
-	bool			checkSigned() const;
 
 	const std::string	getName() const;
 	bool				getSigned() const;
 	unsigned int		getSignGrade() const;
 	unsigned int		getExecGrade() const;
+	std::string			getTarget() const;
 
 protected:
 	std::string	_target;
 	void		_checkExecutePermission(const Bureaucrat& executor) const;
+	bool		_checkSigned() const;
+	void		_copyAssignmentMutator(const AForm& rhs);
 
 private:
 	const std::string	_name;

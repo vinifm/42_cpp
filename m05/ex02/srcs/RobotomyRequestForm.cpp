@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:50:36 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 18:30:56 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:04:02 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 RobotomyRequestForm::RobotomyRequestForm() :
 	AForm ((CYAN "Robotomy Request" RESET), 72, 45) {
-		_target = "targetless";
 		std::cout << "...It's got no target!" << std::endl;
 }
 
@@ -29,15 +28,14 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string target) :
 
 RobotomyRequestForm::RobotomyRequestForm(
 	const RobotomyRequestForm& copy) : AForm(copy) {
-		*this = copy;
 		std::cout << getName() << " Copy operator called" << std::endl;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(
 	const RobotomyRequestForm& rhs) {
 		if (this != &rhs)
-			_target = rhs._target;
-		std::cout << getName() << "Copy assignment operator called"
+			_copyAssignmentMutator(rhs);
+		std::cout << getName() << " Copy assignment operator called"
 			<< std::endl;
 		return *this;
 }
@@ -49,6 +47,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+	std::srand((unsigned int) time(NULL));
 	_checkExecutePermission(executor);
 	std::cout << "VrrRRrrr vrrrRRRrr VrrrRrrRrvrr... ";
 	if (rand() % 2) {

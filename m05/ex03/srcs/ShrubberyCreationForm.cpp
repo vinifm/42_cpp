@@ -16,7 +16,6 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() :
 	AForm ((GREEN "Shrubbery Creation" RESET), 145, 137) {
-		_target = "targetless";
 		std::cout << "...It's got no target!" << std::endl;
 }
 
@@ -29,19 +28,17 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) :
 
 ShrubberyCreationForm::ShrubberyCreationForm(
 	const ShrubberyCreationForm& copy) : AForm(copy) {
-		*this = copy;
 		std::cout << getName() << " Copy operator called" << std::endl;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(
 	const ShrubberyCreationForm& rhs) {
 		if (this != &rhs)
-			_target = rhs._target;
-		std::cout << getName() << "Copy assignment operator called"
+			_copyAssignmentMutator(rhs);
+		std::cout << getName() << " Copy assignment operator called"
 			<< std::endl;
 		return *this;
 }
-
 ShrubberyCreationForm::~ShrubberyCreationForm() {
 	std::cout << getName() << " has been shredded" << std::endl;
 }

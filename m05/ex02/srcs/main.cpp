@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:07:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/19 18:26:29 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:30:51 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,52 @@ void	testBureaucratExecute(Bureaucrat& new_guy,
 	boss.executeForm(form);
 }
 
+void	testCopies(
+	PresidentialPardonForm&	ppf,
+	RobotomyRequestForm&	rrf,
+	ShrubberyCreationForm&	scf
+) {
+	title("COPIES", MAGENTA, 50);
+
+	title("Copy Operator", BLUE, 30);
+	PresidentialPardonForm	ppf_copy_op(ppf);
+	ShrubberyCreationForm	scf_copy_op(scf);
+	RobotomyRequestForm		rrf_copy_op(rrf);
+
+	std::cout << std::endl
+		<< ppf_copy_op << std::endl
+		<< scf_copy_op << std::endl
+		<< rrf_copy_op << std::endl;
+
+	title("Copy Assignment Operator", BLUE, 30);
+	PresidentialPardonForm	ppf_copy_ass;
+	ShrubberyCreationForm	scf_copy_ass;
+	RobotomyRequestForm		rrf_copy_ass;
+	ppf_copy_ass = ppf;
+	scf_copy_ass = scf;
+	rrf_copy_ass = rrf;
+
+	std::cout << std::endl
+		<< ppf_copy_ass	<< std::endl
+		<< scf_copy_ass	<< std::endl
+		<< rrf_copy_ass	<< std::endl;
+
+	title("Destructors", BLUE, 30);
+}
+
 int	main(void) {
 	// AForm	Form;	// Should not work since AForm is abstract
-	std::srand((unsigned int) time(NULL));
 
 	title("CONSTRUCTORS", MAGENTA, 50);
 	Bureaucrat				new_guy("John", 150);
 	Bureaucrat				boss("Boss", 4);
-	ShrubberyCreationForm	shrub("shrubby");
-	RobotomyRequestForm		robotomy("John");
 	PresidentialPardonForm	pardon("John");
+	RobotomyRequestForm		robotomy("John");
+	ShrubberyCreationForm	shrub("shrubby");
 
 	testFormExecute(new_guy, boss, shrub);
 	testBureaucratExecute(new_guy, boss, robotomy);
+	// testCopies(pardon, robotomy, shrub);
 
 	title("DESTRUCTORS", MAGENTA, 50);
 }
