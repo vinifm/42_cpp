@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:57:45 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/24 19:57:13 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:51:23 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,36 @@
 #include "../include/colors.hpp"
 
 void	title(std::string msg, std::string color, size_t size);
-void	convert(std::string str) { ScalarConverter::convert(str); }
+void	convert(std::string str)
+{
+	std::cout << "String: " << str << "\t";
+	ScalarConverter::convert(str);
+}
 
 void	testFloat()
 {
-	title("FLOAT CONVERSION", MAGENTA, 50);
-	convert(".043f");
+	title("FLOAT", MAGENTA, 50);
+	convert(".42f");
+	convert("42.f");
 	convert("42f");
-	convert("-402f");
+	convert("-42f");
 
 	title("INVALID CASES", BLUE, 30);
 	convert("4ff");
 	convert("4.09.8f");
 }
 
+void	testDouble()
+{
+	title("DOUBLE", MAGENTA, 50);
+	convert("4.2");
+	convert(".3");
+	convert("42.");
+}
+
 void	testInt()
 {
-	title("INT CONVERSION", MAGENTA, 50);
+	title("INT", MAGENTA, 50);
 	convert("42");
 	convert("-200");
 }
@@ -39,6 +52,7 @@ int	main()
 {
 	// ScalarConverter	foo;	// Should not work since constructor is private;
 	testFloat();
+	testDouble();
 	testInt();
 	return 0;
 }

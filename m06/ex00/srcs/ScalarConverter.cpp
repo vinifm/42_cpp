@@ -13,7 +13,7 @@
 #include "../include/ScalarConverter.hpp"
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
-std::string ScalarConverter::_str = "";
+std::string	ScalarConverter::_str = "";
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter& copy) { (void) copy; }
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
@@ -30,13 +30,6 @@ ScalarConverter::~ScalarConverter() {}
 	Supported scalar types: char, int, float, double.
 
 	[ ] Detect type of literal passed as parameter;
-		[ ] INT:
-			[x] may start with sign;
-			[x] only digits;
-		[ ] FLOAT:
-			[ ] may start with sign;
-			[ ] may have one dot;
-			[ ] MUST end with an "f";
 	[ ] Convert from string to actual type;
 	[ ] Convert EXPLICITLY to the three other data types;
 
@@ -48,6 +41,9 @@ void	ScalarConverter::convert(const std::string literal)
 	_str = literal;
 	if (_isFloat()) {
 		_printType("float");
+	}
+	else if (_isDouble()) {
+		_printType("double");
 	}
 	else if (_isInt()) {
 		_printType("int");
@@ -61,6 +57,7 @@ void	ScalarConverter::_printType(const std::string type)
 	std::cout << "Detected type: " << type << std::endl;
 }
 
+/* May have one dot, must end with 'f' */
 bool	ScalarConverter::_isFloat()
 {
 	size_t	i = 0;
@@ -77,8 +74,27 @@ bool	ScalarConverter::_isFloat()
 			dot = true;
 		i++;
 	}
-	if (_str[i] != 'f')
+	if (_str[_str.length() - 1] != 'f')
 		return false;
+	return true;
+}
+
+/* Must have one dot */
+bool	ScalarConverter::_isDouble() {
+	size_t	i = 0;
+	bool	dot = false;
+
+	if (_hasSign())
+		i++;
+	while (_str[i] != '\0') {
+		if (_str[i] != '.' && !std::isdigit(_str[i]))
+			return false;
+		if (_str[i] == '.' && dot)
+			return false;
+		if (_str[i] == '.')
+			dot = true;
+		i++;
+	}
 	return true;
 }
 
