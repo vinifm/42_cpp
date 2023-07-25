@@ -49,11 +49,8 @@ private:
 	static void	_convertChar();
 
 	static void	_printConversions();
+	static void	_printIntOverflow();
 	static bool	_hasSign();
-
-	static bool	_doubleOverflow();
-
-	static void	_printImpossible();
 
 	class InvalidTypeException: public std::exception {
 		public: virtual const char* what() const throw();
