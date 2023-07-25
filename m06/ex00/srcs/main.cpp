@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:57:45 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/25 12:51:23 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/25 18:02:50 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void	title(std::string msg, std::string color, size_t size);
 void	convert(std::string str)
 {
-	std::cout << "String: " << str << "\t";
 	ScalarConverter::convert(str);
 }
 
@@ -29,8 +28,10 @@ void	testFloat()
 	convert("-42f");
 
 	title("INVALID CASES", BLUE, 30);
-	convert("4ff");
-	convert("4.09.8f");
+	try { convert("4ff"); }
+	catch (std::exception& e) {std::cout << e.what() << std::endl; }
+	try { convert("4.09.8f"); }
+	catch (std::exception& e) {std::cout << e.what() << std::endl; }
 }
 
 void	testDouble()
@@ -38,22 +39,44 @@ void	testDouble()
 	title("DOUBLE", MAGENTA, 50);
 	convert("4.2");
 	convert(".3");
+	convert("-.09");
 	convert("42.");
 }
 
 void	testInt()
 {
 	title("INT", MAGENTA, 50);
+	convert("4");
+	convert("2147483648");
 	convert("42");
 	convert("-200");
+}
+
+void	testChar() {
+	title("CHAR", MAGENTA, 50);
+	convert("a");
+	convert("!");
+	convert("~");
+}
+
+void	testPseudoLiteral() {
+	title("PSEUDO LITERAL", MAGENTA, 50);
+	convert("+inf");
+	convert("-inf");
+	convert("nan");
+	convert("+inff");
+	convert("-inff");
+	convert("nanf");
 }
 
 int	main()
 {
 	// ScalarConverter	foo;	// Should not work since constructor is private;
-	testFloat();
-	testDouble();
+	// testFloat();
+	// testDouble();
 	testInt();
+	// testChar();
+	// testPseudoLiteral();
 	return 0;
 }
 

@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <sstream>	// istringstream;
+#include <iomanip>	// setprecision;
 
 class ScalarConverter {
 public:
@@ -26,15 +28,32 @@ private:
 	ScalarConverter& operator=(const ScalarConverter& rhs);
 	~ScalarConverter();
 
-	static std::string _str;
+	static std::string	_str;
+	static std::string	_type;
+	static int			_int;
+	static float		_float;
+	static double		_double;
+	static char			_char;
+	static long double	_check;
 
-	static bool	_isInt();
 	static bool	_isFloat();
 	static bool	_isDouble();
+	static bool	_isInt();
 	static bool	_isChar();
+	static bool	_isPseudoLiteral();
+	static bool _isdigit(int c);
 
-	static void	_printType(const std::string type);
+	static void	_convertFloat();
+	static void	_convertDouble();
+	static void	_convertInt();
+	static void	_convertChar();
+
+	static void	_printConversions();
 	static bool	_hasSign();
+
+	class InvalidTypeException: public std::exception {
+		public: virtual const char* what() const throw();
+	};
 };
 
 #endif

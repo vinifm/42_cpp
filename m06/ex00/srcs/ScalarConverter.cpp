@@ -12,8 +12,14 @@
 
 #include "../include/ScalarConverter.hpp"
 
-/*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 std::string	ScalarConverter::_str = "";
+std::string	ScalarConverter::_type = "";
+int			ScalarConverter::_int = 0;
+float		ScalarConverter::_float = 0;
+double		ScalarConverter::_double = 0;
+char		ScalarConverter::_char = 0;
+
+/*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter& copy) { (void) copy; }
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
@@ -29,7 +35,7 @@ ScalarConverter::~ScalarConverter() {}
 	their respective converted values.
 	Supported scalar types: char, int, float, double.
 
-	[ ] Detect type of literal passed as parameter;
+	[x] Detect type of literal passed as parameter;
 	[ ] Convert from string to actual type;
 	[ ] Convert EXPLICITLY to the three other data types;
 
@@ -40,80 +46,42 @@ void	ScalarConverter::convert(const std::string literal)
 {
 	_str = literal;
 	if (_isFloat()) {
-		_printType("float");
+		_type = "float";
 	}
 	else if (_isDouble()) {
-		_printType("double");
+		_type = "double";
 	}
 	else if (_isInt()) {
-		_printType("int");
+		_type = "int";
+		_convertInt();
+	}
+	else if (_isChar()) {
+		_type = "char";
+	}
+	else if (_isPseudoLiteral()) {
+		_type = "pseudo literal";
 	}
 	else
-		std::cout << "INVALID TYPE" << std::endl;
+		throw InvalidTypeException();
+	_printConversions();
 }
 
-void	ScalarConverter::_printType(const std::string type)
+void	ScalarConverter::_convertInt() {
+	std::istringstream	iss(_str);
+
+	iss >> _int;
+	_char = static_cast<char>(_int);
+	_float = static_cast<float>(_int);
+	_double = static_cast<double>(_int);
+}
+
+bool	ScalarConverter::_hasSign()
 {
-	std::cout << "Detected type: " << type << std::endl;
-}
-
-/* May have one dot, must end with 'f' */
-bool	ScalarConverter::_isFloat()
-{
-	size_t	i = 0;
-	bool	dot = false;
-
-	if (_hasSign())
-		i++;
-	while (_str[i + 1] != '\0') {
-		if (_str[i] != '.' && !std::isdigit(_str[i]))
-			return false;
-		if (_str[i] == '.' && dot)
-			return false;
-		if (_str[i] == '.')
-			dot = true;
-		i++;
-	}
-	if (_str[_str.length() - 1] != 'f')
-		return false;
-	return true;
-}
-
-/* Must have one dot */
-bool	ScalarConverter::_isDouble() {
-	size_t	i = 0;
-	bool	dot = false;
-
-	if (_hasSign())
-		i++;
-	while (_str[i] != '\0') {
-		if (_str[i] != '.' && !std::isdigit(_str[i]))
-			return false;
-		if (_str[i] == '.' && dot)
-			return false;
-		if (_str[i] == '.')
-			dot = true;
-		i++;
-	}
-	return true;
-}
-
-bool	ScalarConverter::_isInt()
-{
-	size_t	i = 0;
-
-	if (_hasSign())
-		i++;
-	while (_str[i] != '\0') {
-		if (!std::isdigit(_str[i]))
-			return false;
-		i++;
-	}
-	return true;
-}
-
-bool	ScalarConverter::_hasSign() {
 	if (_str[0] == '+' || _str[0] == '-')
 		return true;
 	return false;
+}
+
+const char*	ScalarConverter::InvalidTypeException::what() const throw() {
+	return "INVALID TYPE";
 }
