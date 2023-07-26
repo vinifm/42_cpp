@@ -18,7 +18,6 @@ int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0;
 double		ScalarConverter::_double = 0;
 char		ScalarConverter::_char = 0;
-bool		ScalarConverter::_intOverflow = false;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 ScalarConverter::ScalarConverter() {}
@@ -73,12 +72,10 @@ void	ScalarConverter::_convertInt()
 
 	iss >> _int;
 	if (iss.fail())
-		_intOverflow = true;
-	else {
-		_char = static_cast<char>(_int);
-		_float = static_cast<float>(_int);
-		_double = static_cast<double>(_int);
-	}
+		throw InvalidIntException();
+	_char = static_cast<char>(_int);
+	_float = static_cast<float>(_int);
+	_double = static_cast<double>(_int);
 }
 
 bool	ScalarConverter::_hasSign()
@@ -90,4 +87,8 @@ bool	ScalarConverter::_hasSign()
 
 const char*	ScalarConverter::InvalidTypeException::what() const throw() {
 	return "INVALID TYPE";
+}
+
+const char* ScalarConverter::InvalidIntException::what() const throw() {
+	return "INVALID INT";
 }

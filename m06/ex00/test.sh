@@ -19,6 +19,7 @@ fi
 if [ $1 = "int" ] || [ $1 = "all" ]; then
 	echo -e "${YELLOW}/*--- INT CONVERSIONS ---*/${RESET}"
 	while read line; do
+		echo -e "String literal: $line"
 		$convert "$line"
 	done < $int
 fi

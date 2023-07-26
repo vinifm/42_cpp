@@ -34,7 +34,6 @@ private:
 	static float		_float;
 	static double		_double;
 	static char			_char;
-	static bool			_intOverflow;
 
 	static bool	_isFloat();
 	static bool	_isDouble();
@@ -57,6 +56,10 @@ private:
 	static bool	_hasSign();
 
 	class InvalidTypeException: public std::exception {
+		public: virtual const char* what() const throw();
+	};
+
+	class InvalidIntException: public std::exception {
 		public: virtual const char* what() const throw();
 	};
 };
