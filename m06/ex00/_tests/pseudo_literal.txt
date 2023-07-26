@@ -1,0 +1,6 @@
+-inf
++inf
+nan
+-inff
++inf
+nanf

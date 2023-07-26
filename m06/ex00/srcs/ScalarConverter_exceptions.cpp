@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:13:30 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/26 15:00:01 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:35:51 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,19 @@ bool	ScalarConverter::_intOverflow()
 		return true;
 	return false;
 }
+
 bool	ScalarConverter::_floatOverflow()
 {
 	double	float_max = std::numeric_limits<float>::max();
 	if (_double < -float_max || _double > float_max)
+		return true;
+	return false;
+}
+
+bool	ScalarConverter::_charOverflow()
+{
+	if (_double < std::numeric_limits<char>::min()
+		|| _double > std::numeric_limits<char>::max())
 		return true;
 	return false;
 }

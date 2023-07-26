@@ -55,7 +55,8 @@ void	ScalarConverter::convert(const std::string literal)
 	else if (_isChar())
 		_convertChar();
 	else if (_isPseudoLiteral()) {
-		_type = "pseudo literal";
+		_printPseudoLiteral();
+		return ;
 	}
 	else
 		throw InvalidTypeException();
@@ -109,9 +110,24 @@ void	ScalarConverter::_convertDouble()
 	_float = static_cast<float>(_double);
 }
 
-bool	ScalarConverter::_hasSign()
+/* Add 'f' to double pseudo literal */
+std::string	ScalarConverter::_floatPseudoLiteral()
 {
-	if (_str[0] == '+' || _str[0] == '-')
-		return true;
-	return false;
+	std::string	copy = _str;
+	if (copy == "nan" || copy == "nanf")
+		return "nanf";
+	else if (copy.length() == 4)
+		return copy.append("f");
+	return _str;
+}
+
+/* Remove 'f' from a float pseudo literal */
+std::string	ScalarConverter::_doublePseudoLiteral()
+{
+	std::string	copy = _str;
+	if (copy == "nanf")
+		return "nan";
+	else if (copy.length() == 5)
+		return copy.substr(0, copy.length() - 1);
+	return _str;
 }

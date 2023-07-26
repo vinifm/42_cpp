@@ -40,6 +40,14 @@ private:
 	static char			_char;
 	static size_t		_precision;
 
+	static void			_convertFloat();
+	static void			_convertDouble();
+	static void			_convertInt();
+	static void			_convertChar();
+	static std::string	_floatPseudoLiteral();
+	static std::string	_doublePseudoLiteral();
+
+	// _detect.cpp
 	static bool	_isFloat();
 	static bool	_isDouble();
 	static bool	_isInt();
@@ -47,21 +55,20 @@ private:
 	static bool	_isPseudoLiteral();
 	static bool _isdigit(int c);
 	static bool	_isDisplayableChar(char c);
+	static bool	_hasSign();
 
-	static void	_convertFloat();
-	static void	_convertDouble();
-	static void	_convertInt();
-	static void	_convertChar();
-
+	// _print.cpp
 	static void	_printChar();
 	static void	_printInt();
 	static void	_printFloat();
 	static void	_printDouble();
 	static void	_printConversions();
-	static bool	_hasSign();
+	static void	_printPseudoLiteral();
 
+	// _exceptions.cpp
 	static bool	_intOverflow();
 	static bool	_floatOverflow();
+	static bool	_charOverflow();
 
 	class InvalidTypeException: public std::exception {
 		public: virtual const char* what() const throw();

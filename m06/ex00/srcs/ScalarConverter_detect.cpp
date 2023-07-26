@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:42:47 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/26 14:35:04 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:39:14 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,13 @@ bool	ScalarConverter::_isdigit(int c)
 bool	ScalarConverter::_isDisplayableChar(char c)
 {
 	if (c >= '!' && c <= '~')
+		return true;
+	return false;
+}
+
+bool	ScalarConverter::_hasSign()
+{
+	if (_str[0] == '+' || _str[0] == '-')
 		return true;
 	return false;
 }

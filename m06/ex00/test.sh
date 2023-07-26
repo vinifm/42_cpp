@@ -14,6 +14,7 @@ char="$test_dir/char_test.txt"
 int="$test_dir/int_test.txt"
 float="$test_dir/float_test.txt"
 double="$test_dir/double_test.txt"
+pseudo_literal="$test_dir/pseudo_literal.txt"
 
 if [ $# -ne 1 ]; then
 	echo "Usage: $0 <test_mode>"
@@ -54,4 +55,13 @@ if [ $1 = "double" ] || [ $1 = "all" ]; then
 		$convert "$line"
 		echo ""
 	done < $double
+fi
+
+if [ $1 = "pseudo_literal" ] || [ $1 = "all" ]; then
+	echo -e "${YELLOW}/*--- PSEUDO LITERAL CONVERSIONS ---*/${RESET}"
+	while read line; do
+		echo -e "${WHITE}String literal:${RESET} $line"
+		$convert "$line"
+		echo ""
+	done < $pseudo_literal
 fi
