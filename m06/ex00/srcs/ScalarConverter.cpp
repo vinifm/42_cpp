@@ -67,15 +67,18 @@ void	ScalarConverter::convert(const std::string literal)
 	_printConversions();
 }
 
-void	ScalarConverter::_convertInt() {
+void	ScalarConverter::_convertInt()
+{
 	std::istringstream	iss(_str);
 
 	iss >> _int;
 	if (iss.fail())
 		_intOverflow = true;
-	_char = static_cast<char>(_int);
-	_float = static_cast<float>(_int);
-	_double = static_cast<double>(_int);
+	else {
+		_char = static_cast<char>(_int);
+		_float = static_cast<float>(_int);
+		_double = static_cast<double>(_int);
+	}
 }
 
 bool	ScalarConverter::_hasSign()
