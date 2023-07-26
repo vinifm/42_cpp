@@ -64,6 +64,7 @@ void	ScalarConverter::convert(const std::string literal)
 	}
 	else
 		throw InvalidTypeException();
+	_printConversions();
 }
 
 void	ScalarConverter::_convertInt() {
@@ -75,7 +76,6 @@ void	ScalarConverter::_convertInt() {
 	_char = static_cast<char>(_int);
 	_float = static_cast<float>(_int);
 	_double = static_cast<double>(_int);
-	_printConversions();
 }
 
 bool	ScalarConverter::_hasSign()

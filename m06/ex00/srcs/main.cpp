@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:57:45 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/25 21:01:25 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/25 21:12:54 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char** argv)
 		std::cout << "Too many arguments" << std::endl;
 		return -2;
 	}
-	ScalarConverter::convert(argv[1]);
+	try { ScalarConverter::convert(argv[1]); }
+	catch (std::exception& e) { std::cout << e.what() << std::endl; }
 	return 0;
 }
