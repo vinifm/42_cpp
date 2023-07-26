@@ -1,7 +1,6 @@
 *.o
 .nfs*
 .vscode
-*.txt
 *.replace
 
 # executables
@@ -11,6 +10,7 @@ test
 phonebook
 zombie
 replacer
+convert
 
 # subjects
 subject*
