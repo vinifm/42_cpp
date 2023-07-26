@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:09:26 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/26 14:18:20 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:03:51 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 void	ScalarConverter::_printConversions()
 {
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "Detected type: " << _type << std::endl;
+	if (!_precision)
+		_precision = 1;
+	std::cout << std::fixed << std::setprecision(_precision);
+	std::cout << WHITE "Detected type: " RESET << _type << std::endl;
 	_printChar();
 	_printInt();
 	_printFloat();
 	_printDouble();
-	std::cout << std::endl;
 }
 
 void	ScalarConverter::_printChar()
 {
-	std::cout << "char: ";
+	std::cout << WHITE "char: " RESET;
 	if (!_isDisplayableChar(_char))
 		std::cout << "Non-displayable" << std::endl;
 	else
@@ -34,7 +35,7 @@ void	ScalarConverter::_printChar()
 
 void	ScalarConverter::_printInt()
 {
-	std::cout << "int: ";
+	std::cout << WHITE "int: " RESET;
 	if (_intOverflow())
 		std::cout << "impossible" << std::endl;
 	else
@@ -43,7 +44,7 @@ void	ScalarConverter::_printInt()
 
 void	ScalarConverter::_printFloat()
 {
-	std::cout << "float: ";
+	std::cout << WHITE "float: " RESET;
 	if (_floatOverflow())
 		std::cout << "impossible" << std::endl;
 	else
@@ -52,6 +53,6 @@ void	ScalarConverter::_printFloat()
 
 void	ScalarConverter::_printDouble()
 {
-	std::cout << "double: ";
+	std::cout << WHITE "double: " RESET;
 	std::cout << _double << std::endl;
 }

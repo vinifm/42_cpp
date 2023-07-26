@@ -2,6 +2,7 @@
 
 # ANSI escape codes for color
 RESET="\033[0m"
+WHITE="\033[1;37m"
 YELLOW="\033[1;33m"
 
 # Executable
@@ -22,31 +23,35 @@ fi
 if [ $1 = "char" ] || [ $1 = "all" ]; then
 	echo -e "${YELLOW}/*--- CHAR CONVERSIONS ---*/${RESET}"
 	while read line; do
-		echo -e "String literal: $line"
+		echo -e "${WHITE}String literal:${RESET} $line"
 		$convert "$line"
+		echo ""
 	done < $char
 fi
 
 if [ $1 = "int" ] || [ $1 = "all" ]; then
 	echo -e "${YELLOW}/*--- INT CONVERSIONS ---*/${RESET}"
 	while read line; do
-		echo -e "String literal: $line"
+		echo -e "${WHITE}String literal:${RESET} $line"
 		$convert "$line"
+		echo ""
 	done < $int
 fi
 
 if [ $1 = "float" ] || [ $1 = "all" ]; then
 	echo -e "${YELLOW}/*--- FLOAT CONVERSIONS ---*/${RESET}"
 	while read line; do
-		echo -e "String literal: $line"
+		echo -e "${WHITE}String literal:${RESET} $line"
 		$convert "$line"
+		echo ""
 	done < $float
 fi
 
 if [ $1 = "double" ] || [ $1 = "all" ]; then
 	echo -e "${YELLOW}/*--- DOUBLE CONVERSIONS ---*/${RESET}"
 	while read line; do
-		echo -e "String literal: $line"
+		echo -e "${WHITE}String literal:${RESET} $line"
 		$convert "$line"
+		echo ""
 	done < $double
 fi

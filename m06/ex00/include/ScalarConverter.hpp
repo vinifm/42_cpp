@@ -19,6 +19,9 @@
 #include <iomanip>	// setprecision;
 #include <limits>
 
+#define	WHITE	"\033[1;37m"
+#define	RESET	"\033[0m"
+
 class ScalarConverter {
 public:
 	static void	convert(std::string str);
@@ -35,6 +38,7 @@ private:
 	static float		_float;
 	static double		_double;
 	static char			_char;
+	static size_t		_precision;
 
 	static bool	_isFloat();
 	static bool	_isDouble();

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:42:47 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/26 13:21:26 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:35:04 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ bool	ScalarConverter::_isDouble()
 			return false;
 		if (_str[i] == '.' && dot)
 			return false;
+		if (dot && _precision < 7)
+			_precision++;
 		if (_str[i] == '.')
 			dot = true;
 		i++;

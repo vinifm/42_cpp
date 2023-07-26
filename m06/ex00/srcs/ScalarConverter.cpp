@@ -18,6 +18,7 @@ int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0;
 double		ScalarConverter::_double = 0;
 char		ScalarConverter::_char = 0;
+size_t		ScalarConverter::_precision = 0;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 ScalarConverter::ScalarConverter() {}
