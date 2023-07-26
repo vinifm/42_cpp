@@ -18,6 +18,7 @@ int			ScalarConverter::_int = 0;
 float		ScalarConverter::_float = 0;
 double		ScalarConverter::_double = 0;
 char		ScalarConverter::_char = 0;
+bool		ScalarConverter::_intOverflow = false;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 ScalarConverter::ScalarConverter() {}
@@ -70,7 +71,7 @@ void	ScalarConverter::_convertInt() {
 
 	iss >> _int;
 	if (iss.fail())
-		return (_printIntOverflow());
+		_intOverflow = true;
 	_char = static_cast<char>(_int);
 	_float = static_cast<float>(_int);
 	_double = static_cast<double>(_int);

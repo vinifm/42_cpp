@@ -34,7 +34,7 @@ private:
 	static float		_float;
 	static double		_double;
 	static char			_char;
-	static long double	_check;
+	static bool			_intOverflow;
 
 	static bool	_isFloat();
 	static bool	_isDouble();
@@ -42,14 +42,18 @@ private:
 	static bool	_isChar();
 	static bool	_isPseudoLiteral();
 	static bool _isdigit(int c);
+	static bool	_isDisplayableChar(char c);
 
 	static void	_convertFloat();
 	static void	_convertDouble();
 	static void	_convertInt();
 	static void	_convertChar();
 
+	static void	_printChar();
+	static void	_printInt();
+	static void	_printFloat();
+	static void	_printDouble();
 	static void	_printConversions();
-	static void	_printIntOverflow();
 	static bool	_hasSign();
 
 	class InvalidTypeException: public std::exception {

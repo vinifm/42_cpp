@@ -1,4 +1,4 @@
-NAME	= a.out
+NAME	= convert
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
@@ -45,8 +45,7 @@ re: fclean all
 leaks:
 	valgrind $(LFLAGS)
 
-run:
-	@make --silent
-	@./$(NAME)
+test:
+	@./test.sh all
 
-.PHONY: all clean fclean re leaks run
+.PHONY: all clean fclean re leaks test
