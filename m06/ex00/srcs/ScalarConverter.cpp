@@ -45,19 +45,14 @@ ScalarConverter::~ScalarConverter() {}
 void	ScalarConverter::convert(const std::string literal)
 {
 	_str = literal;
-	if (_isFloat()) {
-		_type = "float";
-	}
-	else if (_isDouble()) {
-		_type = "double";
-	}
-	else if (_isInt()) {
-		_type = "int";
+	if (_isDouble())
+		_convertDouble();
+	else if (_isFloat())
+		_convertFloat();
+	else if (_isInt())
 		_convertInt();
-	}
-	else if (_isChar()) {
-		_type = "char";
-	}
+	else if (_isChar())
+		_convertChar();
 	else if (_isPseudoLiteral()) {
 		_type = "pseudo literal";
 	}
@@ -66,10 +61,24 @@ void	ScalarConverter::convert(const std::string literal)
 	_printConversions();
 }
 
+void	ScalarConverter::_convertChar()
+{
+	std::istringstream	iss(_str);
+
+	_type = "char";
+	iss >> _char;
+	if (iss.fail())
+		throw InvalidCharException();
+	_int = static_cast<int>(_char);
+	_float = static_cast<float>(_char);
+	_double = static_cast<double>(_char);
+}
+
 void	ScalarConverter::_convertInt()
 {
 	std::istringstream	iss(_str);
 
+	_type = "int";
 	iss >> _int;
 	if (iss.fail())
 		throw InvalidIntException();
@@ -78,17 +87,35 @@ void	ScalarConverter::_convertInt()
 	_double = static_cast<double>(_int);
 }
 
+void	ScalarConverter::_convertFloat()
+{
+	std::istringstream	iss(_str);
+
+	_type = "float";
+	iss >> _float;
+	if (iss.fail())
+		throw InvalidFloatException();
+	_char = static_cast<char>(_float);
+	_int = static_cast<int>(_float);
+	_double = static_cast<double>(_float);
+}
+
+void	ScalarConverter::_convertDouble()
+{
+	std::istringstream	iss(_str);
+
+	_type = "double";
+	iss >> _double;
+	if (iss.fail())
+		throw InvalidDoubleException();
+	_char = static_cast<char>(_double);
+	_int = static_cast<int>(_double);
+	_float = static_cast<float>(_double);
+}
+
 bool	ScalarConverter::_hasSign()
 {
 	if (_str[0] == '+' || _str[0] == '-')
 		return true;
 	return false;
-}
-
-const char*	ScalarConverter::InvalidTypeException::what() const throw() {
-	return "INVALID TYPE";
-}
-
-const char* ScalarConverter::InvalidIntException::what() const throw() {
-	return "INVALID INT";
 }

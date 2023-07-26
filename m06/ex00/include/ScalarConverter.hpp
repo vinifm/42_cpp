@@ -59,9 +59,23 @@ private:
 		public: virtual const char* what() const throw();
 	};
 
+	class InvalidCharException: public std::exception {
+		public: virtual const char* what() const throw();
+	};
+
 	class InvalidIntException: public std::exception {
 		public: virtual const char* what() const throw();
 	};
+
+	class InvalidFloatException: public std::exception {
+		public: virtual const char* what() const throw();
+	};
+
+	class InvalidDoubleException: public std::exception {
+		public: virtual const char* what() const throw();
+	};
+
+
 };
 
 #endif

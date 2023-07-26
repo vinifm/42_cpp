@@ -19,6 +19,7 @@ INCLUDE	= ./include/
 SRC		= main.cpp \
 			ScalarConverter.cpp \
 			ScalarConverter_detect.cpp \
+			ScalarConverter_exceptions.cpp \
 			ScalarConverter_print.cpp
 
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
