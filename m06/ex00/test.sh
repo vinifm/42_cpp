@@ -8,7 +8,8 @@ YELLOW="\033[1;33m"
 convert="./convert"
 
 # Test files
-int="tests/int_test.txt"
+test_dir="_tests"
+int="$test_dir/int_test.txt"
 
 if [ $# -ne 1 ]; then
 	echo "Usage: $0 <test_mode>"
