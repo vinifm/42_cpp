@@ -67,8 +67,6 @@ void	ScalarConverter::_convertChar()
 
 	_type = "char";
 	iss >> _char;
-	if (iss.fail())
-		throw InvalidCharException();
 	_int = static_cast<int>(_char);
 	_float = static_cast<float>(_char);
 	_double = static_cast<double>(_char);
@@ -79,8 +77,7 @@ void	ScalarConverter::_convertInt()
 	std::istringstream	iss(_str);
 
 	_type = "int";
-	iss >> _int;
-	if (iss.fail())
+	if (!(iss >> _int))
 		throw InvalidIntException();
 	_char = static_cast<char>(_int);
 	_float = static_cast<float>(_int);
@@ -92,8 +89,7 @@ void	ScalarConverter::_convertFloat()
 	std::istringstream	iss(_str);
 
 	_type = "float";
-	iss >> _float;
-	if (iss.fail())
+	if (!(iss >> _float))
 		throw InvalidFloatException();
 	_char = static_cast<char>(_float);
 	_int = static_cast<int>(_float);
@@ -105,8 +101,7 @@ void	ScalarConverter::_convertDouble()
 	std::istringstream	iss(_str);
 
 	_type = "double";
-	iss >> _double;
-	if (iss.fail())
+	if (!(iss >> _double))
 		throw InvalidDoubleException();
 	_char = static_cast<char>(_double);
 	_int = static_cast<int>(_double);

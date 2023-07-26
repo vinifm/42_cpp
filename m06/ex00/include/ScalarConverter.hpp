@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <sstream>	// istringstream;
 #include <iomanip>	// setprecision;
+#include <limits>
 
 class ScalarConverter {
 public:
@@ -55,11 +56,10 @@ private:
 	static void	_printConversions();
 	static bool	_hasSign();
 
-	class InvalidTypeException: public std::exception {
-		public: virtual const char* what() const throw();
-	};
+	static bool	_intOverflow();
+	static bool	_floatOverflow();
 
-	class InvalidCharException: public std::exception {
+	class InvalidTypeException: public std::exception {
 		public: virtual const char* what() const throw();
 	};
 
@@ -74,8 +74,6 @@ private:
 	class InvalidDoubleException: public std::exception {
 		public: virtual const char* what() const throw();
 	};
-
-
 };
 
 #endif
