@@ -31,18 +31,6 @@ ScalarConverter::~ScalarConverter() {}
 
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
 
-/*
-	Take a string representation of a scalar type literal and display their
-	their respective converted values.
-	Supported scalar types: char, int, float, double.
-
-	[x] Detect type of literal passed as parameter;
-	[ ] Convert from string to actual type;
-	[ ] Convert EXPLICITLY to the three other data types;
-
-	[ ] Display message if char is non-displayable;
-	[ ] Display "impossible" in case of overflow;
-*/
 void	ScalarConverter::convert(const std::string literal)
 {
 	_str = literal;

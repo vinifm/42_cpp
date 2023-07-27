@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:26:31 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/27 14:48:09 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:50:36 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	main(void)
 	store_data = Serializer::serialize(data1);
 	data2 = Serializer::deserialize(store_data);
 
-	std::cout << data2->num << std::endl;
+	std::cout << "Original pointer address and value: "
+		<< data1 << " " << data1->num << std::endl;
+	std::cout << "Deserialized pointer address and value: "
+		<< data2 << " " << data2->num << std::endl;
 
 	delete data1;
 }
