@@ -6,12 +6,11 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:57:45 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/25 21:12:54 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:14:27 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ScalarConverter.hpp"
-#include "../include/colors.hpp"
 
 int	main(int argc, char** argv)
 {
