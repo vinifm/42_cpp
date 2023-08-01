@@ -6,20 +6,15 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:51:04 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/01 17:04:55 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:04:55by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-#include <iostream>
 #include <cstdlib>
-#include <list>
-
-#define	RESET	"\033[0m"
-#define	MAGENTA	"\033[1;35m"
-#define	BLUE	"\033[1;34m"
 
 void	title(std::string msg, std::string color, size_t size);
+void	pdfTest();
 
 void	testIntDeque()
 {
@@ -109,6 +104,7 @@ int	main(void)
 {
 	testIntDeque();
 	testStringList();
+	pdfTest();
 	return 0;
 }
 
