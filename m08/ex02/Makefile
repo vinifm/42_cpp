@@ -11,7 +11,7 @@ LFLAGS	= --leak-check=full \
 			./$(NAME)
 
 SRC		= main.cpp \
-			pdf.cpp
+			pdf_test.cpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
