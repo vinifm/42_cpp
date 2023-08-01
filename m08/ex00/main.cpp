@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:16:15 by viferrei          #+#    #+#             */
-/*   Updated: 2023/07/31 16:34:16 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:35:26 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int	main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
 	return 0;
 }
