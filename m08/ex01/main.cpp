@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:37:49 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/01 12:49:13 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:50:51 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ void	fillEmptySpan(Span& span)
 	for (size_t i = 0; i < span.getMaxSize(); ++i)
 		span.addNumber(rand() % 100);
 }
-
 
 /* Print formatted title */
 void	title(std::string msg, std::string color, size_t size) {
