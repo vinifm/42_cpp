@@ -1,4 +1,4 @@
-NAME	= a.out
+NAME	= btc
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
@@ -10,15 +10,10 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-# Directories
-OBJDIR	= ./objs/
-SRCDIR	= ./srcs/
-INCLUDE	= ./include/
-
-# Files
 SRC		= main.cpp \
-			Base.cpp
+			BitcoinExchange.cpp
 
+OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
@@ -26,10 +21,10 @@ all: $(NAME)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)%.o: $(SRCDIR)%.cpp
-	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+$(OBJDIR)%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJDIR) $(OBJ) $(INCLUDE)
+$(NAME): $(OBJDIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:

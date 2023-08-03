@@ -10,15 +10,9 @@ LFLAGS	= --leak-check=full \
 			--track-origins=yes \
 			./$(NAME)
 
-# Directories
+SRC		= main.cpp
+
 OBJDIR	= ./objs/
-SRCDIR	= ./srcs/
-INCLUDE	= ./include/
-
-# Files
-SRC		= main.cpp \
-			Base.cpp
-
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
@@ -26,10 +20,10 @@ all: $(NAME)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)%.o: $(SRCDIR)%.cpp
-	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+$(OBJDIR)%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJDIR) $(OBJ) $(INCLUDE)
+$(NAME): $(OBJDIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:

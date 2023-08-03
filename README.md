@@ -21,4 +21,15 @@ Repetition and exceptions.
 ### [Module 06](m06) ([wiki](wiki/m06.md))
 C++ casts.
 
+### [Module 07](m07) ([wiki](wiki/m07.md))
+Templates.
+
+### [Module 08](m08) ([wiki](wiki/m08.md))
+Templated containers, iterators, algorithms.
+
+## Resources
+- [Standard C++](https://isocpp.org/);
+- [CPP Reference](https://en.cppreference.com);
+- [cplusplus.com](https://cplusplus.com/).
+
 [^1]: Ascii Tree Art from ex02 from [ascii.co.uk](https://ascii.co.uk/art/tree)
