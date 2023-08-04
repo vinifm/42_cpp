@@ -8,7 +8,7 @@ LFLAGS	= --leak-check=full \
 			--show-leak-kinds=all \
 			--trace-children=yes \
 			--track-origins=yes \
-			./$(NAME)
+			./$(NAME) input.txt
 
 SRC		= main.cpp \
 			BitcoinExchange.cpp \

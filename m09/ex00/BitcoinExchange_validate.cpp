@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:28:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/04 15:27:07 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:49:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ std::pair<std::string, float>	BitcoinExchange::_validateLine(
 
 std::string	BitcoinExchange::_validateDate(const std::string& dateStr)
 {
-	t_date	date = _getDateStruct(dateStr);
-	if (!date.valid)
+	if (_getDateTime(dateStr) == -1)
 		return "\0";
 	return dateStr;
 }
