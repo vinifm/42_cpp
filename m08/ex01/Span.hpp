@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:36:52 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/01 12:43:56 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:35:28 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <vector>
 #include <numeric>	//adjacent_difference
+#include <algorithm>
 
 class Span
 {

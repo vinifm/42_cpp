@@ -34,11 +34,6 @@ void	testIntDeque()
 	int_stack.pop();
 	std::cout << "Top element removed. New top: "
 		<< int_stack.top() << std::endl;
-	int_stack.swap(empty);
-	std::cout << "Stack swapped with empty stack" << std::endl
-		<< "Stack size: " << int_stack.size() << std::endl;
-	int_stack.swap(empty);
-	std::cout << "Swapped back!" << std::endl;
 
 	title("ITERATOR", BLUE, 30);
 	std::cout << "Iterator: " << std::endl;
@@ -75,11 +70,6 @@ void	testStringList()
 	string_stack.pop();
 	std::cout << "Top element removed. New top: "
 		<< string_stack.top() << std::endl;
-	string_stack.swap(empty);
-	std::cout << "Stack swapped with empty stack" << std::endl
-		<< "Stack size: " << string_stack.size() << std::endl;
-	string_stack.swap(empty);
-	std::cout << "Swapped back!" << std::endl;
 
 	title("ITERATOR", BLUE, 30);
 	std::cout << "Iterator: " << std::endl;

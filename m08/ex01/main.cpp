@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:37:49 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/01 12:50:51 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:34:39 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	testAddMany()
 
 int	main(void)
 {
-	srand(static_cast<unsigned int>(std::time(NULL)));
+	srand(static_cast<unsigned int>(time(NULL)));
 	testConstructors();
 	testSmall();
 	testBig();

@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:01:24 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/01 17:16:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:39:50 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stack>
 #include <deque>
 #include <list>
+#include <algorithm>
 
 #define	RESET	"\033[0m"
 #define	MAGENTA	"\033[1;35m"
