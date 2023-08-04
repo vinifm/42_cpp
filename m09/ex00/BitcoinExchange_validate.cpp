@@ -6,13 +6,13 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:28:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/04 14:14:08 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 15:13:15 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-std::pair<std::string, float>	BitcoinExchange::_validateLine(std::string line)
+std::pair<std::string, float>	BitcoinExchange::_validateLine(const std::string& line)
 {
 	size_t		delimPos = line.find(" | ");
 	std::pair<std::string, float>	pair;
@@ -29,19 +29,15 @@ std::pair<std::string, float>	BitcoinExchange::_validateLine(std::string line)
 	return pair;
 }
 
-std::string	BitcoinExchange::_validateDate(std::string date)
+std::string	BitcoinExchange::_validateDate(const std::string& dateStr)
 {
-	struct tm	timeStruct;
-	const char*	timePtr = strptime(date.c_str(), "%Y-%m-%d", &timeStruct);
-
-	if (timePtr == NULL || *timePtr != '\0') {
-		_errorMsg("bad input", date);
+	t_date	date = _getDateStruct(dateStr);
+	if (!date.valid)
 		return "\0";
-	}
-	return date;
+	return dateStr;
 }
 
-float BitcoinExchange::_validateValue(std::string valueStr)
+float BitcoinExchange::_validateValue(const std::string& valueStr)
 {
 	std::istringstream	iss(valueStr);
 	float				value;

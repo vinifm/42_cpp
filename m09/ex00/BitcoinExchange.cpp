@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/04 14:45:36 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 15:13:38 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*--- STATIC VARIABLES -------------------------------------------------------*/
 
 std::map<std::string, float>	BitcoinExchange::_dataMap;
-struct tm						BitcoinExchange::_dateStruct;
 std::pair<std::string, float>	BitcoinExchange::_pair;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
@@ -38,7 +37,7 @@ void	BitcoinExchange::execute(std::ifstream& inputFile)
 	std::getline(inputFile, line);
 	while (std::getline(inputFile, line)) {
 		_pair = _validateLine(line);
-		if (_pair.first != "\0")
+		if (_pair.first != "\0" && _pair.second != -1)
 			_printOutput();
 	}
 }
@@ -66,12 +65,38 @@ void	BitcoinExchange::_saveCsvIntoMap()
 void	BitcoinExchange::_printOutput()
 {
 	std::map<std::string, float>::iterator	it = _dataMap.find(_pair.first);
+	// t_date	inputDate = _getDateStruct(_pair.first);
+
 	if (it != _dataMap.end()) {
 		std::cout << _pair.first << " => "
 			<< _pair.second << " = "
 			<< _pair.second * it->second
 			<< std::endl;
 	}
+	else for (it = _dataMap.begin(); it != _dataMap.end(); ++it) {
+		// t_date	mapDate = _getDateStruct(it->first);
+	}
+}
+
+t_date	BitcoinExchange::_getDateStruct(const std::string& dateStr)
+{
+	struct tm	timeStruct;
+	const char*	timePtr = strptime(dateStr.c_str(), "%Y-%m-%d", &timeStruct);
+	t_date		date;
+
+	if (timePtr == NULL || *timePtr != '\0') {
+		_errorMsg("invalid date", dateStr);
+		date.valid = false;
+		date.year = -1;
+		date.month = -1;
+		date.day = -1;
+		return date;
+	}
+	date.valid = true;
+	date.year = timeStruct.tm_year + 1900;
+	date.month = timeStruct.tm_mon + 1;
+	date.day = timeStruct.tm_mday;
+	return date;
 }
 
 void	BitcoinExchange::_iterateMap(std::map<std::string, float>& map)
