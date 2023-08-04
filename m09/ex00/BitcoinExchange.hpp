@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:46 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/03 21:04:30 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:50:58 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ private:
 	~BitcoinExchange();
 
 	static std::map<std::string, float>	_dataMap;
+	static struct tm					_dateStruct;
 
 	static std::pair<std::string, float>	_validateLine(std::string line);
 	static void			_saveCsvIntoMap();

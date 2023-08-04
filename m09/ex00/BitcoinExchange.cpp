@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/03 21:08:46 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:52:31 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*--- STATIC VARIABLES -------------------------------------------------------*/
 
 std::map<std::string, float>	BitcoinExchange::_dataMap;
+struct tm						BitcoinExchange::_dateStruct;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
@@ -41,6 +42,26 @@ void	BitcoinExchange::execute(std::ifstream& inputFile)
 
 		}
 	_iterateMap(_dataMap);
+	}
+}
+
+void	BitcoinExchange::_saveCsvIntoMap()
+{
+	std::ifstream	file;
+	std::string		line;
+	float			exchangeRate;
+
+	file.open("data.csv", std::ifstream::in);
+	if (!file.is_open())
+		throw FailedToOpenException();
+	std::getline(file, line);
+	while (std::getline(file, line)) {
+		size_t				commaPosition = line.find(",");
+		std::string			date = line.substr(0, commaPosition);
+		std::istringstream	afterComma(line.substr(commaPosition + 1));
+
+		afterComma >> exchangeRate;
+		_dataMap[date] = exchangeRate;
 	}
 }
 
@@ -87,26 +108,6 @@ float BitcoinExchange::_validateValue(std::string valueStr)
 	else
 		return value;
 	return -1;
-}
-
-void	BitcoinExchange::_saveCsvIntoMap()
-{
-	std::ifstream	file;
-	std::string		line;
-	float			exchangeRate;
-
-	file.open("data.csv", std::ifstream::in);
-	if (!file.is_open())
-		throw FailedToOpenException();
-	std::getline(file, line);
-	while (std::getline(file, line)) {
-		size_t				commaPosition = line.find(",");
-		std::string			date = line.substr(0, commaPosition);
-		std::istringstream	afterComma(line.substr(commaPosition + 1));
-
-		afterComma >> exchangeRate;
-		_dataMap[date] = exchangeRate;
-	}
 }
 
 void	BitcoinExchange::_errorMsg(std::string desc, std::string input)
