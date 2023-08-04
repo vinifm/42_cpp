@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:46 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/03 20:41:06 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/03 21:04:30 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ private:
 
 	static std::map<std::string, float>	_dataMap;
 
-	static void	_saveCsvIntoMap();
 	static std::pair<std::string, float>	_validateLine(std::string line);
-	static std::string						_validateDate(std::string date);
-	static float							_validateValue(std::string valueStr);
-	static void								_errorMsg(std::string desc, std::string input);
+	static void			_saveCsvIntoMap();
+	static std::string	_validateDate(std::string date);
+	static float		_validateValue(std::string valueStr);
+	static void			_errorMsg(std::string desc, std::string input);
+
+	static void			_iterateMap(std::map<std::string, float>& map);
 
 	class	FailedToOpenException: public std::exception {
 		public: const char* what() const throw();

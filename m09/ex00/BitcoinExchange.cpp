@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/03 20:58:09 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/03 21:08:46 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,16 @@ BitcoinExchange::~BitcoinExchange() {}
 void	BitcoinExchange::execute(std::ifstream& inputFile)
 {
 	std::string	line;
+	std::pair<std::string, float>	pair;
 
 	_saveCsvIntoMap();
 	std::getline(inputFile, line);
 	while (std::getline(inputFile, line)) {
-		_validateLine(line);
+		pair = _validateLine(line);
+		if (pair.first != "\0") {
+
+		}
+	_iterateMap(_dataMap);
 	}
 }
 
@@ -108,6 +113,17 @@ void	BitcoinExchange::_errorMsg(std::string desc, std::string input)
 {
 	std::cerr << RED "Error: " RESET << desc << " => " << input
 		<< std::endl;
+}
+
+void	BitcoinExchange::_iterateMap(std::map<std::string, float>& map)
+{
+	for (std::map<std::string, float>::iterator it = map.begin();
+		it != map.end();
+		++it)
+	{
+		std::cout << "date: " << it->first << " rate: " << it->second
+			<< std::endl;
+	}
 }
 
 /*--- EXCEPTIONS -------------------------------------------------------------*/
