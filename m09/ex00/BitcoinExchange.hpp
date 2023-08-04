@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:46 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/04 15:10:45 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 15:21:40 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ private:
 	static void			_saveCsvIntoMap();
 	static std::string	_validateDate(const std::string& dateStr);
 	static float		_validateValue(const std::string& valueStr);
-	static void			_printOutput();
+	static void			_findDate();
+	static void			_printOutput(std::map<std::string, float>::iterator it);
 	static t_date		_getDateStruct(const std::string& dateStr);
 	static void			_errorMsg(std::string desc, std::string input);
 

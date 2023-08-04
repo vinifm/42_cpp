@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/04 15:13:38 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 15:33:04 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	BitcoinExchange::execute(std::ifstream& inputFile)
 	while (std::getline(inputFile, line)) {
 		_pair = _validateLine(line);
 		if (_pair.first != "\0" && _pair.second != -1)
-			_printOutput();
+			_findDate();
 	}
 }
 
@@ -62,20 +62,39 @@ void	BitcoinExchange::_saveCsvIntoMap()
 	}
 }
 
-void	BitcoinExchange::_printOutput()
+void	BitcoinExchange::_findDate()
 {
 	std::map<std::string, float>::iterator	it = _dataMap.find(_pair.first);
-	// t_date	inputDate = _getDateStruct(_pair.first);
+	t_date	inputDate = _getDateStruct(_pair.first);
 
 	if (it != _dataMap.end()) {
-		std::cout << _pair.first << " => "
-			<< _pair.second << " = "
-			<< _pair.second * it->second
-			<< std::endl;
+		_printOutput(it);
+		return ;
 	}
 	else for (it = _dataMap.begin(); it != _dataMap.end(); ++it) {
 		// t_date	mapDate = _getDateStruct(it->first);
+		// while (inputDate.year > mapDate.year) {
+		// 	mapDate = _getDateStruct(it->first);
+		// 	++it;
+		// }
+		// while (inputDate.month > mapDate.month) {
+		// 	mapDate = _getDateStruct(it->first);
+		// 	++it;
+		// }
+		// while (inputDate.day > mapDate.day) {
+		// 	mapDate = _getDateStruct(it->first);
+		// 	++it;
+		// }
 	}
+	_printOutput(it);
+}
+
+void	BitcoinExchange::_printOutput(std::map<std::string, float>::iterator it)
+{
+	std::cout << _pair.first << " => "
+		<< _pair.second << " = "
+		<< _pair.second * it->second
+		<< std::endl;
 }
 
 t_date	BitcoinExchange::_getDateStruct(const std::string& dateStr)
