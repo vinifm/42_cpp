@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/04 17:50:22 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:57:37 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ void	BitcoinExchange::_saveCsvIntoMap()
 	}
 }
 
+/*
+	Find and print corresponding or closest lower date between input and map
+	database
+*/
 void	BitcoinExchange::_findDate()
 {
 	std::map<std::string, float>::iterator	it = _dataMap.find(_pair.first);
