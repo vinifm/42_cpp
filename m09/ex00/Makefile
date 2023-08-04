@@ -11,7 +11,8 @@ LFLAGS	= --leak-check=full \
 			./$(NAME)
 
 SRC		= main.cpp \
-			BitcoinExchange.cpp
+			BitcoinExchange.cpp \
+			BitcoinExchange_validate.cpp
 
 OBJDIR	= ./objs/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.cpp=.o))

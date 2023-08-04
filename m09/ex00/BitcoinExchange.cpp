@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:10:19 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/04 12:52:31 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/04 14:45:36 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 std::map<std::string, float>	BitcoinExchange::_dataMap;
 struct tm						BitcoinExchange::_dateStruct;
+std::pair<std::string, float>	BitcoinExchange::_pair;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
@@ -32,16 +33,13 @@ BitcoinExchange::~BitcoinExchange() {}
 void	BitcoinExchange::execute(std::ifstream& inputFile)
 {
 	std::string	line;
-	std::pair<std::string, float>	pair;
 
 	_saveCsvIntoMap();
 	std::getline(inputFile, line);
 	while (std::getline(inputFile, line)) {
-		pair = _validateLine(line);
-		if (pair.first != "\0") {
-
-		}
-	_iterateMap(_dataMap);
+		_pair = _validateLine(line);
+		if (_pair.first != "\0")
+			_printOutput();
 	}
 }
 
@@ -65,55 +63,15 @@ void	BitcoinExchange::_saveCsvIntoMap()
 	}
 }
 
-std::pair<std::string, float>	BitcoinExchange::_validateLine(std::string line)
+void	BitcoinExchange::_printOutput()
 {
-	size_t		delimPos = line.find(" | ");
-	std::pair<std::string, float>	pair;
-
-	if (delimPos == std::string::npos) {
-		_errorMsg("delimiter not found", line);
-		pair.first = "\0";
-		pair.second = -1;
+	std::map<std::string, float>::iterator	it = _dataMap.find(_pair.first);
+	if (it != _dataMap.end()) {
+		std::cout << _pair.first << " => "
+			<< _pair.second << " = "
+			<< _pair.second * it->second
+			<< std::endl;
 	}
-	else {
-		pair.first = _validateDate(line.substr(0, delimPos));
-		pair.second = _validateValue(line.substr(delimPos + 3));
-	}
-	return pair;
-}
-
-std::string	BitcoinExchange::_validateDate(std::string date)
-{
-	struct tm	timeStruct;
-	const char*	timePtr = strptime(date.c_str(), "%Y-%m-%d", &timeStruct);
-
-	if (timePtr == NULL || *timePtr != '\0') {
-		_errorMsg("bad input", date);
-		return "\0";
-	}
-	return date;
-}
-
-float BitcoinExchange::_validateValue(std::string valueStr)
-{
-	std::istringstream	iss(valueStr);
-	float				value;
-
-	if (!(iss >> value))
-		_errorMsg("bad input", valueStr);
-	else if (value < 0)
-		_errorMsg("not a positive number", valueStr);
-	else if (value > 1000)
-		_errorMsg("number too large", valueStr);
-	else
-		return value;
-	return -1;
-}
-
-void	BitcoinExchange::_errorMsg(std::string desc, std::string input)
-{
-	std::cerr << RED "Error: " RESET << desc << " => " << input
-		<< std::endl;
 }
 
 void	BitcoinExchange::_iterateMap(std::map<std::string, float>& map)
