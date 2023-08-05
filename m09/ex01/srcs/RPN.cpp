@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:44:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/05 17:51:11 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/05 19:35:04 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*--- STATIC VARIABLES -------------------------------------------------------*/
 
 const std::string	RPN::_operators = "+-/*";
-MutantStack<t_elem>	RPN::_stack;
+std::stack<unsigned int>	RPN::_stack;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
@@ -29,15 +29,8 @@ RPN::~RPN() {}
 
 /*--- MEMBER FUNCTIONS -------------------------------------------------------*/
 
-void	RPN::execute(const std::string input)
-{
-	if (!_createStack(input))
-		return ;
-	_operation();
-}
-
 /* Return true if stack is successfully created */
-bool	RPN::_createStack(const std::string& input)
+bool	RPN::execute(const std::string& input)
 {
 	std::stringstream	ss(input);
 	std::string			token;
@@ -50,18 +43,63 @@ bool	RPN::_createStack(const std::string& input)
 		else if (!isdigit(c) && !_isOperator(c))
 			return _errorMsg("Not a digit nor operand", token);
 		else if (isdigit(c))
-			_stack.push(_returnElem(c, OPERAND));
+			_stack.push(_strToInt(token));
 		else if (_isOperator(c))
-			_stack.push(_returnElem(c, OPERATOR));
+			if (!_tryOperation(c))
+				return false;
 	}
+ 	if (_stack.size() != 1)
+		return _errorMsg("Invalid RPN sequence", "\0");
+	std::cout << _stack.top() << std::endl;
 	return true;
 }
 
-char		RPN::_strToChar(const std::string& str)
+bool	RPN::_tryOperation(char op)
+{
+	unsigned int	operand1;
+	unsigned int	operand2;
+
+	if (_stack.size() < 2)
+		return _errorMsg("Not enough operands in the stack", "\0");
+	operand2 = _stack.top();
+	_stack.pop();
+	operand1 = _stack.top();
+	_stack.pop();
+	switch (op) {
+		case '+':
+			_stack.push(operand1 + operand2);
+			return true;
+		case '-':
+			_stack.push(operand1 - operand2);
+			return true;
+		case '*':
+			_stack.push(operand1 * operand2);
+			return true;
+		case '/':
+			if (operand2 == 0)
+				return _errorMsg("Division by zero", "\0");
+			_stack.push(operand1 / operand2);
+			return true;
+	}
+	return false;
+}
+
+char	RPN::_strToChar(const std::string& str)
 {
 	if (str.length() > 1)
 		return 0;
 	return str[0];
+}
+
+int	RPN::_strToInt(const std::string& str)
+{
+	std::istringstream	ss(str);
+	int					num;
+	if (!(ss >> num)) {
+		_errorMsg("Failed to convert string to int", str);
+		return -1;
+	}
+	return num;
 }
 
 bool	RPN::_isOperator(const char& c)
@@ -71,16 +109,11 @@ bool	RPN::_isOperator(const char& c)
 	return false;
 }
 
-t_elem	RPN::_returnElem(const char& value, const t_type& type)
-{
-	t_elem elem;
-	elem.value = value;
-	elem.type = type;
-	return elem;
-}
-
 bool		RPN::_errorMsg(std::string desc, std::string val)
 {
-	std::cout << RED "Error: " RESET << desc << ": " << val << std::endl;
+	if (!val[0])
+		std::cout << RED "Error: " RESET << desc << "." << std::endl;
+	else
+		std::cout << RED "Error: " RESET << desc << ": " << val << std::endl;
 	return false;
 }

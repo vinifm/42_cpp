@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:56:21 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/05 16:53:58 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/05 19:31:45 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int main(int argc, char** argv)
 		std::cerr << "Missing argument" << std::endl;
 	else if (argc > 2)
 		std::cerr << "Too many arguments" << std::endl;
-	else
-		RPN::execute(argv[1]);
+	else {
+		try { RPN::execute(argv[1]); }
+		catch (std::exception& e) {std::cout << e.what() << std::endl; }
+	}
 	return 0;
 }
