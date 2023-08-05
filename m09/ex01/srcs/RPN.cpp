@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:44:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/05 17:39:59 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/05 17:51:11 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	RPN::execute(const std::string input)
 {
 	if (!_createStack(input))
 		return ;
+	_operation();
 }
 
 /* Return true if stack is successfully created */
@@ -56,14 +57,6 @@ bool	RPN::_createStack(const std::string& input)
 	return true;
 }
 
-t_elem	RPN::_returnElem(const char& value, const t_type& type)
-{
-	t_elem elem;
-	elem.value = value;
-	elem.type = type;
-	return elem;
-}
-
 char		RPN::_strToChar(const std::string& str)
 {
 	if (str.length() > 1)
@@ -76,6 +69,14 @@ bool	RPN::_isOperator(const char& c)
 	if (_operators.find(c) != std::string::npos)
 		return true;
 	return false;
+}
+
+t_elem	RPN::_returnElem(const char& value, const t_type& type)
+{
+	t_elem elem;
+	elem.value = value;
+	elem.type = type;
+	return elem;
 }
 
 bool		RPN::_errorMsg(std::string desc, std::string val)

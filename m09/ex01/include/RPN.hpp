@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:43:08 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/05 17:45:46 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/05 17:50:27 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ private:
 	static char		_strToChar(const std::string& str);
 	static bool		_isOperator(const char& c);
 	static bool		_errorMsg(std::string desc, std::string val);
+	static void		_operation();
 };
 
 #endif
