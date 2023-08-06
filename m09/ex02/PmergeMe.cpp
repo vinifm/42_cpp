@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:38 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 17:20:49 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 17:23:23 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,13 @@ void	PmergeMe::execute(const std::vector<unsigned int>& sequence)
 void	PmergeMe::_savePairs()
 {
 	size_t	size = _sequence.size();
-	std::cout << "size: " << size << std::endl;
 	if (_straggler != -1)
 		--size;
-	std::cout << "size: " << size << std::endl;
 	for (size_t i = 0; i < size; i += 2) {
 		std::pair<int, int> pair(_sequence[i], _sequence[i + 1]);
 		_vecPairs.push_back(pair);
 		_deqPairs.push_back(pair);
 	}
-
-	_displayPairArr("value after saving pairs", _vecPairs);
 }
 
 /* Save last number if sequence is odd */

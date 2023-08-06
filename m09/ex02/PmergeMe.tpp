@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 07:31:21 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:05:55 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,37 +90,15 @@ void	PmergeMe::_createSequence(Container& cont, const t_type type)
 		pend.push_back(it->first);
 	}
 	sequence.insert(sequence.begin(), pend[0]);
+	pend.erase(pend.begin());
 
 	std::vector<int>	jacobSeq = _returnJacobSeq(pend);
-	// std::string			lastEntry = "none";
 	size_t				iter = 0;
-	int					item;
-	// while (iter <= pend.size()) {
-	// 	if ((jacobSeq.size() != 0) && lastEntry != "jacob") {
-	// 		indexSeq.push_back(jacobSeq[0]);
-	// 		item = pend[jacobSeq[0] - 1];
-	// 		jacobSeq.pop_back();
-	// 		lastEntry = "jacob";
-	// 	} else {
-	// 		if (std::find(indexSeq.begin(), indexSeq.end(), iter)
-	// 			!= indexSeq.end())
-	// 			++iter;
-	// 		// item = (iter - 1 <= 0) ? pend[0] : pend[iter - 1];
-	// 		item = pend[iter - 1];
-	// 		indexSeq.push_back(iter);
-	// 		lastEntry = "notJacob";
-	// 	}
-	// 	std::vector<int>::iterator it_s;
-	// 	std::lower_bound(sequence.begin(), sequence.end(), item);
-	// 	int insertIndex = std::distance(sequence.begin(), it_s);
-	// 	sequence.insert(sequence.begin() + insertIndex, item);
-	// 	iter++;
-	// }
+	int					item = -1;
 
-	// indexSeq.insert(indexSeq.begin(), 1);
-	std::cout << "size " << pend.size() << std::endl;
+	indexSeq.insert(indexSeq.begin(), 1);
 	while (iter <= (size_t)pend.size()){
-		if (jacobSeq.size() != 0){
+		if (jacobSeq.size() != 0) {
 			indexSeq.push_back(jacobSeq[0]);
 			item = pend.at(jacobSeq[0] - 1);
 			jacobSeq.pop_back();
@@ -129,14 +107,16 @@ void	PmergeMe::_createSequence(Container& cont, const t_type type)
 				!= indexSeq.end()) {
 				iter++;
 			}
-			item = pend[iter - 1];
-			// item = (iter - 1 <= 0) ? pend.at(0) : pend.at(iter - 1);
-			std::cout << "here!" << std::endl;
+			if (iter)
+				item = pend.at(iter - 1);
+			std::cout << "item is: " << item << std::endl;
 			indexSeq.push_back(iter);
 		}
-		std::vector<int>::iterator it_s = std::lower_bound(sequence.begin(), sequence.end(), item);
-		int insertIndex = std::distance(sequence.begin(), it_s);
-		sequence.insert(sequence.begin() + insertIndex, item);
+		if (item != -1) {
+			std::vector<int>::iterator it_s = std::lower_bound(sequence.begin(), sequence.end(), item);
+			int insertIndex = std::distance(sequence.begin(), it_s);
+			sequence.insert(sequence.begin() + insertIndex, item);
+		}
 		iter++;
 	}
 	if (_straggler != -1){
