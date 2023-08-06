@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:38 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 07:00:59 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 17:20:49 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ std::vector< std::pair <int, int> >	PmergeMe::_vecPairs;
 std::deque< std::pair <int, int> >	PmergeMe::_deqPairs;
 std::vector<int>					PmergeMe::_sortedVec;
 std::deque<int>						PmergeMe::_sortedDeq;
+bool								PmergeMe::_DEBUG = true;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
@@ -44,32 +45,32 @@ void	PmergeMe::execute(const std::vector<unsigned int>& sequence)
 	_sort(_vecPairs, VECTOR);
 	// _sort(_deqPairs, DEQUE);
 
-	for (std::vector<int>::iterator it = _sortedVec.begin();
-		it != _sortedVec.end();
-		++it)
-		std::cout << *it << " ";
-	std::cout << std::endl;
+	_displaySequence(_sortedVec);
 }
 
 /* Save sequence into containers of pairs */
 void	PmergeMe::_savePairs()
 {
 	size_t	size = _sequence.size();
+	std::cout << "size: " << size << std::endl;
 	if (_straggler != -1)
 		--size;
+	std::cout << "size: " << size << std::endl;
 	for (size_t i = 0; i < size; i += 2) {
 		std::pair<int, int> pair(_sequence[i], _sequence[i + 1]);
 		_vecPairs.push_back(pair);
 		_deqPairs.push_back(pair);
 	}
+
+	_displayPairArr("value after saving pairs", _vecPairs);
 }
 
 /* Save last number if sequence is odd */
 void	PmergeMe::_saveStraggler()
 {
-	std::vector<unsigned int>::const_iterator it = _sequence.end();
-	if (!(_sequence.size() % 2))
-		_straggler = (*(--it));
+	size_t size = _sequence.size();
+	if (size % 2)
+		_straggler = (_sequence[size - 1]);
 }
 
 /* Return sequence of jacobsthal numbers. */

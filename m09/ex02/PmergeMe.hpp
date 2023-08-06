@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:47:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 07:05:15 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 17:12:27 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ private:
 	static std::deque< std::pair <int, int> >	_deqPairs;
 	static std::vector<int>						_sortedVec;
 	static std::deque<int>						_sortedDeq;
+	static bool									_DEBUG;
 
 	static void	_saveStraggler();
 	static void	_savePairs();
@@ -78,8 +79,15 @@ private:
 				return a.second < b.second;
 			}
 	};
+
+	template <typename Container >
+	static void	_displayPairArr(const std::string& desc, const Container& cont);
+
+	template < typename Container >
+	static void	_displayArr(const std::string& desc, const Container& cont);
 };
 
 #include "PmergeMe.tpp"
+#include "debug.tpp"
 
 #endif
