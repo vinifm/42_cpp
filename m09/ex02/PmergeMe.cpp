@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:38 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 17:23:23 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 19:50:57y viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 /*--- STATIC VARIABLES -------------------------------------------------------*/
 
-size_t								PmergeMe::_size;
 std::vector<unsigned int>			PmergeMe::_sequence;
 int									PmergeMe::_straggler = -1;
 std::vector< std::pair <int, int> >	PmergeMe::_vecPairs;
 std::deque< std::pair <int, int> >	PmergeMe::_deqPairs;
 std::vector<int>					PmergeMe::_sortedVec;
 std::deque<int>						PmergeMe::_sortedDeq;
+clock_t						PmergeMe::_startTime;
+clock_t						PmergeMe::_vecEndTime;
+clock_t						PmergeMe::_deqEndTime;
 bool								PmergeMe::_DEBUG = true;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
@@ -37,20 +39,41 @@ PmergeMe::~PmergeMe() {}
 void	PmergeMe::execute(const std::vector<unsigned int>& sequence)
 {
 	_sequence = sequence;
-	_size = sequence.size();
-	std::cout << "Before: ";
-	_displaySequence(sequence);
+	_displaySequence("Before", sequence);
 	_saveStraggler();
 	_savePairs();
 	_sort(_vecPairs, VECTOR);
-	// _sort(_deqPairs, DEQUE);
+	_sort(_deqPairs, DEQUE);
+	_displaySequence("After", _sortedVec);
+	_displayTiming(VECTOR);
+	_displayTiming(DEQUE);
+}
 
-	_displaySequence(_sortedVec);
+void	PmergeMe::_displayTiming(const t_type& type)
+{
+	std::string contType = "std::vector";
+	if (type == DEQUE)
+		contType = "std::deque";
+
+	std::cout << "Time to process a range of " << _sequence.size()
+		<< " elements with " << contType << ": ";
+
+	if (type == VECTOR)
+		std::cout << _ElapsedTime(_vecEndTime) << " us" << std::endl;
+	else if (type == DEQUE)
+		std::cout << _ElapsedTime(_deqEndTime) << " us" << std::endl;
+}
+
+long long	PmergeMe::_ElapsedTime(clock_t endTime)
+{
+	double elapsed = double(endTime - _startTime) / CLOCKS_PER_SEC * 1000000;
+	return elapsed;
 }
 
 /* Save sequence into containers of pairs */
 void	PmergeMe::_savePairs()
 {
+	_startTime = clock();
 	size_t	size = _sequence.size();
 	if (_straggler != -1)
 		--size;

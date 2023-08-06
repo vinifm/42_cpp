@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 18:10:10 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:09:22 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 #include "PmergeMe.hpp"
 
 template < typename Container >
-void	PmergeMe::_displaySequence(const Container& seq)
+void	PmergeMe::_displaySequence(const std::string& desc, const Container& seq)
 {
+	std::cout << std::endl << desc << ": ";
 	for (typename Container::const_iterator it = seq.begin();
 		it != seq.end();
 		++it)
@@ -28,10 +29,6 @@ void	PmergeMe::_displaySequence(const Container& seq)
 template < typename Container >
 void	PmergeMe::_sort(Container& cont, const t_type type)
 {
-	struct timeval	start;
-	(void) type;
-
-	gettimeofday(&start, NULL);
 	for (typename Container::iterator it = cont.begin(); it != cont.end(); ++it)
 		if (it->first > it->second)
 			std::swap(it->first, it->second);
@@ -72,7 +69,7 @@ void	PmergeMe::_mergeSort(Container& cont)
 	it in the beginning of sequence.
 */
 template < typename Container >
-void	PmergeMe::_createSequence(Container& cont, const t_type type)
+void	PmergeMe::_createSequence(Container& cont, const t_type& type)
 {
 	std::vector<int>			sequence;
 	std::vector<int>			pend;
@@ -97,7 +94,7 @@ void	PmergeMe::_createSequence(Container& cont, const t_type type)
 	int					item = -1;
 
 	indexSeq.insert(indexSeq.begin(), 1);
-	while (iter <= (size_t)pend.size()){
+	while (iter <= pend.size()){
 		if (jacobSeq.size() != 0) {
 			indexSeq.push_back(jacobSeq[0]);
 			item = pend.at(jacobSeq[0] - 1);
@@ -107,26 +104,41 @@ void	PmergeMe::_createSequence(Container& cont, const t_type type)
 				!= indexSeq.end()) {
 				iter++;
 			}
-			if (iter)
+			if (iter <= pend.size()) {
 				item = pend.at(iter - 1);
-			indexSeq.push_back(iter);
+				indexSeq.push_back(iter);
+			}
 		}
-		if (item != -1) {
-			std::vector<int>::iterator it_s = std::lower_bound(sequence.begin(), sequence.end(), item);
-			int insertIndex = std::distance(sequence.begin(), it_s);
-			sequence.insert(sequence.begin() + insertIndex, item);
-		}
+		_insertItem(sequence, item);
 		iter++;
 	}
-	if (_straggler != -1){
-		std::vector<int>::iterator it_s = std::lower_bound(sequence.begin(), sequence.end(), _straggler);
-		int insertIndex = std::distance(sequence.begin(), it_s);
-		sequence.insert(sequence.begin() + insertIndex, _straggler);
-	}
-	if (type == VECTOR)
+	_insertItem(sequence, _straggler);
+	_assignArray(sequence, type);
+}
+
+template < typename Container >
+void	PmergeMe::_insertItem(Container& sequence, const int& item)
+{
+	typename Container::iterator pos = std::lower_bound(
+		sequence.begin(),
+		sequence.end(),
+		item
+	);
+	if (item != -1)
+		sequence.insert(pos, item);
+}
+
+template < typename Container >
+void	PmergeMe::_assignArray(Container& sequence, const t_type& type)
+{
+	if (type == VECTOR) {
 		_sortedVec.assign(sequence.begin(), sequence.end());
-	else
+		_vecEndTime = clock();
+	}
+	else if (type == DEQUE) {
 		_sortedDeq.assign(sequence.begin(), sequence.end());
+		_deqEndTime = clock();
+	}
 }
 
 #endif
