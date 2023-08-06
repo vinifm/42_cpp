@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 03:29:02 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 07:31:21 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	PmergeMe::_sort(Container& cont, const t_type type)
 		if (it->first > it->second)
 			std::swap(it->first, it->second);
 	_mergeSort(cont);
-	// _createSeq();
+	_createSequence(cont, type);
 }
 
 /* Recursively sort the pair sequence by the greater value in the pair */
@@ -63,6 +63,91 @@ void	PmergeMe::_mergeSort(Container& cont)
 		right.begin(), right.end(),
 		cont.begin(), cmp
 	);
+}
+
+/*
+	- Split pairs into main sequence: larger elements go into sequence, smaller
+	elements go into pend.
+	- Since first element in pend is smaller than the first in sequence, insert
+	it in the beginning of sequence.
+*/
+template < typename Container >
+void	PmergeMe::_createSequence(Container& cont, const t_type type)
+{
+	std::vector<int>			sequence;
+	std::vector<int>			pend;
+	std::vector<int>			indexSeq;
+	if (type == DEQUE) {
+		std::deque<int>				sequence;
+		std::deque<int>				pend;
+		std::deque<int>				indexSeq;
+	}
+	for (typename Container::iterator it = cont.begin();
+		it != cont.end();
+		++it)
+	{
+		sequence.push_back(it->second);
+		pend.push_back(it->first);
+	}
+	sequence.insert(sequence.begin(), pend[0]);
+
+	std::vector<int>	jacobSeq = _returnJacobSeq(pend);
+	// std::string			lastEntry = "none";
+	size_t				iter = 0;
+	int					item;
+	// while (iter <= pend.size()) {
+	// 	if ((jacobSeq.size() != 0) && lastEntry != "jacob") {
+	// 		indexSeq.push_back(jacobSeq[0]);
+	// 		item = pend[jacobSeq[0] - 1];
+	// 		jacobSeq.pop_back();
+	// 		lastEntry = "jacob";
+	// 	} else {
+	// 		if (std::find(indexSeq.begin(), indexSeq.end(), iter)
+	// 			!= indexSeq.end())
+	// 			++iter;
+	// 		// item = (iter - 1 <= 0) ? pend[0] : pend[iter - 1];
+	// 		item = pend[iter - 1];
+	// 		indexSeq.push_back(iter);
+	// 		lastEntry = "notJacob";
+	// 	}
+	// 	std::vector<int>::iterator it_s;
+	// 	std::lower_bound(sequence.begin(), sequence.end(), item);
+	// 	int insertIndex = std::distance(sequence.begin(), it_s);
+	// 	sequence.insert(sequence.begin() + insertIndex, item);
+	// 	iter++;
+	// }
+
+	// indexSeq.insert(indexSeq.begin(), 1);
+	std::cout << "size " << pend.size() << std::endl;
+	while (iter <= (size_t)pend.size()){
+		if (jacobSeq.size() != 0){
+			indexSeq.push_back(jacobSeq[0]);
+			item = pend.at(jacobSeq[0] - 1);
+			jacobSeq.pop_back();
+		} else {
+			if (std::find(indexSeq.begin(), indexSeq.end(), item)
+				!= indexSeq.end()) {
+				iter++;
+			}
+			item = pend[iter - 1];
+			// item = (iter - 1 <= 0) ? pend.at(0) : pend.at(iter - 1);
+			std::cout << "here!" << std::endl;
+			indexSeq.push_back(iter);
+		}
+		std::vector<int>::iterator it_s = std::lower_bound(sequence.begin(), sequence.end(), item);
+		int insertIndex = std::distance(sequence.begin(), it_s);
+		sequence.insert(sequence.begin() + insertIndex, item);
+		iter++;
+	}
+	if (_straggler != -1){
+		std::vector<int>::iterator it_s = std::lower_bound(sequence.begin(), sequence.end(), _straggler);
+		int insertIndex = std::distance(sequence.begin(), it_s);
+		sequence.insert(sequence.begin() + insertIndex, _straggler);
+	}
+	if (type == VECTOR)
+		_sortedVec.assign(sequence.begin(), sequence.end());
+	else
+		_sortedDeq.assign(sequence.begin(), sequence.end());
 }
 
 #endif
