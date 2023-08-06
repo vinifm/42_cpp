@@ -20,9 +20,9 @@ std::vector< std::pair <int, int> >	PmergeMe::_vecPairs;
 std::deque< std::pair <int, int> >	PmergeMe::_deqPairs;
 std::vector<int>					PmergeMe::_sortedVec;
 std::deque<int>						PmergeMe::_sortedDeq;
-clock_t						PmergeMe::_startTime;
-clock_t						PmergeMe::_vecEndTime;
-clock_t						PmergeMe::_deqEndTime;
+clock_t								PmergeMe::_startTime;
+clock_t								PmergeMe::_vecEndTime;
+clock_t								PmergeMe::_deqEndTime;
 bool								PmergeMe::_DEBUG = true;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
@@ -49,25 +49,12 @@ void	PmergeMe::execute(const std::vector<unsigned int>& sequence)
 	_displayTiming(DEQUE);
 }
 
-void	PmergeMe::_displayTiming(const t_type& type)
+/* Save last number if sequence is odd */
+void	PmergeMe::_saveStraggler()
 {
-	std::string contType = "std::vector";
-	if (type == DEQUE)
-		contType = "std::deque";
-
-	std::cout << "Time to process a range of " << _sequence.size()
-		<< " elements with " << contType << ": ";
-
-	if (type == VECTOR)
-		std::cout << _ElapsedTime(_vecEndTime) << " us" << std::endl;
-	else if (type == DEQUE)
-		std::cout << _ElapsedTime(_deqEndTime) << " us" << std::endl;
-}
-
-long long	PmergeMe::_ElapsedTime(clock_t endTime)
-{
-	double elapsed = double(endTime - _startTime) / CLOCKS_PER_SEC * 1000000;
-	return elapsed;
+	size_t size = _sequence.size();
+	if (size % 2)
+		_straggler = (_sequence[size - 1]);
 }
 
 /* Save sequence into containers of pairs */
@@ -84,12 +71,25 @@ void	PmergeMe::_savePairs()
 	}
 }
 
-/* Save last number if sequence is odd */
-void	PmergeMe::_saveStraggler()
+void	PmergeMe::_displayTiming(const t_type& type)
 {
-	size_t size = _sequence.size();
-	if (size % 2)
-		_straggler = (_sequence[size - 1]);
+	std::string contType = "std::vector";
+	if (type == DEQUE)
+		contType = "std::deque";
+
+	std::cout << "Time to process a range of " << _sequence.size()
+		<< " elements with " << contType << ": ";
+
+	if (type == VECTOR)
+		std::cout << _ElapsedTime(_vecEndTime) << " us" << std::endl;
+	else if (type == DEQUE)
+		std::cout << _ElapsedTime(_deqEndTime) << " us" << std::endl;
+}
+
+double	PmergeMe::_ElapsedTime(clock_t endTime)
+{
+	double elapsed = double(endTime - _startTime) / CLOCKS_PER_SEC * 1000000;
+	return elapsed;
 }
 
 /* Return sequence of jacobsthal numbers. */

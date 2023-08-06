@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 20:09:22 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:26:50 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	PmergeMe::_createSequence(Container& cont, const t_type& type)
 			indexSeq.push_back(jacobSeq[0]);
 			item = pend.at(jacobSeq[0] - 1);
 			jacobSeq.pop_back();
-		} else {
+		}
+		else {
 			if (std::find(indexSeq.begin(), indexSeq.end(), item)
 				!= indexSeq.end()) {
 				iter++;

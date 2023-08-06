@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:47:13 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 19:47:52 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:11:06 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ private:
 	static std::deque< std::pair <int, int> >	_deqPairs;
 	static std::vector<int>						_sortedVec;
 	static std::deque<int>						_sortedDeq;
-	static clock_t						_startTime;
-	static clock_t						_vecEndTime;
-	static clock_t						_deqEndTime;
+	static clock_t								_startTime;
+	static clock_t								_vecEndTime;
+	static clock_t								_deqEndTime;
 	static bool									_DEBUG;
 
-	static void	_saveStraggler();
-	static void	_savePairs();
+	static void				_saveStraggler();
+	static void				_savePairs();
 	static std::vector<int>	_returnJacobSeq(std::vector<int>& pend);
-	static int	_jacobsthal(int index);
-	static void	_displayTiming(const t_type& type);
-	static long long _ElapsedTime(clock_t endTime);
+	static int				_jacobsthal(int index);
+	static void				_displayTiming(const t_type& type);
+	static double 			_ElapsedTime(clock_t endTime);
 
 	template < typename Container >
 	static void	_displaySequence(const std::string& desc, const Container& seq);
