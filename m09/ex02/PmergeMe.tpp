@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/06 18:05:55 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:10:10 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void	PmergeMe::_createSequence(Container& cont, const t_type type)
 			}
 			if (iter)
 				item = pend.at(iter - 1);
-			std::cout << "item is: " << item << std::endl;
 			indexSeq.push_back(iter);
 		}
 		if (item != -1) {
