@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:44:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/05 23:56:35 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/07 11:01:00 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*--- STATIC VARIABLES -------------------------------------------------------*/
 
 const std::string	RPN::_operators = "+-/*";
-std::stack<unsigned int>	RPN::_stack;
+std::stack<int>	RPN::_stack;
 
 /*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
 
@@ -65,6 +65,8 @@ bool	RPN::_tryOperation(char op)
 	_stack.pop();
 	operand1 = _stack.top();
 	_stack.pop();
+	if (!_isValidOperation(operand1, operand2, op))
+		return _errorMsg("Result is not valid integer", "\0");
 	switch (op) {
 		case '+':
 			_stack.push(operand1 + operand2);
@@ -82,6 +84,23 @@ bool	RPN::_tryOperation(char op)
 			return true;
 	}
 	return false;
+}
+
+bool	RPN::_isValidOperation(const unsigned int& operand1,
+	const unsigned int& operand2, const char& op
+) {
+	double result;
+	switch (op) {
+		case '+':
+			result = operand1 + operand2;
+		case '-':
+			result = operand1 - operand2;
+		case '*':
+			result = operand1 * operand2;
+		case '/':
+			result = operand1 / operand2;
+	}
+	return result < std::numeric_limits<int>::max();
 }
 
 char	RPN::_strToChar(const std::string& str)
