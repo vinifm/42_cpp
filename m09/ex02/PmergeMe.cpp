@@ -45,6 +45,7 @@ void	PmergeMe::execute(const std::vector<unsigned int>& sequence)
 	_sort(_vecPairs, VECTOR);
 	_sort(_deqPairs, DEQUE);
 	_displaySequence("After", _sortedVec);
+	std::cout << std::endl;
 	_displayTiming(VECTOR);
 	_displayTiming(DEQUE);
 }
