@@ -6,7 +6,7 @@
 /*   By: viferrei <viferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:51:18 by viferrei          #+#    #+#             */
-/*   Updated: 2023/08/07 02:54:58 by viferrei         ###   ########.fr       */
+/*   Updated: 2023/08/07 23:10:03 by viferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	PmergeMe::_createSequence(Container& cont, const t_type& type)
 	int					item = -1;
 
 	indexSeq.insert(indexSeq.begin(), 1);
-	while (iter <= pend.size()){
+	while (iter < pend.size()){
 		if (jacobSeq.size() != 0) {
 			indexSeq.push_back(jacobSeq[0]);
 			item = pend.at(jacobSeq[0] - 1);
